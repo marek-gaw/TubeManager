@@ -4,8 +4,15 @@ This directory contains services for project for TubeManager.
 
 ## How to build
 
-_TBD_
+```bash
+cd ./TubeManager.API
+dotnet restore
+dotnet build
+```
 
 ## How to run locally
 
-_TBD_
+```bash
+cd ./TubeManager.API
+dotnet run
+```

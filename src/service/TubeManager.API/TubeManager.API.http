@@ -1,0 +1,6 @@
+@TubeManager.API_HostAddress = http://localhost:5126
+
+GET {{TubeManager.API_HostAddress}}/helloworld/
+Accept: application/json
+
+###

@@ -4,8 +4,12 @@ This directory contains UI project for TubeManager.
 
 ## How to build
 
-_TBD_
+```bash
+npm install
+```
 
 ## How to run locally
 
-_TBD_
+```bash
+ng serve
+```

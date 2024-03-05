@@ -40,3 +40,7 @@ The goal is to build working solution within first 100 days of the project, star
 4. `Sky is the limit`
 
     From now on, project has desired feature set. All further features are considered as "nice to have", for example: deployment to Azure.
+
+## Further details
+
+- [Architecture Decision Record](./adr.md)

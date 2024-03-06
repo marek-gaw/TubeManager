@@ -1,18 +1,18 @@
-<h2>Movies</h2>
-<ul class="movies">
-  <li *ngFor="let movie of movies">
-    <button [class.selected]="movie === selectedMovie" type="button" (click)="onSelect(movie)">
-    <span class="badge">{{movie.id}}</span>
-    <span class="name">{{movie.title}}</span>
-    <!-- <span class="name">{{movie.url}}</span> -->
-    </button>
-  </li>
-</ul>
-
-<div *ngIf="selectedMovie">
-    <h2>{{selectedMovie.title}}</h2>
-    <div>
-      <label for="movie-name">Channel: </label>
-      <input id="movie-name" [(ngModel)]="selectedMovie.channel" placeholder="title">
-    </div>
-  </div>
+<div class="container">
+  <!-- <div class="row"> -->
+    <!-- <div class="col-lg-3"> -->
+      <!-- <div class="col-lg-9"> -->
+        <div class="row">
+          <div class="card bg-light border-primary col-lg-3 mb-2" *ngFor="let movie of movies">
+            <div class="card-header text-center">{{movie.title}}</div>
+            <div class="card-body">
+              <h6 class="card-subtitle mb-2 text-right">{{movie.channel}}</h6>
+              <p class="card-text">{{movie.description}}</p>
+              <h6 class="text-left"><a href="{{movie.url}}" class="card-link">link</a></h6>
+            </div>
+          </div>
+        <!-- </div> -->
+      </div>
+    <!-- </div> -->
+  <!-- </div> -->
+</div>

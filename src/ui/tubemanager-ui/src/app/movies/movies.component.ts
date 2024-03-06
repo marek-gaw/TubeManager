@@ -1,14 +1,13 @@
 import { Component } from '@angular/core';
 import { Movie } from '../interfaces/movies'
 import { MOVIES } from '../mocks/movies-mock'
-import { NgFor, NgIf } from '@angular/common';
-import {FormsModule} from '@angular/forms';
+import { NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-movies',
   standalone: true,
   imports: [
-    NgFor, NgIf, FormsModule
+    NgFor
   ],
   templateUrl: './movies.component.html',
   styleUrl: './movies.component.css'
@@ -16,10 +15,4 @@ import {FormsModule} from '@angular/forms';
 export class MoviesComponent {
 
   movies = MOVIES;
-  selectedMovie? : Movie;
-
-  onSelect(movie: Movie): void {
-    this.selectedMovie = movie;
-  }
-
 }

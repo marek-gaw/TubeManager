@@ -3,4 +3,5 @@ export interface Movie {
     title: string;
     channel: string;
     url: string;
+    description: string;
   }

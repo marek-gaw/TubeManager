@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { MoviesComponent } from '../../movies/movies.component';
+import { MovieComponent } from '../movie/movie.component';
 import { NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-album',
   standalone: true,
   imports: [
-    MoviesComponent,
+    MovieComponent,
     NgFor
   ],
   templateUrl: './album.component.html',

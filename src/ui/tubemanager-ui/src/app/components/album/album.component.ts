@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { MovieComponent } from '../movie/movie.component';
+import { Movie } from '../../interfaces/movie'
+import { MOVIES } from '../../mocks/movies-mock'
 import { NgFor } from '@angular/common';
 
 @Component({
@@ -13,5 +15,7 @@ import { NgFor } from '@angular/common';
   styleUrl: './album.component.css'
 })
 export class AlbumComponent {
+
+  movies = MOVIES;
 
 }

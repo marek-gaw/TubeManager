@@ -1,0 +1,5 @@
+/src/service/TubeManager.API/bin
+/src/service/TubeManager.API/obj
+
+/src/service/TubeManager.Tests/bin
+/src/service/TubeManager.Tests/obj

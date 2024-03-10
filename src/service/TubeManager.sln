@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TubeManager.API", "TubeMana
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TubeManager.Tests", "TubeManager.Tests\TubeManager.Tests.csproj", "{4F0B0965-576C-4773-87BD-DE49B9671946}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "spike-db-scaffold", "spike-db-scaffold\spike-db-scaffold.csproj", "{0C373B19-2F63-4508-9FB1-FA34D32082F5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{4F0B0965-576C-4773-87BD-DE49B9671946}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F0B0965-576C-4773-87BD-DE49B9671946}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F0B0965-576C-4773-87BD-DE49B9671946}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C373B19-2F63-4508-9FB1-FA34D32082F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C373B19-2F63-4508-9FB1-FA34D32082F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C373B19-2F63-4508-9FB1-FA34D32082F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C373B19-2F63-4508-9FB1-FA34D32082F5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

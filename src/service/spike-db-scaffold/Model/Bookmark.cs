@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace spike_db_scaffold;
+namespace spike_db_scaffold.Model;
 
 public partial class Bookmark
 {

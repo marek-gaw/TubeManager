@@ -1,6 +1,16 @@
-@TubeManager.API_HostAddress = http://localhost:5126
+@TubeManager.API = http://localhost:5126
 
-GET {{TubeManager.API_HostAddress}}/helloworld/
+GET {{TubeManager.API}}
 Accept: application/json
 
 ###
+GET {{TubeManager.API}}/bookmarks
+
+###
+POST {{TubeManager.API}}/bookmarks
+
+###
+PUT {{TubeManager.API}}/bookmarks
+
+###
+DELETE {{TubeManager.API}}/bookmarks

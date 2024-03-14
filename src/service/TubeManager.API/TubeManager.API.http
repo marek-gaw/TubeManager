@@ -8,6 +8,14 @@ GET {{TubeManager.API}}/bookmarks
 
 ###
 POST {{TubeManager.API}}/bookmarks
+Content-Type: application/json
+
+{
+  "videoTitle": "Rozwiązujemy ZADANIA ALGORYTMICZNE na czas...",
+  "videoUrl": "https://www.youtube.com/watch?v=POY9A7sQT9Q",
+  "thumbnailUrl": "https://i.ytimg.com/vi/POY9A7sQT9Q/maxresdefault.jpg",
+  "channel": "DevMentors"
+}
 
 ###
 PUT {{TubeManager.API}}/bookmarks

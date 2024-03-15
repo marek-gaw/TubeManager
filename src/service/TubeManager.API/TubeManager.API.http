@@ -7,6 +7,9 @@ Accept: application/json
 GET {{TubeManager.API}}/bookmarks
 
 ###
+GET {{TubeManager.API}}/bookmarks/d9c72e5-bec4-4c3b-9bb9-5d03ff93c2db
+
+###
 POST {{TubeManager.API}}/bookmarks
 Content-Type: application/json
 

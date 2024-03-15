@@ -10,10 +10,15 @@ public class BookmarksController : ControllerBase
     private static readonly List<Bookmark> _bookmarks = new();
     private static Guid _id = Guid.NewGuid();
     
-    [HttpGet]
-    public void Get()
+    [HttpGet(("{id}"))]
+    public ActionResult<Bookmark> Get([FromRoute] Guid id)
     {
-        
+        var bookmark = _bookmarks.SingleOrDefault(b => b.Id == id);
+        if (bookmark is null)
+        {
+            return NotFound();
+        }
+        return bookmark;
     }
 
     [HttpPost]

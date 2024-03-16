@@ -22,7 +22,7 @@ public class BookmarksController : ControllerBase
     }
 
     [HttpPost]
-    public void Post([FromBody] Bookmark bookmark)
+    public ActionResult Post([FromBody] Bookmark bookmark)
     {
         bookmark.Id = _id;
 
@@ -31,14 +31,12 @@ public class BookmarksController : ControllerBase
 
         if (bookmarkExists)
         {
-            HttpContext.Response.StatusCode = StatusCodes.Status406NotAcceptable;
-            return;
+            return BadRequest();
         }
         
         _bookmarks.Add(bookmark);
-        HttpContext.Response.StatusCode = StatusCodes.Status201Created;
-        HttpContext.Response.Headers.Add("Location", $"bookmarks/{_id}");
         _id = Guid.NewGuid();
+        return CreatedAtAction(nameof(Post), new { bookmark.Id }, default);
     }
 
     [HttpPut]

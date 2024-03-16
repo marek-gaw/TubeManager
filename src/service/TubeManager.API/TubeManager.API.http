@@ -7,17 +7,17 @@ Accept: application/json
 GET {{TubeManager.API}}/bookmarks
 
 ###
-GET {{TubeManager.API}}/bookmarks/d9c72e5-bec4-4c3b-9bb9-5d03ff93c2db
+GET {{TubeManager.API}}/bookmarks/b4e6a384-adaa-4ce4-bc7a-07264cc81822
 
 ###
 POST {{TubeManager.API}}/bookmarks
 Content-Type: application/json
 
 {
-  "videoTitle": "Rozwiązujemy ZADANIA ALGORYTMICZNE na czas...",
-  "videoUrl": "https://www.youtube.com/watch?v=POY9A7sQT9Q",
-  "thumbnailUrl": "https://i.ytimg.com/vi/POY9A7sQT9Q/maxresdefault.jpg",
-  "channel": "DevMentors"
+  "Title": "Rozwiązujemy ZADANIA ALGORYTMICZNE na czas...",
+  "VideoUrl": "https://www.youtube.com/watch?v=POY9A7sQT9Q",
+  "ThumbnailUrl": "https://i.ytimg.com/vi/POY9A7sQT9Q/maxresdefault.jpg",
+  "Channel": "DevMentors"
 }
 
 ###

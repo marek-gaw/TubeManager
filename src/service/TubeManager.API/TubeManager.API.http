@@ -7,7 +7,7 @@ Accept: application/json
 GET {{TubeManager.API}}/bookmarks
 
 ###
-GET {{TubeManager.API}}/bookmarks/b4e6a384-adaa-4ce4-bc7a-07264cc81822
+GET {{TubeManager.API}}/bookmarks/a5464690-c455-4d71-870f-1cac785ac1ef
 
 ###
 POST {{TubeManager.API}}/bookmarks
@@ -21,7 +21,15 @@ Content-Type: application/json
 }
 
 ###
-PUT {{TubeManager.API}}/bookmarks
+PUT {{TubeManager.API}}/bookmarks/a5464690-c455-4d71-870f-1cac785ac1ef
+Content-Type: application/json
+
+{
+  "Title": "R ",
+  "VideoUrl": "https://www.youtube.com/watch?v=POY9A7sQT9Q",
+  "ThumbnailUrl": "https://i.ytimg.com/vi/POY9A7sQT9Q/maxresdefault.jpg",
+  "Channel": "DevMentors PL"
+}
 
 ###
 DELETE {{TubeManager.API}}/bookmarks

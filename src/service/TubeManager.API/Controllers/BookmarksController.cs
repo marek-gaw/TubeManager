@@ -39,10 +39,18 @@ public class BookmarksController : ControllerBase
         return CreatedAtAction(nameof(Post), new { bookmark.Id }, default);
     }
 
-    [HttpPut]
-    public void Put()
+    [HttpPut("{id:guid}")]
+    public ActionResult Put([FromRoute] Guid id, [FromBody] Bookmark bookmark)
     {
-        
+        var existingBookmark = _bookmarks.SingleOrDefault(b => b.Id == id);
+        if (existingBookmark is null)
+        {
+            return BadRequest();
+        }
+
+        existingBookmark.Title = bookmark.Title;
+        existingBookmark.Channel = bookmark.Channel;
+        return Accepted();
     }
 
     [HttpDelete]

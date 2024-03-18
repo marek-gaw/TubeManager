@@ -7,7 +7,7 @@ Accept: application/json
 GET {{TubeManager.API}}/bookmarks
 
 ###
-GET {{TubeManager.API}}/bookmarks/a5464690-c455-4d71-870f-1cac785ac1ef
+GET {{TubeManager.API}}/bookmarks/7aeb3894-44a7-4b20-8c86-39e89f2e0af6
 
 ###
 POST {{TubeManager.API}}/bookmarks
@@ -21,15 +21,15 @@ Content-Type: application/json
 }
 
 ###
-PUT {{TubeManager.API}}/bookmarks/a5464690-c455-4d71-870f-1cac785ac1ef
+PUT {{TubeManager.API}}/bookmarks/7aeb3894-44a7-4b20-8c86-39e89f2e0af6
 Content-Type: application/json
 
 {
-  "Title": "R ",
+  "Title": "Rozwiązujemy ZADANIA",
   "VideoUrl": "https://www.youtube.com/watch?v=POY9A7sQT9Q",
-  "ThumbnailUrl": "https://i.ytimg.com/vi/POY9A7sQT9Q/maxresdefault.jpg",
+  "ThumbnailUrl": "",
   "Channel": "DevMentors PL"
 }
 
 ###
-DELETE {{TubeManager.API}}/bookmarks
+DELETE {{TubeManager.API}}/bookmarks/94eea9f9-0869-4029-abf9-475062f98a51

@@ -1,6 +1,6 @@
 # TubeManager
 
-This application allows to manage links to (mainly) YT videos.
+This application allows to manage links to (mainly) YouTube™ videos.
 
 ## Preface
 
@@ -8,16 +8,26 @@ The main reason to create this application is huge number of bookmarks gathered 
 
 Since SkyTube allows to export bookmarks as a Sqlite file, it is quite easy to import those data and manage them.
 
+## Details
+
+- [Spikes](./spikes.md)
+
+  Spikes allows to test certain ideas or prove technical feasibility. Those solutions won't be part of the end solution, so are taken out of the main project.
+
+- [Architecture Decission Record](./adr.md)
+
+  ADR helps to keep record of decisions made in the project adding some context to them, with rationale, why such decision was made.
+
 ## Project Goals
 
 ### Use Cases
 
-- provide a way to manage links to streaming services like Youtube
+- provide a way to manage links to streaming services like YouTube™
 - manage backups created by SkyTube
 
 ### Learning
 
-- Angular 17
+- Angular 17 and it's news concepts like standalone components
 - How to build Cloud Native 12+ Factors App?
 - Migration a web app to the Cloud
 

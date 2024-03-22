@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using TubeManager.API.Models;
+using TubeManager.API.Services;
 
 namespace TubeManager.API.Controllers;
 
@@ -8,19 +9,18 @@ namespace TubeManager.API.Controllers;
 public class BookmarksController : ControllerBase
 {
     // not thread safe.
-    private static readonly List<Bookmark> _bookmarks = new();
-    private static Guid _id = Guid.NewGuid();
+    private readonly BookmarksService _bookmarksService = new();
 
     [HttpGet]
     public ActionResult<Bookmark[]> Get()
     {
-        return Ok(_bookmarks);
+        return Ok(_bookmarksService.Get());
     }
     
     [HttpGet(("{id}"))]
     public ActionResult<Bookmark> Get(Guid id)
     {
-        var bookmark = _bookmarks.SingleOrDefault(b => b.Id == id);
+        var bookmark = _bookmarksService.Get(id);
         if (bookmark is null)
         {
             return NotFound();
@@ -31,45 +31,36 @@ public class BookmarksController : ControllerBase
     [HttpPost]
     public ActionResult Post(Bookmark bookmark)
     {
-        bookmark.Id = _id;
+        var id = _bookmarksService.Create(bookmark);
 
-        var bookmarkExists = _bookmarks
-            .Any(b => b.VideoUrl == bookmark.VideoUrl);
-
-        if (bookmarkExists)
+        if (id is null)
         {
             return BadRequest();
         }
         
-        _bookmarks.Add(bookmark);
-        _id = Guid.NewGuid();
-        return CreatedAtAction(nameof(Post), new { bookmark.Id }, default);
+        return CreatedAtAction(nameof(Post), new { id }, default);
     }
  
     [HttpPut("{id:guid}")]
     public ActionResult Put(Guid id, Bookmark bookmark)
     {
-        var existingBookmark = _bookmarks.SingleOrDefault(b => b.Id == id);
-        if (existingBookmark is null)
+        var status = _bookmarksService.Update(bookmark);
+        if (!status)
         {
             return BadRequest();
         }
 
-        existingBookmark.Title = bookmark.Title;
-        existingBookmark.Channel = bookmark.Channel;
         return Accepted();
     }
 
     [HttpDelete("{id:guid}")]
     public ActionResult Delete(Guid id)
     {
-        var existingBookmark = _bookmarks.SingleOrDefault(b => b.Id == id);
-        if (existingBookmark is null)
+        var status = _bookmarksService.Delete(id);
+        if (!status)
         {
             return BadRequest();
         }
-
-        _bookmarks.Remove(existingBookmark);
         return Accepted();
     }
 }

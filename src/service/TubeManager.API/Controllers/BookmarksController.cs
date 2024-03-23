@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using TubeManager.API.Models;
+using TubeManager.API.DTO;
+using TubeManager.API.Entities;
 using TubeManager.API.Services;
 
 namespace TubeManager.API.Controllers;
@@ -29,7 +30,7 @@ public class BookmarksController : ControllerBase
     }
 
     [HttpPost]
-    public ActionResult Post(Bookmark bookmark)
+    public ActionResult Post(BookmarkDTO bookmark)
     {
         var id = _bookmarksService.Create(bookmark);
 
@@ -42,7 +43,7 @@ public class BookmarksController : ControllerBase
     }
  
     [HttpPut("{id:guid}")]
-    public ActionResult Put(Guid id, Bookmark bookmark)
+    public ActionResult Put(Guid id, BookmarkDTO bookmark)
     {
         var status = _bookmarksService.Update(bookmark);
         if (!status)

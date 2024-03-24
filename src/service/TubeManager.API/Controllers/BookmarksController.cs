@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using TubeManager.API.Commands;
 using TubeManager.API.DTO;
 using TubeManager.API.Entities;
 using TubeManager.API.Services;
@@ -13,13 +14,13 @@ public class BookmarksController : ControllerBase
     private readonly BookmarksService _bookmarksService = new();
 
     [HttpGet]
-    public ActionResult<Bookmark[]> Get()
+    public ActionResult<BookmarkDTO[]> Get()
     {
         return Ok(_bookmarksService.Get());
     }
     
-    [HttpGet(("{id}"))]
-    public ActionResult<Bookmark> Get(Guid id)
+    [HttpGet(("{id:guid}"))]
+    public ActionResult<BookmarkDTO> Get(Guid id)
     {
         var bookmark = _bookmarksService.Get(id);
         if (bookmark is null)
@@ -30,9 +31,9 @@ public class BookmarksController : ControllerBase
     }
 
     [HttpPost]
-    public ActionResult Post(BookmarkDTO bookmark)
+    public ActionResult Post(CreateBookmark command)
     {
-        var id = _bookmarksService.Create(bookmark);
+        var id = _bookmarksService.Create(command with { BookmarkId = Guid.NewGuid()} );
 
         if (id is null)
         {
@@ -43,9 +44,9 @@ public class BookmarksController : ControllerBase
     }
  
     [HttpPut("{id:guid}")]
-    public ActionResult Put(Guid id, BookmarkDTO bookmark)
+    public ActionResult Put(Guid id, UpdateBookmark command)
     {
-        var status = _bookmarksService.Update(bookmark);
+        var status = _bookmarksService.Update(command with { Id = id });
         if (!status)
         {
             return BadRequest();
@@ -57,7 +58,7 @@ public class BookmarksController : ControllerBase
     [HttpDelete("{id:guid}")]
     public ActionResult Delete(Guid id)
     {
-        var status = _bookmarksService.Delete(id);
+        var status = _bookmarksService.Delete(new DeleteBookmark(id));
         if (!status)
         {
             return BadRequest();

@@ -9,8 +9,9 @@ public class Bookmark
     public string Channel { get; set; }
     public string Description { get; set; }
 
-    public Bookmark(string _title, string _videoUrl, string _thumbnailUrl, string _channel, string _description)
+    public Bookmark(Guid id, string _title, string _videoUrl, string _thumbnailUrl, string _channel, string _description)
     {
+        Id = id;
         Title = _title;
         VideoUrl = _videoUrl;
         ThumbnailUrl = _thumbnailUrl;

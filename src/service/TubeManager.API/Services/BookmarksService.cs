@@ -1,3 +1,4 @@
+using TubeManager.API.Commands;
 using TubeManager.API.DTO;
 using TubeManager.API.Entities;
 
@@ -11,6 +12,7 @@ public class BookmarksService
     {
         _bookmarks.Add(
             new Bookmark(
+                Guid.NewGuid(),
                 "100 COMMITÓW | KONKURS DLA KAŻDEGO PROGRAMISTY/STKI!",
                 "https://www.youtube.com/watch?v=GADbUCHBnN8",
                 "",
@@ -22,39 +24,46 @@ public class BookmarksService
 
    
     
-    public IEnumerable<Bookmark> Get()
+    public IEnumerable<BookmarkDTO> Get()
     {
-        return _bookmarks;
+        return _bookmarks.Select(b => new BookmarkDTO
+        {
+            Id = b.Id,
+            Title = b.Title,
+            VideoUrl = b.VideoUrl,
+            ThumbnailUrl = b.ThumbnailUrl,
+            Channel = b.Channel,
+            Description = b.Description
+        });
     }
 
-    public Bookmark? Get(Guid id)
+    public BookmarkDTO? Get(Guid id)
     {
-        return _bookmarks.SingleOrDefault(b => b.Id == id);
+        return Get().SingleOrDefault(b => b.Id == id);
     }
     
-    public Guid? Create(BookmarkDTO b)
+    public Guid? Create(CreateBookmark command)
     {
-        var exists = _bookmarks
-            .Any(bookmark => b.VideoUrl == bookmark.VideoUrl);
+        var existing = _bookmarks.SingleOrDefault(b => command.VideoUrl == b.VideoUrl);
 
-        if (!exists)
+        if (existing is null)
         {
             return null;
         }
 
-        var bookmark = new Bookmark(b.Title, b.VideoUrl, b.ThumbnailUrl, b.Channel, b.Description);
+        var bookmark = new Bookmark(command.BookmarkId, command.Title, command.VideoUrl, command.ThumbnailUrl, command.Channel, command.Description);
         _bookmarks.Add(bookmark);
         return bookmark.Id;
     }
 
-    public bool Update(BookmarkDTO b)
+    public bool Update(UpdateBookmark command)
     {
-        var existing = _bookmarks.SingleOrDefault(bo => bo.Id == b.Id);
+        var existing = _bookmarks.SingleOrDefault(bo => bo.Id == command.Id);
 
         if (existing is not null)
         {
-            existing.Title = b.Title;
-            existing.ThumbnailUrl = b.ThumbnailUrl;
+            existing.Title = command.Title;
+            existing.ThumbnailUrl = command.ThumbnailUrl;
             return true;
         }
         else
@@ -63,9 +72,9 @@ public class BookmarksService
         }
     }
 
-    public bool Delete(Guid id)
+    public bool Delete(DeleteBookmark command)
     {
-        var existing = _bookmarks.SingleOrDefault(b => b.Id == id);
+        var existing = _bookmarks.SingleOrDefault(b => b.Id == command.id);
 
         if (existing is not null)
         {

@@ -2,7 +2,7 @@ namespace TubeManager.API.DTO;
 
 public class BookmarkDTO
 {
-    public Guid? Id { get; set; } = new Guid(); 
+    public Guid? Id { get; set; } 
     public string Title { get; set; }
     public string VideoUrl { get; set; }
     public string ThumbnailUrl { get; set; }

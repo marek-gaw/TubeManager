@@ -7,7 +7,7 @@ Accept: application/json
 GET {{TubeManager.API}}/bookmarks
 
 ###
-GET {{TubeManager.API}}/bookmarks/7aeb3894-44a7-4b20-8c86-39e89f2e0af6
+GET {{TubeManager.API}}/bookmarks/dd732e7a-c7c3-42b2-8894-bae9168d8b0e
 
 ###
 POST {{TubeManager.API}}/bookmarks
@@ -17,11 +17,12 @@ Content-Type: application/json
   "Title": "Rozwiązujemy ZADANIA ALGORYTMICZNE na czas...",
   "VideoUrl": "https://www.youtube.com/watch?v=POY9A7sQT9Q",
   "ThumbnailUrl": "https://i.ytimg.com/vi/POY9A7sQT9Q/maxresdefault.jpg",
-  "Channel": "DevMentors"
+  "Channel": "DevMentors",
+  "Description": "Dziś Flip i Flap programowania zmierzą się z testem... algorytmicznym (na szczęście podstawowym). Nie będą jednak działać razem, a zmierzą się w POJEDYNKU!"
 }
 
 ###
-PUT {{TubeManager.API}}/bookmarks/7aeb3894-44a7-4b20-8c86-39e89f2e0af6
+PUT {{TubeManager.API}}/bookmarks/dd732e7a-c7c3-42b2-8894-bae9168d8b0e
 Content-Type: application/json
 
 {
@@ -32,4 +33,4 @@ Content-Type: application/json
 }
 
 ###
-DELETE {{TubeManager.API}}/bookmarks/94eea9f9-0869-4029-abf9-475062f98a51
+DELETE {{TubeManager.API}}/bookmarks/dd732e7a-c7c3-42b2-8894-bae9168d8b0e

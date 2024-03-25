@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using TubeManager.API.Commands;
 using TubeManager.API.DTO;
 using TubeManager.API.Entities;
+using TubeManager.API.Repositories;
 using TubeManager.API.Services;
 
 namespace TubeManager.API.Controllers;
@@ -10,9 +11,12 @@ namespace TubeManager.API.Controllers;
 [Route("bookmarks")]
 public class BookmarksController : ControllerBase
 {
-    // not thread safe.
-    private readonly BookmarksService _bookmarksService = new();
-
+    private readonly IBookmarksService _bookmarksService;
+    public BookmarksController(IBookmarksService bookmarksService)
+    {
+        _bookmarksService = bookmarksService;
+    }
+    
     [HttpGet]
     public ActionResult<BookmarkDTO[]> Get()
     {

@@ -1,6 +1,6 @@
-using TubeManager.API.Entities;
+using TubeManager.Core.Entities;
 
-namespace TubeManager.API.Repositories;
+namespace TubeManager.App.Repositories;
 
 public interface IBookmarkRepository
 {

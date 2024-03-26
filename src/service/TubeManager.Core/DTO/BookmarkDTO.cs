@@ -1,4 +1,4 @@
-namespace TubeManager.API.DTO;
+namespace TubeManager.Core.DTO;
 
 public class BookmarkDTO
 {

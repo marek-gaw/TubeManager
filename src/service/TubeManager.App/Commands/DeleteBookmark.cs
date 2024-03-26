@@ -1,3 +1,3 @@
-namespace TubeManager.API.Commands;
+namespace TubeManager.App.Commands;
 
 public record DeleteBookmark(Guid id);

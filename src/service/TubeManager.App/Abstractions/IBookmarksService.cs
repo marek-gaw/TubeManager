@@ -1,7 +1,7 @@
-using TubeManager.API.Commands;
-using TubeManager.API.DTO;
+using TubeManager.App.Commands;
+using TubeManager.Core.DTO;
 
-namespace TubeManager.API.Services;
+namespace TubeManager.App.Abstractions;
 
 public interface IBookmarksService
 {

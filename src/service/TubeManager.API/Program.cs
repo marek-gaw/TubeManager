@@ -1,11 +1,11 @@
-using TubeManager.API.Repositories;
-using TubeManager.API.Services;
+using TubeManager.App;
+using TubeManager.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services
-    .AddSingleton<IBookmarkRepository, InMemoryBookmarkRepository>()
-    .AddSingleton<IBookmarksService, BookmarksService>()
+    .AddApp()
+    .AddInfrastructure()
     .AddControllers();
 
 var app = builder.Build();

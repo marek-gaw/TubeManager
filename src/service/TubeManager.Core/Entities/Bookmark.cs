@@ -1,4 +1,4 @@
-namespace TubeManager.API.Entities;
+namespace TubeManager.Core.Entities;
 
 public class Bookmark
 {

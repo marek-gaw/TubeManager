@@ -1,9 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
-using TubeManager.API.Commands;
-using TubeManager.API.DTO;
-using TubeManager.API.Entities;
-using TubeManager.API.Repositories;
-using TubeManager.API.Services;
+using TubeManager.App.Commands;
+using TubeManager.Core.DTO;
+using TubeManager.App.Abstractions;
 
 namespace TubeManager.API.Controllers;
 

@@ -1,9 +1,11 @@
-using TubeManager.API.Commands;
-using TubeManager.API.DTO;
-using TubeManager.API.Entities;
-using TubeManager.API.Repositories;
+using TubeManager.App.Commands;
+using TubeManager.App.Repositories;
+using TubeManager.App.Abstractions;
+using TubeManager.Core.DTO;
+using TubeManager.Core.Entities;
 
-namespace TubeManager.API.Services;
+
+namespace TubeManager.App.Services;
 
 public class BookmarksService : IBookmarksService
 {

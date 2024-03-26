@@ -1,6 +1,7 @@
-using TubeManager.API.Entities;
+using TubeManager.App.Repositories;
+using TubeManager.Core.Entities;
 
-namespace TubeManager.API.Repositories;
+namespace TubeManager.Infrastructure.Repositories;
 
 public class InMemoryBookmarkRepository : IBookmarkRepository
 {

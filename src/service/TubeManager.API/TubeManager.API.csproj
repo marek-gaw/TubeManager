@@ -13,7 +13,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
+    <ProjectReference Include="..\TubeManager.App\TubeManager.App.csproj" />
+    <ProjectReference Include="..\TubeManager.Core\TubeManager.Core.csproj" />
+    <ProjectReference Include="..\TubeManager.Infrastructure\TubeManager.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

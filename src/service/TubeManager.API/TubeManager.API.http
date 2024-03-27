@@ -7,7 +7,7 @@ Accept: application/json
 GET {{TubeManager.API}}/bookmarks
 
 ###
-GET {{TubeManager.API}}/bookmarks/dd732e7a-c7c3-42b2-8894-bae9168d8b0e
+GET {{TubeManager.API}}/bookmarks/bb0e3a10-fe3b-4dea-a10c-efb5e007ab3f
 
 ###
 POST {{TubeManager.API}}/bookmarks
@@ -22,7 +22,7 @@ Content-Type: application/json
 }
 
 ###
-PUT {{TubeManager.API}}/bookmarks/dd732e7a-c7c3-42b2-8894-bae9168d8b0e
+PUT {{TubeManager.API}}/bookmarks/bb0e3a10-fe3b-4dea-a10c-efb5e007ab3f
 Content-Type: application/json
 
 {

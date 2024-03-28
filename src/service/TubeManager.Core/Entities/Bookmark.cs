@@ -9,13 +9,22 @@ public class Bookmark
     public string Channel { get; set; }
     public string Description { get; set; }
 
-    public Bookmark(Guid id, string _title, string _videoUrl, string _thumbnailUrl, string _channel, string _description)
+    public Bookmark(Guid id, string title, string videoUrl, string thumbnailUrl, string channel, string description)
     {
         Id = id;
-        Title = _title;
-        VideoUrl = _videoUrl;
-        ThumbnailUrl = _thumbnailUrl;
-        Channel = _channel;
-        Description = _description;
+        Title = title;
+        VideoUrl = videoUrl;
+        ThumbnailUrl = thumbnailUrl;
+        Channel = channel;
+        Description = description;
+    }
+    
+    public Bookmark( string title, string videoUrl, string thumbnailUrl, string channel, string description)
+    {
+        Title = title;
+        VideoUrl = videoUrl;
+        ThumbnailUrl = thumbnailUrl;
+        Channel = channel;
+        Description = description;
     }
 }

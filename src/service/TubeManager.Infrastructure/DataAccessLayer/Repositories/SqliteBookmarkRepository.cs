@@ -1,9 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using TubeManager.App.Repositories;
 using TubeManager.Core.Entities;
-using TubeManager.Infrastructure.DataAccessLayer;
 
-namespace TubeManager.Infrastructure.Repositories;
+namespace TubeManager.Infrastructure.DataAccessLayer.Repositories;
 
 internal sealed class SqliteBookmarkRepository : IBookmarkRepository
 {

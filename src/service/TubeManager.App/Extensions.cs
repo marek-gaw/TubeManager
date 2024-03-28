@@ -8,7 +8,7 @@ public static class Extensions
 {
     public static IServiceCollection AddApp(this IServiceCollection services)
     {
-        services.AddSingleton<IBookmarksService, BookmarksService>();
+        services.AddScoped<IBookmarksService, BookmarksService>();
         return services;
     }
 }

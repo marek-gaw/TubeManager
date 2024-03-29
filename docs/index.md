@@ -18,6 +18,10 @@ Since SkyTube allows to export bookmarks as a Sqlite file, it is quite easy to i
 
   ADR helps to keep record of decisions made in the project adding some context to them, with rationale, why such decision was made.
 
+- [Low Level Design]
+
+  - [database import flow](./lld/db-import-flow.md)
+
 ## Project Goals
 
 ### Use Cases

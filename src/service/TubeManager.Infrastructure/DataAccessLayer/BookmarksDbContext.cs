@@ -10,4 +10,9 @@ internal sealed class BookmarksDbContext : DbContext
     public BookmarksDbContext(DbContextOptions<BookmarksDbContext> options): base(options)
     {
     }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.ApplyConfigurationsFromAssembly(GetType().Assembly);
+    }
 }

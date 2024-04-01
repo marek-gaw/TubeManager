@@ -14,4 +14,11 @@ internal static class Extensions
         services.AddScoped<IBookmarkRepository, SqliteBookmarkRepository>();
         return services;
     }
+
+    //TODO: inject connection string from the runtime, when Background Service starts.
+    public static IServiceCollection AddExternalSqlite(this IServiceCollection services)
+    {
+        services.AddDbContext<ImportedDbContext>();
+        return services;
+    }
 }

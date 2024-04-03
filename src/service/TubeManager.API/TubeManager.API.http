@@ -34,3 +34,6 @@ Content-Type: application/json
 
 ###
 DELETE {{TubeManager.API}}/bookmarks/dd732e7a-c7c3-42b2-8894-bae9168d8b0e
+
+###
+POST {{TubeManager.API}}/import

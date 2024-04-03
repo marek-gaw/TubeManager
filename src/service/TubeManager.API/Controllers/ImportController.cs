@@ -1,6 +1,14 @@
+using Microsoft.AspNetCore.Mvc;
+
 namespace TubeManager.API.Controllers;
 
-public class ImportController
+[ApiController]
+[Route("import")]
+public class ImportController : ControllerBase
 {
-    
+  [HttpPost]
+  public ActionResult Post()
+  {
+    return Ok();
+  }
 }

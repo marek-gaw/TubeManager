@@ -45,8 +45,6 @@ internal sealed class BackupImporter : IHostedService
                 string decodedBytes = System.Text.Encoding.UTF8.GetString(bookmark.YouTubeVideo);
         
                 var values = JsonConvert.DeserializeObject<Dictionary<string, Object>>(decodedBytes);
-                //var channel = JsonConvert.DeserializeObject<Channel>(values["channel"].ToString());
-                //values.Remove("channel");
 
                 ScaffoldedVideo video = new ScaffoldedVideo((string)values["duration"],
                     (long)values["durationInSeconds"],
@@ -56,6 +54,9 @@ internal sealed class BackupImporter : IHostedService
                     (string)values["thumbnailUrl"],
                     (string)values["title"]
                 );
+
+                //skip if this entry already exists.
+                if ((dbContext.Bookmarks.FirstOrDefault(b => b.VideoUrl == video.Id)) is not null) continue;  
 
                 Bookmark b = new Bookmark(Guid.NewGuid(), 
                     video.Title,

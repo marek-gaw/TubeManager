@@ -1,8 +1,5 @@
 @TubeManager.API = http://localhost:5126
 
-GET {{TubeManager.API}}
-Accept: application/json
-
 ###
 GET {{TubeManager.API}}/bookmarks
 

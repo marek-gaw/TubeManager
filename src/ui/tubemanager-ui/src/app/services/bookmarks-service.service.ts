@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Movie } from '../interfaces/movie';
 import { Observable } from 'rxjs';
 
+const baseUrl = 'http:localhost:5126/bookmarks'
+
 @Injectable({
   providedIn: 'root'
 })

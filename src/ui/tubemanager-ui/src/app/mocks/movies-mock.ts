@@ -1,6 +1,6 @@
-import { Movie } from "../interfaces/movie";
+import { Bookmark } from "../interfaces/bookmark";
 
-export const MOVIES: Movie[] = [
+export const BOOKMARKS: Bookmark[] = [
     {
         id: 1,
         title: '100 COMMITÓW | KONKURS DLA KAŻDEGO PROGRAMISTY/STKI!"',

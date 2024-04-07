@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Movie } from '../interfaces/movie';
+import { Bookmark } from '../interfaces/bookmark';
 import { Observable } from 'rxjs';
 
 const baseUrl = 'http:localhost:5126/bookmarks'
@@ -8,16 +8,16 @@ const baseUrl = 'http:localhost:5126/bookmarks'
 @Injectable({
   providedIn: 'root'
 })
-export class BookmarksServiceService {
+export class BookmarksService {
 
   constructor(private http:HttpClient) { }
 
-    getAll(): Observable<Movie[]> {
-      return this.http.get<Movie[]>(baseUrl);
+    getAll(): Observable<Bookmark[]> {
+      return this.http.get<Bookmark[]>(baseUrl);
     }
 
-    get(id: any): Observable<Movie> {
-      return this.http.get<Movie>(`${baseUrl}/${id}`);
+    get(id: any): Observable<Bookmark> {
+      return this.http.get<Bookmark>(`${baseUrl}/${id}`);
     }
 
     create(data: any): Observable<any> {

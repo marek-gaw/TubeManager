@@ -1,16 +1,15 @@
 import { Component } from '@angular/core';
-import { MovieComponent } from '../movie/movie.component';
-import { Movie } from '../../interfaces/movie'
-import { MOVIES } from '../../mocks/movies-mock'
+import { BookmarkComponent } from '../bookmark/bookmark.component';
+import { Bookmark } from '../../interfaces/bookmark';
 import { NgFor } from '@angular/common';
-import { BookmarksServiceService } from '../../services/bookmarks-service.service';
+import { BookmarksService } from '../../services/bookmarks.service';
 import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-album',
   standalone: true,
   imports: [
-    MovieComponent,
+    BookmarkComponent,
     NgFor,
     HttpClientModule
   ],
@@ -19,9 +18,11 @@ import { HttpClientModule } from '@angular/common/http';
 })
 export class AlbumComponent {
 
-  movies = MOVIES;
+  bookmarks: Bookmark[];
 
-  constructor(private bookmarksService: BookmarksServiceService) { }
+  constructor(private bookmarksService: BookmarksService) {
+    this.bookmarks = [];
+   }
 
   ngOnInit(): void {
     this.fetchBookmarks();
@@ -31,7 +32,7 @@ export class AlbumComponent {
     this.bookmarksService.getAll()
       .subscribe({
         next: (data) => {
-          this.movies = data;
+          this.bookmarks = data;
           console.log(data);
         },
         error: (e) => console.error(e)

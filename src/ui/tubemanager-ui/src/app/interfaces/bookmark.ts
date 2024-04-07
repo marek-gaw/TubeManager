@@ -1,4 +1,4 @@
-export interface Movie {
+export interface Bookmark {
     id: number;
     title: string;
     channel: string;

@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Bookmark } from '../interfaces/bookmark';
 import { Observable } from 'rxjs';
 
-const baseUrl = 'http:localhost:5126/bookmarks'
+const baseUrl = 'http://localhost:5126/bookmarks'
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class BookmarksService {
   constructor(private http:HttpClient) { }
 
     getAll(): Observable<Bookmark[]> {
-      return this.http.get<Bookmark[]>(baseUrl);
+      return this.http.get<Bookmark[]>(`${baseUrl}`);
     }
 
     get(id: any): Observable<Bookmark> {

@@ -1,17 +1,20 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet, RouterLinkActive } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { AlbumComponent } from './components/album/album.component';
+import { ImportComponent } from './components/import/import.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
-    RouterOutlet,
+    CommonModule, RouterOutlet, RouterLink, RouterLinkActive,
     HeaderComponent,
     AlbumComponent,
-    FooterComponent
+    FooterComponent,
+    ImportComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

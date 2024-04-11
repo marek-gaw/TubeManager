@@ -4,4 +4,5 @@ export interface Bookmark {
     channel: string;
     url: string;
     description: string;
+    thumbnailUrl: string;
   }

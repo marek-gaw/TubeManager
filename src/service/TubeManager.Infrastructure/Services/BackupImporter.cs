@@ -1,11 +1,11 @@
 using System.Globalization;
 using System.IO.Compression;
-using System.Text;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.VisualBasic;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using TubeManager.Core.Entities;
 using TubeManager.Infrastructure.DataAccessLayer;
 using TubeManager.Infrastructure.Models;
@@ -46,6 +46,8 @@ internal sealed class BackupImporter : IHostedService
         
                 var values = JsonConvert.DeserializeObject<Dictionary<string, Object>>(decodedBytes);
 
+                JObject ob = JObject.Parse(decodedBytes);
+
                 ScaffoldedVideo video = new ScaffoldedVideo((string)values["duration"],
                     (long)values["durationInSeconds"],
                     (bool)values["isLiveStream"],
@@ -55,16 +57,43 @@ internal sealed class BackupImporter : IHostedService
                     (string)values["title"]
                 );
 
-                //skip if this entry already exists.
-                if ((dbContext.Bookmarks.FirstOrDefault(b => b.VideoUrl == video.Id)) is not null) continue;  
+                var ChannelTitle = ob["channel"]["title"];
 
-                Bookmark b = new Bookmark(Guid.NewGuid(), 
+                string description = "description_mockup";
+                try
+                {
+                    description = (string)ob["description"];
+                }
+                catch
+                {
+                    Console.WriteLine("There is no description for this vide");
+                    description = "No description";
+                }
+                
+              
+                //var channel = JsonConvert.DeserializeObject<Dictionary<string, Object>>(values["channel"]); 
+                //var channel = values["channel"];
+                //var title = channel.Parse
+                //Channel channel= new Channel()
+
+                //TODO: make this an option
+                //skip if this entry already exists.
+                //if ((dbContext.Bookmarks.FirstOrDefault(b => b.VideoUrl == video.Id)) is not null) continue;  
+                
+                // TODO: add new
+                /*Bookmark b = new Bookmark(Guid.NewGuid(), 
                     video.Title,
                     bookmark.YouTubeVideoId,
                     video.ThumbnailUrl,
-                    "channel_name_mockup",
-                    "description_mockup");
-                dbContext.Bookmarks.Add(b);
+                    (string)ChannelTitle,
+                    description);
+                    */
+
+                //TODO: make this an option
+                //update fields
+                var bookmarkToUpdate = dbContext.Bookmarks.SingleOrDefault(ba => ba.VideoUrl == bookmark.YouTubeVideoId);
+                bookmarkToUpdate.Title = video.Title;
+                bookmarkToUpdate.Description = description ?? "No description available" ;
             }
 
             dbContext.SaveChanges();

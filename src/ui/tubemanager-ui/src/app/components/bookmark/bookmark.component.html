@@ -3,7 +3,7 @@
     <img src={{bookmark.thumbnailUrl}} class="bd-placeholder-img card-img-top" width="100%" height="225" />
     <div class="card-body">
       <p class="card-text">{{bookmark.title}}</p>
-      <p class="card-text">{{bookmark.description}}</p>
+      <p class="card-text" (click)="toggleDescription()">{{bookmark.description | slice: slicePipeformat.start: slicePipeformat.end}}...</p>
       <div class="d-flex justify-content-between align-items-center">
         <div class="btn-group">
           <button type="button" class="btn btn-sm btn-outline-secondary">Details</button>

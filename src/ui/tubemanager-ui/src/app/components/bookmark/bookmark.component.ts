@@ -14,7 +14,6 @@ import { SlicePipeFormat } from './SlicePipeFormat';
   styleUrl: './bookmark.component.css'
 })
 
-
 export class BookmarkComponent {
 
   @Input() bookmark?: Bookmark;
@@ -34,5 +33,4 @@ export class BookmarkComponent {
       this.slicePipeformat.folded = true;
     }
   }
-
 }

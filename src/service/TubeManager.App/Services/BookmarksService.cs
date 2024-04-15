@@ -16,10 +16,12 @@ public class BookmarksService : IBookmarksService
         _bookmarksRepository = repository;
     }
     
-    public IEnumerable<BookmarkDTO> Get()
+    public IEnumerable<BookmarkDTO> Get(int page, int pageSize)
     {
         return _bookmarksRepository
             .GetAll()
+            .Skip((page-1)*pageSize)
+            .Take(pageSize)
             .Select(b => new BookmarkDTO
         {
             Id = b.Id,
@@ -29,6 +31,21 @@ public class BookmarksService : IBookmarksService
             Channel = b.Channel,
             Description = b.Description
         });
+    }
+
+    public IEnumerable<BookmarkDTO> Get()
+    {
+        return _bookmarksRepository
+            .GetAll()
+            .Select(b => new BookmarkDTO
+            {
+                Id = b.Id,
+                Title = b.Title,
+                VideoUrl = b.VideoUrl,
+                ThumbnailUrl = b.ThumbnailUrl,
+                Channel = b.Channel,
+                Description = b.Description
+            });
     }
 
     public BookmarkDTO? Get(Guid id)

@@ -16,9 +16,16 @@ public class BookmarksController : ControllerBase
     }
     
     [HttpGet]
-    public ActionResult<BookmarkDTO[]> Get()
+    public ActionResult<BookmarkDTO[]> Get([FromQuery]int page, [FromQuery]int pageSize)
     {
-        return Ok(_bookmarksService.Get());
+        if (page == 0 && pageSize == 0)
+        {
+            return Ok(_bookmarksService.Get());
+        }
+        else
+        {
+            return Ok(_bookmarksService.Get(page, pageSize));
+        }
     }
     
     [HttpGet(("{id:guid}"))]

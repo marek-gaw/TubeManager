@@ -3,6 +3,19 @@
 ###
 GET {{TubeManager.API}}/bookmarks
 
+//pagination
+###
+GET {{TubeManager.API}}/bookmarks?page=1&pageSize=20
+
+###
+GET {{TubeManager.API}}/bookmarks?page=1&pageSize=2
+
+###
+GET {{TubeManager.API}}/bookmarks?page=2&pageSize=2
+
+###
+GET {{TubeManager.API}}/bookmarks?page=1&pageSize=4
+
 ###
 GET {{TubeManager.API}}/bookmarks/bb0e3a10-fe3b-4dea-a10c-efb5e007ab3f
 

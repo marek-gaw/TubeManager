@@ -16,6 +16,10 @@ export class BookmarksService {
       return this.http.get<Bookmark[]>(`${baseUrl}`);
     }
 
+    getPage(page: number, pageSize: number): Observable<Bookmark[]> {
+      return this.http.get<Bookmark[]>(`${baseUrl}?page=${page}&pageSize=${pageSize}`);
+    }
+
     get(id: any): Observable<Bookmark> {
       return this.http.get<Bookmark>(`${baseUrl}/${id}`);
     }

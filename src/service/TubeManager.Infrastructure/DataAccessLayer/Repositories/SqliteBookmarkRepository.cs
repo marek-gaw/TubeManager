@@ -42,4 +42,9 @@ internal sealed class SqliteBookmarkRepository : IBookmarkRepository
         _bookmarks.Remove(bookmark);
         _dbContext.SaveChanges();
     }
+
+    public int Count()
+    {
+        return _bookmarks.Count();
+    }
 }

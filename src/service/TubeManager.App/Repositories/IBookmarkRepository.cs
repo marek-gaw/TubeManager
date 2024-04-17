@@ -11,4 +11,5 @@ public interface  IBookmarkRepository
     void Add(Bookmark bookmark);
     void Update(Bookmark bookmark);
     void Delete(Bookmark bookmark);
+    int Count();
 }

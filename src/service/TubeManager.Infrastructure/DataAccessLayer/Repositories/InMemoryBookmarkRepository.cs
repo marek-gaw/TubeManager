@@ -49,4 +49,9 @@ public class InMemoryBookmarkRepository : IBookmarkRepository
     public void Delete(Bookmark bookmark)
     {
     }
+
+    public int Count()
+    {
+        return _bookmarks.Count();
+    }
 }

@@ -97,4 +97,9 @@ public class BookmarksService : IBookmarksService
             return false;
         }
     }
+
+    public int GetElementsCount()
+    {
+        return _bookmarksRepository.Count();
+    }
 }

@@ -11,4 +11,5 @@ public interface IBookmarksService
     Guid? Create(CreateBookmark command);
     bool Update(UpdateBookmark command);
     bool Delete(DeleteBookmark command);
+    int GetElementsCount();
 }

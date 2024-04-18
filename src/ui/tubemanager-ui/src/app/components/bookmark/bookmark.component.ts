@@ -2,13 +2,15 @@ import { Component, Input } from '@angular/core';
 import { Bookmark } from '../../interfaces/bookmark';
 import { NgIf, SlicePipe } from '@angular/common';
 import { SlicePipeFormat } from './SlicePipeFormat';
+import { YouTubePlayer } from '@angular/youtube-player';
 
 @Component({
   selector: 'bookmark',
   standalone: true,
   imports: [ 
     SlicePipe,
-    NgIf
+    NgIf,
+    YouTubePlayer
   ],
   templateUrl: './bookmark.component.html',
   styleUrl: './bookmark.component.css'

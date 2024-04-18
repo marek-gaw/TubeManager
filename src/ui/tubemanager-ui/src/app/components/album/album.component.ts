@@ -46,7 +46,8 @@ export class AlbumComponent {
 
   fetchPage(page: number, pageSize: number): void {
     this.bookmarksService.getPage(page, pageSize).subscribe(data => {
-      this.bookmarks = data;
+      this.totalPages = data.totalPages;
+      this.bookmarks = data.data;
       console.log(data);
     });
   }
@@ -58,6 +59,6 @@ export class AlbumComponent {
   }
 
   numSequence(n: number): Array<number> { 
-    return Array(n); 
+    return Array.from(Array(n-1)).map((e,i)=>i+1)
   } 
 }

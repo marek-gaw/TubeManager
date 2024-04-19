@@ -24,6 +24,8 @@ export class AlbumComponent {
   currentPage: number = 1;
   pageSize: number = 15;
   totalPages: number = 10;
+  prevDisabled: boolean = true;
+  nextDisabled: boolean = false;
 
   constructor(private bookmarksService: BookmarksService) {
     this.bookmarks = [];
@@ -53,6 +55,19 @@ export class AlbumComponent {
   }
 
   onPageChange(page: number): void {
+    if (page >= this.totalPages) {
+      page = this.totalPages;
+      this.nextDisabled = true;
+    } else {
+      this.nextDisabled = false;
+    }
+    if (page <= 1) {
+      page = 1;
+      this.prevDisabled = true;
+    } else {
+      this.prevDisabled = false;
+    }
+
     console.log(`Page changed to ${page}`);
     this.currentPage = page;
     this.fetchPage(page, this.pageSize);
@@ -61,4 +76,12 @@ export class AlbumComponent {
   numSequence(n: number): Array<number> { 
     return Array.from(Array(n-1)).map((e,i)=>i+1)
   } 
+
+  isCurrent(n: number): boolean {
+    if (n==this.currentPage) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

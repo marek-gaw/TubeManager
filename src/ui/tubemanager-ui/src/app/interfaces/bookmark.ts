@@ -5,4 +5,6 @@ export interface Bookmark {
     videoUrl: string;
     description: string;
     thumbnailUrl: string;
+    nextPage: string;
+    prevPage: string;
   }

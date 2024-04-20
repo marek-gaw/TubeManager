@@ -1,1 +1,25 @@
-<p>import works!</p>
+<!-- <label for="basic-url" class="form-label">SkyTube export file</label>
+<div class="input-group mb-3">
+  <input type="file" class="form-control" id="path" aria-describedby="basic-addon3" accept=".skytube"
+    [(ngModel)]="path">
+
+  <button type="button" class="btn btn-primary" (click)="onClickOpenFile(path)">Open file</button>
+</div> -->
+
+
+
+<input type="file" class="file-input" [accept]="requiredFileType" (change)="onFileSelected($event)" #fileUpload>
+
+<div class="file-upload">
+
+  {{fileName || "No file uploaded yet."}}
+
+  <button type="button" class="btn btn-primary" (click)="fileUpload.click()">Open file</button>
+</div>
+
+<div class="progress">
+  <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="" aria-valuemin="0"
+    aria-valuemax="100"></div>
+</div>
+
+<!-- <i class="bi bi-x" (click)="cancelUpload()" *ngIf="uploadProgress"></i> -->

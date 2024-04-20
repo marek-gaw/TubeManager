@@ -18,7 +18,6 @@ public class BookmarksController : ControllerBase
     [HttpGet]
     public ActionResult<BookmarkDTO[]> Get([FromQuery]int page, [FromQuery]int pageSize)
     {
-       
         if (page == 0 && pageSize == 0)
         {
             return Ok(_bookmarksService.Get());

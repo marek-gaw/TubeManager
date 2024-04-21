@@ -54,7 +54,7 @@ X-Custom-header1: abc1234
 Content-Type: multipart/form-data; boundary=WebAppBoundary
 
 --WebAppBoundary
-Content-Disposition: form-data; name="files"; filename="skytube-2024-03-05-075634.skytube"
+Content-Disposition: form-data; name="file"; filename="skytube-2024-03-05-075634.skytube"
 
 < ../../../skytube-2024-03-05-075634.skytube
 --WebAppBoundary--

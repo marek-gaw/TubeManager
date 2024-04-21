@@ -10,6 +10,5 @@ namespace TubeManager.App.Services;
 
     public enum FileType
     {
-        PDF = 1,
-        DOCX = 2
+        SKYTUBE = 1
     }

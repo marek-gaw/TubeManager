@@ -14,7 +14,7 @@ public class ImportController : ControllerBase
     _importBackupService = importBackupService;
   }
   [HttpPost]
-  public ActionResult Post()
+  public ActionResult Post(IFormFile file)
   {
     return Ok();
   }

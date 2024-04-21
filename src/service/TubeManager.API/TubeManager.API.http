@@ -47,3 +47,14 @@ DELETE {{TubeManager.API}}/bookmarks/dd732e7a-c7c3-42b2-8894-bae9168d8b0e
 
 ###
 POST {{TubeManager.API}}/import
+
+###
+POST {{TubeManager.API}}/import
+X-Custom-header1: abc1234
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="files"; filename="skytube-2024-03-05-075634.skytube"
+
+< ../../../skytube-2024-03-05-075634.skytube
+--WebAppBoundary--

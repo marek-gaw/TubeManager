@@ -8,11 +8,12 @@ public class FileService : IFileService
     {
     }
 
-    public async Task PostFileAsync(IFormFile fileData)
+    public async Task<string> PostFileAsync(IFormFile fileData)
     {
+        string filePath = "";
         try
         {
-            var filePath = Path.Combine(Path.GetTempPath(),
+            filePath = Path.Combine(Path.GetTempPath(),
                 (fileData.FileName + "_imported.zip"));
 
             using (var fileStream = System.IO.File.Create(filePath))
@@ -24,5 +25,7 @@ public class FileService : IFileService
         {
             throw;
         }
+
+        return filePath;
     }
 }

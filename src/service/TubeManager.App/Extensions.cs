@@ -1,3 +1,4 @@
+using System.Threading.Channels;
 using Microsoft.Extensions.DependencyInjection;
 using TubeManager.App.Abstractions;
 using TubeManager.App.Services;
@@ -11,6 +12,8 @@ public static class Extensions
         services.AddScoped<IImportBackupService, ImportBackupService>();
         services.AddScoped<IBookmarksService, BookmarksService>();
         services.AddScoped<IFileService, FileService>();
+        services.AddSingleton<Channel<string>>(Channel.CreateUnbounded<string>(new UnboundedChannelOptions() { SingleReader = true }));
+        services.AddSingleton<ChannelWriter<string>>(svc => svc.GetRequiredService<Channel<string>>().Writer);
         return services;
     }
 }

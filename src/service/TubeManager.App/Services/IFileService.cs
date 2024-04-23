@@ -4,5 +4,5 @@ namespace TubeManager.App.Services;
 
 public interface IFileService
 {
-    public Task PostFileAsync(IFormFile fileData);
+    public Task<string> PostFileAsync(IFormFile fileData);
 }

@@ -1,5 +1,6 @@
 using System.Globalization;
 using System.IO.Compression;
+using System.Threading.Channels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,18 +16,26 @@ namespace TubeManager.Infrastructure.Services;
 internal sealed class BackupImporter : IHostedService
 {
     private readonly IServiceProvider _serviceProviders;
+    private readonly ChannelReader<Stream> _channel;
 
-    public BackupImporter(IServiceProvider serviceProviders)
+    public BackupImporter(IServiceProvider serviceProviders, ChannelReader<Stream> channel)
     {
         _serviceProviders = serviceProviders;
+        _channel = channel;
     }
-    public Task StartAsync(CancellationToken cancellationToken)
+    public async Task StartAsync(CancellationToken cancellationToken)
     {
         using var scope = _serviceProviders.CreateScope();
         var dbContext = scope.ServiceProvider.GetRequiredService<BookmarksDbContext>();
         //TODO: implement fetching data from the database
-        // 1. Extract zip file to System Temp dir
-        const string archivePath = "../../../skytube-2023-08-18-180651.skytube";
+        // 1. Receive file from controller via channels
+        // const string archivePath = "../../../skytube-2023-08-18-180651.skytube";
+        string archivePath = "";
+        await foreach (var item in _channel.ReadAllAsync(cancellationToken))
+        {
+            archivePath = item.ToString();
+        }
+        
         DateTime df = DateTime.Now;
         string extractTo = Path.GetTempPath() + df.ToString("u", CultureInfo.CurrentCulture);
         ZipFile.ExtractToDirectory(archivePath, extractTo);
@@ -98,9 +107,6 @@ internal sealed class BackupImporter : IHostedService
 
             dbContext.SaveChanges();
         }
-        // TODO: 3. Import data from channels.db
-        
-        return Task.CompletedTask;
     }
 
     public Task StopAsync(CancellationToken cancellationToken)

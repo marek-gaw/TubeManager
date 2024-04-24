@@ -18,8 +18,8 @@ builder.Services.AddCors(options =>
 });
 
 builder.Services
-    .AddApp()
     .AddInfrastructure()
+    .AddApp()
     .AddControllers();
 
 var app = builder.Build();

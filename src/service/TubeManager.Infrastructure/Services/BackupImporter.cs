@@ -16,9 +16,9 @@ namespace TubeManager.Infrastructure.Services;
 internal sealed class BackupImporter : IHostedService
 {
     private readonly IServiceProvider _serviceProviders;
-    private readonly ChannelReader<Stream> _channel;
+    private readonly ChannelReader<string> _channel;
 
-    public BackupImporter(IServiceProvider serviceProviders, ChannelReader<Stream> channel)
+    public BackupImporter(IServiceProvider serviceProviders, ChannelReader<string> channel)
     {
         _serviceProviders = serviceProviders;
         _channel = channel;

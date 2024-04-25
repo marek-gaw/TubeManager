@@ -72,7 +72,7 @@ internal sealed class BackupImporter : BackgroundService
 
                 var ChannelTitle = ob["channel"]["title"];
 
-                string description = "description_mockup";
+                string description = "";
                 try
                 {
                     description = (string)ob["description"];
@@ -98,7 +98,7 @@ internal sealed class BackupImporter : BackgroundService
                     bookmark.YouTubeVideoId,
                     video.ThumbnailUrl,
                     (string)ChannelTitle,
-                    description);
+                    description ?? "No description for this video...");
 
                 dbContext.Bookmarks.Add(b);
 

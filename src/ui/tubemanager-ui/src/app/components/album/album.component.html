@@ -1,6 +1,16 @@
 <main>
-  <nav aria-label="Page navigation example">
+  <nav aria-label="Page navigation">
     <ul class="pagination justify-content-center">
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          size
+        </button>
+        <ul class="dropdown-menu">
+          <li *ngFor="let _page of pagesSequence()">
+            <a class="dropdown-item" href="#" (click)="onPageSizeSelected(_page)">{{_page}}</a></li>
+        </ul>
+      </div>
+
       <li class="page-item">
         <a class="page-link" [ngClass]="{'disabled':prevDisabled}" (click)="onPageChange(currentPage-1)">Previous</a>
       </li>

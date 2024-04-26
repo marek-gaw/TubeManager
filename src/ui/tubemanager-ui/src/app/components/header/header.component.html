@@ -1,25 +1,21 @@
 <div class="container">
-    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-            <svg class="bi me-2" width="40" height="32">
-                <use xlink:href="#bootstrap" />
-            </svg>
-            <span class="fs-4">TubeManager</span>
-        </a>
+  <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+      <svg class="bi me-2" width="40" height="32">
+        <use xlink:href="#bootstrap" />
+      </svg>
+      <span class="fs-4">TubeManager</span>
+    </a>
 
-        <ul class="nav nav-pills">
-            <li class="nav-item"><a routerLink="/recent" 
-                [ngClass]="{'nav-link':true, 'active':recentSelected}" 
-                (click)="onSelect('recent')">Recently added</a></li>
-            <li class="nav-item"><a routerLink="/bookmarks" 
-                [ngClass]="{'nav-link':true, 'active':bookmarksSelected}" 
-                (click)="onSelect('bookmarks')">Bookmarks</a></li>
-            <li class="nav-item"><a routerLink="/import" 
-                [ngClass]="{'nav-link':true, 'active':importSelected}" 
-                (click)="onSelect('import')">Import</a></li>
-            <li class="nav-item"><a routerLink="/author" 
-                [ngClass]="{'nav-link':true, 'active':authorSelected}" 
-                (click)="onSelect('author')">About</a></li>
-        </ul>
-    </header>
+    <ul class="nav nav-pills">
+      <li class="nav-item"><a routerLink="/recent" [ngClass]="{'nav-link':true, 'active':recentSelected}"
+          (click)="onSelect('recent')">Recently added</a></li>
+      <li class="nav-item"><a routerLink="/bookmarks" [ngClass]="{'nav-link':true, 'active':bookmarksSelected}"
+          (click)="onSelect('bookmarks')">Bookmarks</a></li>
+      <li class="nav-item"><a routerLink="/import" [ngClass]="{'nav-link':true, 'active':importSelected}"
+          (click)="onSelect('import')">Import</a></li>
+      <li class="nav-item"><a routerLink="/author" [ngClass]="{'nav-link':true, 'active':authorSelected}"
+          (click)="onSelect('author')">About</a></li>
+    </ul>
+  </header>
 </div>

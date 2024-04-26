@@ -29,21 +29,10 @@ export class AlbumComponent {
 
   constructor(private bookmarksService: BookmarksService) {
     this.bookmarks = [];
-   }
-
-  ngOnInit(): void {
-    this.fetchBookmarks();
   }
 
-  fetchBookmarks(): void {
-    this.bookmarksService.getAll()
-      .subscribe({
-        next: (data) => {
-          this.bookmarks = data;
-          console.log(data);
-        },
-        error: (e) => console.error(e)
-      });
+  ngOnInit(): void {
+    this.fetchPage(1, 10);
   }
 
   fetchPage(page: number, pageSize: number): void {
@@ -73,15 +62,23 @@ export class AlbumComponent {
     this.fetchPage(page, this.pageSize);
   }
 
-  numSequence(n: number): Array<number> { 
-    return Array.from(Array(n-1)).map((e,i)=>i+1)
-  } 
+  numSequence(n: number): Array<number> {
+    return Array.from(Array(n - 1)).map((e, i) => i + 1);
+  }
+
+  pagesSequence(): Array<number> {
+    return new Array(10,20,50,100);
+  }
 
   isCurrent(n: number): boolean {
-    if (n==this.currentPage) {
+    if (n == this.currentPage) {
       return true;
     } else {
       return false;
     }
+  }
+
+  onPageSizeSelected(size:number) {
+    this.pageSize = size;
   }
 }

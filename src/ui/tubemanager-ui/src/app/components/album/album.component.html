@@ -12,12 +12,18 @@
       </div>
 
       <li class="page-item">
+        <a class="page-link" (click)="onPageChange(0)">First</a>
+      </li>
+      <li class="page-item">
         <a class="page-link" [ngClass]="{'disabled':prevDisabled}" (click)="onPageChange(currentPage-1)">Previous</a>
       </li>
-      <li class="page-item" *ngFor="let _page of numSequence(pageSize)">
+      <li class="page-item" *ngFor="let _page of numSequence(totalPages)">
         <a routerLink="" [ngClass]="{'page-link':true, 'active':isCurrent(_page)}" (click)="onPageChange(_page)">{{_page}}</a></li>
       <li class="page-item">
         <a class="page-link" [ngClass]="{'disabled':nextDisabled}" (click)="onPageChange(currentPage+1)">Next</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" (click)="onPageChange(totalPages)">Last</a>
       </li>
     </ul>
   </nav>

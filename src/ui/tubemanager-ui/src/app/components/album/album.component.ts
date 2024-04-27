@@ -63,7 +63,23 @@ export class AlbumComponent {
   }
 
   numSequence(n: number): Array<number> {
-    return Array.from(Array(n - 1)).map((e, i) => i + 1);
+
+    var start, end: number;
+
+    if (this.currentPage < 5) {
+      start = 1;
+      end = this.currentPage+10;
+    } else{
+      start = this.currentPage-5;
+      end = this.currentPage+5;
+    }
+
+    if(this.currentPage > (this.totalPages-5)) {
+      end = this.totalPages;
+      start= this.totalPages-10;
+    } 
+
+    return this.range(start, end, 1)
   }
 
   pagesSequence(): Array<number> {
@@ -80,5 +96,14 @@ export class AlbumComponent {
 
   onPageSizeSelected(size:number) {
     this.pageSize = size;
+  }
+
+  range(start: number, end: number, step: number): Array<number> {
+     var arr: number[] = new Array();
+  
+    for (let i = start; i <= end; i += step) {
+      arr.push(i)
+    }  
+    return arr;
   }
 }

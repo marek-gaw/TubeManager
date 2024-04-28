@@ -14,6 +14,10 @@ Since SkyTube allows to export bookmarks as a Sqlite file, it is quite easy to i
 
   Spikes allows to test certain ideas or prove technical feasibility. Those solutions won't be part of the end solution, so are taken out of the main project.
 
+- [Requirements](requirements.md)
+
+  Checklist of features implemented and planned.
+
 - [Architecture Decission Record](./adr.md)
 
   ADR helps to keep record of decisions made in the project adding some context to them, with rationale, why such decision was made.

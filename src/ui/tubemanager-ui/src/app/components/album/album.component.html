@@ -7,7 +7,7 @@
         </button>
         <ul class="dropdown-menu">
           <li *ngFor="let _page of pagesSequence()">
-            <a class="dropdown-item" href="#" (click)="onPageSizeSelected(_page)">{{_page}}</a></li>
+            <a class="dropdown-item" (click)="onPageSizeSelected(_page)">{{_page}}</a></li>
         </ul>
       </div>
 

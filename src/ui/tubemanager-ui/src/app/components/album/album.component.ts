@@ -57,7 +57,7 @@ export class AlbumComponent {
       this.prevDisabled = false;
     }
 
-    console.log(`Page changed to ${page}`);
+    console.log(`Page changed to ${page}, page size: ${this.pageSize}`);
     this.currentPage = page;
     this.fetchPage(page, this.pageSize);
   }
@@ -96,6 +96,8 @@ export class AlbumComponent {
 
   onPageSizeSelected(size:number) {
     this.pageSize = size;
+    console.log(`Page size set to: ${this.pageSize}`)
+    this.fetchPage(1, this.pageSize);
   }
 
   range(start: number, end: number, step: number): Array<number> {

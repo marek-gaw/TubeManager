@@ -18,7 +18,7 @@
    - [x] Bookmarks are displayed as cards with: thumbnail, title and part of the description
    - [x] Bookmarks are shown on pages
    - [x] User can set a number of bookmarks per page
-   - [ ] User can play a video in embedded player after clicking video thumbnail
+   - [x] User can play a video in embedded player after clicking video thumbnail
 
 ## Good to Have
 

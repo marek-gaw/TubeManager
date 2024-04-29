@@ -1,6 +1,10 @@
 <main>
   <nav aria-label="Page navigation">
-    <ul class="pagination justify-content-center">
+    <div class="d-flex justify-content-center mb-3 mt-3">
+      <youtube-player videoId="{{videoToPlay}}"/>
+    </div>
+
+    <ul class="pagination justify-content-center mt-1 mb-3">
       <div class="dropdown">
         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
           size
@@ -31,7 +35,7 @@
     <div class="container">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         <div class="col" *ngFor="let _bookmark of bookmarks">
-          <bookmark [bookmark]="_bookmark"></bookmark>
+          <bookmark [bookmark]="_bookmark" (videoLink)="setVideoToPlay($event)"></bookmark>
         </div>
       </div>
     </div>

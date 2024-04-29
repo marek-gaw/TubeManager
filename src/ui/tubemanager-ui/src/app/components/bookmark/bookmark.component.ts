@@ -1,16 +1,14 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Bookmark } from '../../interfaces/bookmark';
 import { NgIf, SlicePipe } from '@angular/common';
 import { SlicePipeFormat } from './SlicePipeFormat';
-import { YouTubePlayer } from '@angular/youtube-player';
 
 @Component({
   selector: 'bookmark',
   standalone: true,
   imports: [ 
     SlicePipe,
-    NgIf,
-    YouTubePlayer
+    NgIf
   ],
   templateUrl: './bookmark.component.html',
   styleUrl: './bookmark.component.css'
@@ -24,6 +22,7 @@ export class BookmarkComponent {
     end: 50,
     folded: true
   }
+  @Output() videoLink = new EventEmitter<string>();
 
   toggleDescription(): void {
     if(this.slicePipeformat.folded) {
@@ -34,5 +33,9 @@ export class BookmarkComponent {
       this.slicePipeformat.end = 50;
       this.slicePipeformat.folded = true;
     }
+  }
+
+  onThumbnailSelected(url: string): void {
+    this.videoLink.emit(url);
   }
 }

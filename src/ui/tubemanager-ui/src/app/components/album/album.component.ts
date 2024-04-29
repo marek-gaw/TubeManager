@@ -5,6 +5,7 @@ import { NgFor } from '@angular/common';
 import { BookmarksService } from '../../services/bookmarks.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { YouTubePlayer } from '@angular/youtube-player';
 
 @Component({
   selector: 'app-album',
@@ -13,7 +14,8 @@ import { CommonModule } from '@angular/common';
     BookmarkComponent,
     NgFor,
     HttpClientModule,
-    CommonModule
+    CommonModule,
+    YouTubePlayer
   ],
   templateUrl: './album.component.html',
   styleUrl: './album.component.css'
@@ -26,6 +28,7 @@ export class AlbumComponent {
   totalPages: number = 10;
   prevDisabled: boolean = true;
   nextDisabled: boolean = false;
+  videoToPlay: string = "mVjYG9TSN88";
 
   constructor(private bookmarksService: BookmarksService) {
     this.bookmarks = [];
@@ -107,5 +110,10 @@ export class AlbumComponent {
       arr.push(i)
     }  
     return arr;
+  }
+
+  setVideoToPlay(url: string): void {
+    this.videoToPlay = url;
+    console.log(`Player link set to: ${this.videoToPlay}`);
   }
 }

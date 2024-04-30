@@ -58,3 +58,29 @@ Content-Disposition: form-data; name="file"; filename="skytube-2024-03-05-075634
 
 < ../../../skytube-2024-03-05-075634.skytube
 --WebAppBoundary--
+
+### Get all Tags
+GET {{TubeManager.API}}/tags
+
+### Create Tag
+# @name tag
+POST {{TubeManager.API}}/tags
+Content-Type: application/json
+
+{
+  "title": "dotnet"
+}
+
+### Get Id of the created tag
+@tag-id={{tag.response.body.id}}
+
+### Change Tag
+PUT {{TubeManager.API}}/tags?id={{tag-id}}
+Content-Type: application/json
+
+{
+  "title": "new name"
+}
+
+### Delete Tag
+DELETE {{TubeManager.API}}/tags?id={{tag-id}}

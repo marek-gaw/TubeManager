@@ -12,6 +12,7 @@ internal static class Extensions
         const string connString = "Data Source=../../../../../../tubemanager.db;";
         services.AddDbContext<BookmarksDbContext>(x => x.UseSqlite(connString));
         services.AddScoped<IBookmarkRepository, SqliteBookmarkRepository>();
+        services.AddScoped<ITagsRepository, SqliteTagsRepository>();
         return services;
     }
 }

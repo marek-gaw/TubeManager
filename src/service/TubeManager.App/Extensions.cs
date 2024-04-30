@@ -14,6 +14,7 @@ public static class Extensions
         services.AddScoped<IFileService, FileService>();
         services.AddSingleton<Channel<string>>(Channel.CreateUnbounded<string>(new UnboundedChannelOptions() { SingleReader = true }));
         services.AddSingleton<ChannelWriter<string>>(svc => svc.GetRequiredService<Channel<string>>().Writer);
+        services.AddScoped<ITagsService, TagsService>();
         return services;
     }
 }

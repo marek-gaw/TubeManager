@@ -68,7 +68,7 @@ public class TagsService: ITagsService
             return false;
         }
 
-        _tagsRepository.Delete(command.Id);
+        _tagsRepository.Delete(existing);
         return true;
     }
 }

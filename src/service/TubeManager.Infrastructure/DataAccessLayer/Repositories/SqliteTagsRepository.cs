@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using TubeManager.App.Repositories;
 using TubeManager.Core.Entities;
 
@@ -5,33 +6,42 @@ namespace TubeManager.Infrastructure.DataAccessLayer.Repositories;
 
 internal sealed class SqliteTagsRepository: ITagsRepository
 {
-    public IEnumerable<Tag> GetAll()
+    private readonly BookmarksDbContext _dbContext;
+    private readonly DbSet<Tag> _tags;
+
+    public SqliteTagsRepository(BookmarksDbContext dbContext)
     {
-        throw new NotImplementedException();
+        _dbContext = dbContext;
+        _tags = _dbContext.Tags;
     }
+
+    public IEnumerable<Tag> GetAll() => _tags.ToList();
 
     public Tag Get(Guid id)
     {
-        throw new NotImplementedException();
+        return _tags.Where(t => t.Id == id).SingleOrDefault();
     }
 
     public Tag Get(string title)
     {
-        throw new NotImplementedException();
+        return _tags.Where(t => t.Title == title).SingleOrDefault();
     }
 
     public void Add(Tag tag)
     {
-        throw new NotImplementedException();
+        _tags.Add(tag);
+        _dbContext.SaveChanges();
     }
 
     public void Update(Tag tag)
     {
-        throw new NotImplementedException();
+        _tags.Update(tag);
+        _dbContext.SaveChanges();
     }
 
-    public void Delete(Guid id)
+    public void Delete(Tag tag)
     {
-        throw new NotImplementedException();
+        _tags.Remove(tag);
+        _dbContext.SaveChanges();
     }
 }

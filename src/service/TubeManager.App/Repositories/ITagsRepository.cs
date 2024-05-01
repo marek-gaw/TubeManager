@@ -9,5 +9,5 @@ public interface ITagsRepository
     Tag Get(string title);
     void Add(Tag tag);
     void Update(Tag tag);
-    void Delete(Guid id);
+    void Delete(Tag tag);
 }

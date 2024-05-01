@@ -19,6 +19,9 @@
    - [x] Bookmarks are shown on pages
    - [x] User can set a number of bookmarks per page
    - [x] User can play a video in embedded player after clicking video thumbnail
+- [ ] Tags
+  - [ ] User can list all existing tags
+  - [ ] User can assign multiple tags to the bookmark
 
 ## Good to Have
 

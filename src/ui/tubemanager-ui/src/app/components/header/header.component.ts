@@ -14,7 +14,7 @@ export class HeaderComponent {
   recentSelected: boolean = false
   bookmarksSelected: boolean = false
   importSelected: boolean = false
-  authorSelected: boolean = false
+  tagsSelected: boolean = false
 
   selectedNavItem: string[] = [
     'recent', 'bookmarks', 'import', 'author'
@@ -26,35 +26,35 @@ export class HeaderComponent {
         this.recentSelected = true
         this.bookmarksSelected = false
         this.importSelected = false
-        this.authorSelected = false
+        this.tagsSelected = false
         break;
       }
       case 'bookmarks': {
         this.recentSelected = false
         this.bookmarksSelected = true
         this.importSelected = false
-        this.authorSelected = false
+        this.tagsSelected = false
         break;
       }
       case 'import': {
         this.recentSelected = false
         this.bookmarksSelected = false
         this.importSelected = true
-        this.authorSelected = false
+        this.tagsSelected = false
         break;
       }
       case 'author': {
         this.recentSelected = false
         this.bookmarksSelected = false
         this.importSelected = false
-        this.authorSelected = true
+        this.tagsSelected = true
         break;
       }
       default: {
         this.recentSelected = false
         this.bookmarksSelected = false
         this.importSelected = false
-        this.authorSelected = false
+        this.tagsSelected = false
       }
     }
   }

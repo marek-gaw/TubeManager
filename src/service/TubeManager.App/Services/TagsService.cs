@@ -35,7 +35,7 @@ public class TagsService: ITagsService
     {
         var existing = _tagsRepository.Get(command.Title);
         
-        if (existing is null)
+        if (existing is not null)
         {
             return null;
         }

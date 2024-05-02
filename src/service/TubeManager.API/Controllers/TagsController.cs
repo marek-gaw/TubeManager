@@ -23,7 +23,7 @@ public class TagsController: ControllerBase
     }
 
     [HttpPost]
-    public ActionResult<TagDTO> Post(CreateTag command)
+    public ActionResult Post(CreateTag command)
     {
         var id = _tagsService
             .Create(command with { TagId = Guid.NewGuid()} );

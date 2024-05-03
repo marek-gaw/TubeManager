@@ -43,7 +43,7 @@ export class HeaderComponent {
         this.tagsSelected = false
         break;
       }
-      case 'author': {
+      case 'tags': {
         this.recentSelected = false
         this.bookmarksSelected = false
         this.importSelected = false

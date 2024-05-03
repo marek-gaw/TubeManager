@@ -20,6 +20,7 @@
     "@angular/router": "^17.2.0",
     "@angular/youtube-player": "^17.3.5",
     "bootstrap": "^5.3.3",
+    "bootstrap-icons": "^1.11.3",
     "ng-bootstrap": "^1.6.3",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

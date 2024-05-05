@@ -1,7 +1,6 @@
 using System.Globalization;
 using System.IO.Compression;
 using System.Threading.Channels;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -26,9 +25,6 @@ internal sealed class BackupImporter : BackgroundService
 
     protected override async Task ExecuteAsync(CancellationToken cancellationToken)
     {
-        //TODO: implement fetching data from the database
-        // 1. Receive file from controller via channels
-        // const string archivePath = "../../../skytube-2023-08-18-180651.skytube";
         await foreach (var item in _channel.ReadAllAsync(cancellationToken))
         {
             DoIt(item.ToString());

@@ -10,11 +10,9 @@ builder.Services.AddCors(options =>
     options.AddPolicy(name: specificOrgins,
         policy  =>
         {
-            policy.WithOrigins(
-                "http://localhost:4200",
-                "http://localhost:5126"
-                )
-                .AllowAnyMethod();
+            policy.WithOrigins("http://localhost:4200")
+                .AllowAnyMethod()
+                .WithHeaders("Content-Type");
         });
 });
 
@@ -24,7 +22,7 @@ builder.Services
     .AddControllers();
 
 var app = builder.Build();
-
+app.UseRouting();
 app.UseCors(specificOrgins);
 app.MapControllers();
 

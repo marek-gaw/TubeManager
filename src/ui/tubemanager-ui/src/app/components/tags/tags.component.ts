@@ -30,4 +30,9 @@ export class TagsComponent {
       console.log(data);
     })
   }
+
+  onAddTag(val: string): void {
+    console.log(`tagName:${val}`);
+    this.tagsService.create(val).subscribe(tag => this.tags.push({title: val}));
+  }
 }

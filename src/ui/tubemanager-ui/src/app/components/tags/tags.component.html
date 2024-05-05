@@ -38,13 +38,12 @@
           <label for="tagNameInput" class="col-form-label">Name</label>
         </div>
           <div class="col-sm-6">
-            <input type="email" class="col-form-label" id="tagNameInput" placeholder="tag name...">
+            <input type="email" class="col-form-label" name="tagNameInput" placeholder="tag name..." #tagName>
           </div>
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-primary" (click)="onAddTag(tagName.value)" data-bs-dismiss="modal">Save</button>
       </div>
     </div>
   </div>

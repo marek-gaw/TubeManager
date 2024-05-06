@@ -47,15 +47,15 @@ public class TagsService: ITagsService
 
     public bool Update(UpdateTag command)
     {
-        var existing = _tagsRepository.Get(command.Title);
+        var existing = _tagsRepository.Get(command.Id);
         
         if (existing is null)
         {
             return false;
         }
 
-        var tag = new Tag(command.Id, command.Title);
-        _tagsRepository.Update(tag);
+        existing.Title = command.Title;
+        _tagsRepository.Update(existing);
         return true;
     }
 

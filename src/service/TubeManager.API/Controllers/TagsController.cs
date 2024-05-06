@@ -1,3 +1,4 @@
+using System.Security.Cryptography.X509Certificates;
 using Microsoft.AspNetCore.Mvc;
 using TubeManager.App.Abstractions;
 using TubeManager.App.Commands.Tags;
@@ -36,8 +37,8 @@ public class TagsController: ControllerBase
         return CreatedAtAction(nameof(Post), new { id }, default);
     }
 
-    [HttpPut("{id:guid}")]
-    public ActionResult Put(Guid id, UpdateTag command)
+    [HttpPut]
+    public ActionResult Put([FromQuery]Guid id, [FromBody]UpdateTag command)
     {
         var status = _tagsService.Update(command with { Id = id });
         if (!status)
@@ -48,12 +49,13 @@ public class TagsController: ControllerBase
         return Accepted();
     }
 
-    [HttpDelete("{id:guid}")]
-    public ActionResult Delete(Guid id, DeleteTag command)
+    [HttpDelete]
+    public ActionResult Delete([FromQuery] Guid id)
     {
-        var status = _tagsService.Delete(new DeleteTag(id));
-        if (!status)
+        var existing = _tagsService.Delete(new DeleteTag(id));
+        if (!existing)
         {
+            Console.WriteLine("DELETE won't work");
             return BadRequest();
         }
         return Accepted();

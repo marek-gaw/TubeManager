@@ -41,6 +41,10 @@ export class TagsComponent {
       }));
   }
 
+  onEditTag(tag: Tags): void {
+    console.log(`onEditTag for tag: ${tag.id} | ${tag.title}`);
+  }
+
   onDeleteTag(tag: Tags): void {
     console.log(`onDeleteTag for tag: ${tag.id} | ${tag.title}`);
     this.tagsService.delete(tag)

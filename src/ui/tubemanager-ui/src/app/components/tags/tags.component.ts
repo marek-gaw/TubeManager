@@ -34,9 +34,11 @@ export class TagsComponent {
 
   onAddTag(val: string): void {
     console.log(`tagName:${val}`);
-    this.tagsService.create(val).subscribe(tag => this.tags.push({
-      id: uuidv4(),
-      title: val}));
+    this.tagsService.create(val)
+      .subscribe(tag => this.tags.push({
+        id: tag.id,
+        title: tag.title
+      }));
   }
 
   onDeleteTag(tag: Tags): void {
@@ -44,7 +46,7 @@ export class TagsComponent {
     this.tagsService.delete(tag)
       .subscribe(t => {
         const idx = this.tags.indexOf(tag);
-        this.tags.splice(idx,1)
+        this.tags.splice(idx, 1)
       })
   }
 }

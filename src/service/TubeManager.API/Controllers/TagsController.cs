@@ -34,7 +34,7 @@ public class TagsController: ControllerBase
             return BadRequest();
         }
         
-        return CreatedAtAction(nameof(Post), new { id }, default);
+        return CreatedAtAction(nameof(Post),new {id}, new { id, command.Title});
     }
 
     [HttpPut]
@@ -55,7 +55,6 @@ public class TagsController: ControllerBase
         var existing = _tagsService.Delete(new DeleteTag(id));
         if (!existing)
         {
-            Console.WriteLine("DELETE won't work");
             return BadRequest();
         }
         return Accepted();

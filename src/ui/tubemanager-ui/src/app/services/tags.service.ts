@@ -20,7 +20,7 @@ export class TagsService {
   constructor(private http: HttpClient) { }
 
   getAll(): Observable<Tags[]> {
-    return this.http.get<Tags[]>(`${baseUrl}`);
+    return this.http.get<Tags[]>(baseUrl);
   }
 
   create(name: string): Observable<any> {
@@ -30,7 +30,6 @@ export class TagsService {
 
   delete(tag: Tags): Observable<Tags> {
     const options = { params: new HttpParams().set('id', tag.id) };
-
     return this.http.delete<Tags>(baseUrl, options);
   }
 }

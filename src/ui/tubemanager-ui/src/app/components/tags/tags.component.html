@@ -17,7 +17,7 @@
       <tr *ngFor="let _tag of tags" class="text-center">
         <td class="align-middle">{{_tag.title}}</td>
         <td class="align-middle">
-          <h4><i class="bi bi-pen mx-1"></i><i class="bi bi-save mx-1"></i><i class="bi bi-trash mx-1"></i></h4>
+          <h4><i class="bi bi-pen mx-1"></i><i class="bi bi-save mx-1"></i><i class="bi bi-trash mx-1" (click)="onDeleteTag(_tag)"></i></h4>
         </td>
       </tr>
     </tbody>

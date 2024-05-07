@@ -46,7 +46,7 @@ public class TagsController: ControllerBase
             return BadRequest();
         }
 
-        return Accepted();
+        return CreatedAtAction(nameof(Put),new {id}, new { id, command.Title});
     }
 
     [HttpDelete]

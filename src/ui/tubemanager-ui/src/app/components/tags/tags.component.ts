@@ -16,9 +16,11 @@ import { v4 as uuidv4 } from 'uuid';
 export class TagsComponent {
 
   tags: Tags[];
+  editedTag: Tags;
 
   constructor(private tagsService: TagsService) {
     this.tags = [];
+    this.editedTag = { id:"", title:"" };
   }
 
   ngOnInit(): void {
@@ -33,7 +35,7 @@ export class TagsComponent {
   }
 
   onAddTag(val: string): void {
-    console.log(`tagName:${val}`);
+    console.log(`onAddTag:${val}`);
     this.tagsService.create(val)
       .subscribe(tag => this.tags.push({
         id: tag.id,
@@ -42,7 +44,17 @@ export class TagsComponent {
   }
 
   onEditTag(tag: Tags): void {
-    console.log(`onEditTag for tag: ${tag.id} | ${tag.title}`);
+    console.log(`onEditTag for tag: ${tag.id}|${tag.title}`);
+    this.editedTag = tag;
+  }
+
+  onSaveEditedTag(id:string, title:string): void {
+    console.log(`onSaveEditTag for tag: ${id}|${title}`);
+    this.tagsService.edit({id:id, title:title})
+      .subscribe(tag => {
+        const idx = this.tags.findIndex(o => o.id == tag.id);
+        this.tags[idx] = tag;
+      })
   }
 
   onDeleteTag(tag: Tags): void {
@@ -50,7 +62,7 @@ export class TagsComponent {
     this.tagsService.delete(tag)
       .subscribe(t => {
         const idx = this.tags.indexOf(tag);
-        this.tags.splice(idx, 1)
+        this.tags.splice(idx, 1);
       })
   }
 }

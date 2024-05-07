@@ -4,7 +4,7 @@
     <div class="col"></div>
     <div class="col"></div>
     <div class="col"><button type="button" class="btn btn-primary" data-bs-toggle="modal"
-        data-bs-target="#exampleModal">Add tag</button></div>
+        data-bs-target="#tagCreateModal">Add tag</button></div>
   </div>
   <table class="table table-hover table-striped">
     <thead>
@@ -17,8 +17,7 @@
       <tr *ngFor="let _tag of tags" class="text-center">
         <td class="align-middle">{{_tag.title}}</td>
         <td class="align-middle">
-          <h4>
-            <i class="bi bi-pen mx-1" data-bs-toggle="modal" data-bs-target="#tagModal" data-bs-title="_tag"
+          <h4><i class="bi bi-pen mx-1" data-bs-toggle="modal" data-bs-target="#tagEditModal" data-bs-input-title="@mdo"
               (click)="onEditTag(_tag)"></i>
             <i class="bi bi-trash mx-1" (click)="onDeleteTag(_tag)"></i>
           </h4>
@@ -28,12 +27,12 @@
   </table>
 </div>
 
-<!-- Modal -->
-<div class="modal fade" id="tagModal" tabindex="-1" aria-labelledby="tagModalLabel" aria-hidden="true">
+<!-- Modal for create tag -->
+<div class="modal fade" id="tagCreateModal" tabindex="-1" aria-labelledby="tagCreateModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="tagModalLabel">Add new tag</h5>
+        <h5 class="modal-title" id="tagCreateModalLabel">Add new tag</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -42,12 +41,39 @@
             <label for="tagNameInput" class="col-form-label">Name</label>
           </div>
           <div class="col-sm-6">
-            <input type="email" class="col-form-label" name="tagNameInput" placeholder="tag name..." #tagName>
+            <input type="text" class="col-form-label" name="tagNameInput" placeholder="tag name..." #tagName>
           </div>
         </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" (click)="onAddTag(tagName.value)"
+          data-bs-dismiss="modal">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal for create tag -->
+<div class="modal fade" id="tagEditModal" tabindex="-1" aria-labelledby="tagEditModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="tagEditModalLabel">Edit tag</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-sm-6">
+            <label for="tagNameInput" class="col-form-label">Name</label>
+          </div>
+          <div class="col-sm-6">
+            <input type="text" class="col-form-label" name="tagNameInput" placeholder="{{editedTag.title}}"
+              #tagEditName>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="onSaveEditedTag(editedTag.id, tagEditName.value)"
           data-bs-dismiss="modal">Save</button>
       </div>
     </div>

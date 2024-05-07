@@ -28,6 +28,12 @@ export class TagsService {
     return this.http.post<Tags>(baseUrl, tag, httpOptions);
   }
 
+  edit(tag: Tags): Observable<Tags> {
+    const options = { params: new HttpParams().set('id', tag.id) };
+    const body = { title: tag.title };
+    return this.http.put<Tags>(baseUrl, body, options)
+  }
+
   delete(tag: Tags): Observable<Tags> {
     const options = { params: new HttpParams().set('id', tag.id) };
     return this.http.delete<Tags>(baseUrl, options);

@@ -1,12 +1,14 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ViewChild, ElementRef, inject } from '@angular/core';
 import { Bookmark } from '../../interfaces/bookmark';
 import { NgIf, SlicePipe } from '@angular/common';
 import { SlicePipeFormat } from './SlicePipeFormat';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { BookmarkDetailsModalComponent } from '../bookmark-details-modal/bookmark-details-modal.component';
 
 @Component({
   selector: 'bookmark',
   standalone: true,
-  imports: [ 
+  imports: [
     SlicePipe,
     NgIf
   ],
@@ -23,9 +25,10 @@ export class BookmarkComponent {
     folded: true
   }
   @Output() videoLink = new EventEmitter<string>();
+  private modalService = inject(NgbModal);
 
   toggleDescription(): void {
-    if(this.slicePipeformat.folded) {
+    if (this.slicePipeformat.folded) {
       let descLen = this.bookmark?.description.length ?? 1000;
       this.slicePipeformat.end = descLen;
       this.slicePipeformat.folded = false;
@@ -38,4 +41,12 @@ export class BookmarkComponent {
   onThumbnailSelected(url: string): void {
     this.videoLink.emit(url);
   }
+
+  onDetailsClick(b: Bookmark): void {
+    console.log(`onDetailsClick: ${JSON.stringify(b)}`)
+    const modalRef = this.modalService.open(BookmarkDetailsModalComponent, { size: 'lg', centered: true});
+		modalRef.componentInstance.bookmark = b;
+  }
+
 }
+

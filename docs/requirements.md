@@ -20,7 +20,7 @@
    - [x] User can set a number of bookmarks per page
    - [x] User can play a video in embedded player after clicking video thumbnail
 - [ ] Tags
-  - [ ] User can list all existing tags
+  - [x] User can list all existing tags
   - [ ] User can assign multiple tags to the bookmark
 
 ## Good to Have
@@ -33,7 +33,7 @@
 - [ ] Tag management
    - [ ] Single bookmark might be assinged with no tags at all
    - [ ] Tag might be assigned to multiple bookmarks.
-   - [ ] Tags can be added/modified/deleted.
+   - [x] Tags can be added/modified/deleted.
    - [ ] There is no default tag for each new bookmark.
 - [ ] Channel management
    - [ ] Information about subscribed channels can be extracted from SkyTube archive. This information should be presented in a similiar way as bookmarks.

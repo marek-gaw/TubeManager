@@ -15,5 +15,13 @@ internal sealed class BookmarksDbContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfigurationsFromAssembly(GetType().Assembly);
+        modelBuilder.Entity<Bookmark>()
+            .HasMany(e => e.Tags)
+            .WithMany(e => e.Bookmarks)
+            .UsingEntity<BookmarkTag>();
+        modelBuilder.Entity<Tag>()
+            .HasMany(e => e.Bookmarks)
+            .WithMany(e => e.Tags)
+            .UsingEntity<BookmarkTag>();
     }
 }

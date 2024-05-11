@@ -10,6 +10,7 @@ public interface IBookmarksService
     BookmarkDTO? Get(Guid id);
     Guid? Create(CreateBookmark command);
     bool Update(UpdateBookmark command);
+    bool Update(UpdateTagsForBookmark command);
     bool Delete(DeleteBookmark command);
     int GetElementsCount();
 }

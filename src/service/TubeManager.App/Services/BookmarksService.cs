@@ -10,10 +10,12 @@ namespace TubeManager.App.Services;
 public class BookmarksService : IBookmarksService
 {
     private readonly IBookmarkRepository _bookmarksRepository;
+    private readonly ITagsRepository _tagsRepository;
 
-    public BookmarksService(IBookmarkRepository repository)
+    public BookmarksService(IBookmarkRepository bookmarkRepository, ITagsRepository tagsRepository)
     {
-        _bookmarksRepository = repository;
+        _bookmarksRepository = bookmarkRepository;
+        _tagsRepository = tagsRepository;
     }
     
     public IEnumerable<BookmarkDTO> Get(int page, int pageSize)
@@ -75,6 +77,26 @@ public class BookmarksService : IBookmarksService
         {
             existing.Title = command.Title;
             existing.ThumbnailUrl = command.ThumbnailUrl;
+            _bookmarksRepository.Update(existing);
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    
+    public bool Update(UpdateTagsForBookmark command)
+    {
+        var existing = _bookmarksRepository.Get(command.Id);
+
+        if (existing is not null)
+        {
+            foreach (var tag in command.Tags)
+            {
+                existing.Tags.Add(_tagsRepository.Get(tag));
+                _bookmarksRepository.Update(existing);
+            }
             return true;
         }
         else

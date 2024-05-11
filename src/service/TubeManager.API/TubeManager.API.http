@@ -25,7 +25,7 @@ Content-Type: application/json
 
 {
   "Title": "Rozwiązujemy ZADANIA ALGORYTMICZNE na czas...",
-  "VideoUrl": "https://www.youtube.com/watch?v=POY9A7sQT9Q",
+  "VideoUrl": "https://www.youtube.com/watch?v=PwEvMY7nnY8",
   "ThumbnailUrl": "https://i.ytimg.com/vi/POY9A7sQT9Q/maxresdefault.jpg",
   "Channel": "DevMentors",
   "Description": "Dziś Flip i Flap programowania zmierzą się z testem... algorytmicznym (na szczęście podstawowym). Nie będą jednak działać razem, a zmierzą się w POJEDYNKU!"
@@ -75,12 +75,20 @@ Content-Type: application/json
 @tag-id={{tag.response.body.id}}
 
 ### Change Tag
-PUT {{TubeManager.API}}/tags?id={{tag-id}}
+PUT {{TubeManager.API}}/tags?id=e7e2193e-a6a3-4442-84ee-2781f327010b
 Content-Type: application/json
 
 {
-  "title": "new name"
+  "Title": "new name"
 }
 
 ### Delete Tag
-DELETE {{TubeManager.API}}/tags?id={{tag-id}}
+DELETE {{TubeManager.API}}/tags?id=dbc48dbb-5afd-4b13-b2bf-297e1aef832f
+
+### Add single Tag to a Bookmark
+PUT {{TubeManager.API}}/bookmarks/004d4e5a-1ddb-48b7-96cf-c71222655047/tags
+Content-Type: application/json
+
+{
+  "tags": ["4b392f52-2acb-4a77-a99f-4a184dbcd5a5"]
+}

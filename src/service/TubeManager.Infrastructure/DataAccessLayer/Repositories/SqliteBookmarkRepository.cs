@@ -18,7 +18,8 @@ internal sealed class SqliteBookmarkRepository : IBookmarkRepository
     public IEnumerable<Bookmark> GetAll() => _bookmarks.ToList();
     public Bookmark Get(Guid id)
     {
-        throw new NotImplementedException();
+        return _bookmarks.Where(b => b.Id == id)
+            .SingleOrDefault();
     }
 
     public Bookmark Get(string videoUrl) => _bookmarks

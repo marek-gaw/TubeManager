@@ -68,6 +68,17 @@ public class BookmarksController : ControllerBase
         return Accepted();
     }
 
+    [HttpPut("{id:guid}/tags")]
+    public ActionResult Put(Guid id, UpdateTagsForBookmark command)
+    {
+        var bookmark = _bookmarksService.Get(id);
+        if (bookmark is not null)
+        {
+            var status = _bookmarksService.Update(command with { Id = id });
+        }
+        return Accepted();
+    }
+
     [HttpDelete("{id:guid}")]
     public ActionResult Delete(Guid id)
     {

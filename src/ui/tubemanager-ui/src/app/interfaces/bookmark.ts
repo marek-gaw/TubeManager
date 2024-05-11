@@ -1,8 +1,11 @@
+import { Tags } from "./tags";
+
 export interface Bookmark {
-    id: number;
+    id: string;
     title: string;
     channel: string;
     videoUrl: string;
     description: string;
     thumbnailUrl: string;
+    tags: Tags[];
   }

@@ -9,7 +9,9 @@
         <div class="btn-group">
           <button type="button" class="btn btn-sm btn-outline-secondary" (click)="onDetailsClick(bookmark)">More...</button>
         </div>
-        <small class="text-body-secondary">9 mins</small>
+        <div class="align-items-right">
+          <span class="badge rounded-pill bg-primary ms-2" *ngFor="let tag of bookmark.tags">{{tag.title}}</span>
+        </div>
       </div>
     </div>
   </div>

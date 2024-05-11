@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter, ViewChild, ElementRef, inject } from '@angular/core';
 import { Bookmark } from '../../interfaces/bookmark';
-import { NgIf, SlicePipe } from '@angular/common';
+import { NgFor, NgIf, SlicePipe } from '@angular/common';
 import { SlicePipeFormat } from './SlicePipeFormat';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { BookmarkDetailsModalComponent } from '../bookmark-details-modal/bookmark-details-modal.component';
@@ -10,7 +10,8 @@ import { BookmarkDetailsModalComponent } from '../bookmark-details-modal/bookmar
   standalone: true,
   imports: [
     SlicePipe,
-    NgIf
+    NgIf,
+    NgFor
   ],
   templateUrl: './bookmark.component.html',
   styleUrl: './bookmark.component.css'
@@ -44,8 +45,8 @@ export class BookmarkComponent {
 
   onDetailsClick(b: Bookmark): void {
     console.log(`onDetailsClick: ${JSON.stringify(b)}`)
-    const modalRef = this.modalService.open(BookmarkDetailsModalComponent, { size: 'lg', centered: true});
-		modalRef.componentInstance.bookmark = b;
+    const modalRef = this.modalService.open(BookmarkDetailsModalComponent, { size: 'lg', centered: true });
+    modalRef.componentInstance.bookmark = b;
   }
 
 }

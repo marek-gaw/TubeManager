@@ -22,7 +22,7 @@ import { YouTubePlayer } from '@angular/youtube-player';
 })
 export class AlbumComponent {
 
-  bookmarks: Bookmark[];
+  bookmarks: Bookmark[] = [];
   currentPage: number = 1;
   pageSize: number = 15;
   totalPages: number = 10;
@@ -30,9 +30,7 @@ export class AlbumComponent {
   nextDisabled: boolean = false;
   videoToPlay: string = "mVjYG9TSN88";
 
-  constructor(private bookmarksService: BookmarksService) {
-    this.bookmarks = [];
-  }
+  constructor(private bookmarksService: BookmarksService) { }
 
   ngOnInit(): void {
     this.fetchPage(1, 10);
@@ -71,22 +69,22 @@ export class AlbumComponent {
 
     if (this.currentPage < 5) {
       start = 1;
-      end = this.currentPage+10;
-    } else{
-      start = this.currentPage-5;
-      end = this.currentPage+5;
+      end = this.currentPage + 10;
+    } else {
+      start = this.currentPage - 5;
+      end = this.currentPage + 5;
     }
 
-    if(this.currentPage > (this.totalPages-5)) {
+    if (this.currentPage > (this.totalPages - 5)) {
       end = this.totalPages;
-      start= this.totalPages-10;
-    } 
+      start = this.totalPages - 10;
+    }
 
     return this.range(start, end, 1)
   }
 
   pagesSequence(): Array<number> {
-    return new Array(10,20,50,100);
+    return new Array(10, 20, 50, 100);
   }
 
   isCurrent(n: number): boolean {
@@ -97,18 +95,18 @@ export class AlbumComponent {
     }
   }
 
-  onPageSizeSelected(size:number) {
+  onPageSizeSelected(size: number) {
     this.pageSize = size;
     console.log(`Page size set to: ${this.pageSize}`)
     this.fetchPage(1, this.pageSize);
   }
 
   range(start: number, end: number, step: number): Array<number> {
-     var arr: number[] = new Array();
-  
+    var arr: number[] = new Array();
+
     for (let i = start; i <= end; i += step) {
       arr.push(i)
-    }  
+    }
     return arr;
   }
 

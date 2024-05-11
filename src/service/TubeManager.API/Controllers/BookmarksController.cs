@@ -16,7 +16,7 @@ public class BookmarksController : ControllerBase
     }
     
     [HttpGet]
-    public ActionResult<BookmarkDTO[]> Get([FromQuery]int page, [FromQuery]int pageSize)
+    public ActionResult<PagedResponse<BookmarkDTO>> Get([FromQuery]int page, [FromQuery]int pageSize)
     {
         if (page == 0 && pageSize == 0)
         {
@@ -28,7 +28,7 @@ public class BookmarksController : ControllerBase
                 page,
                 pageSize,
                 _bookmarksService.GetElementsCount());
-            return Ok(response);
+            return response;
         }
     }
     
@@ -41,6 +41,17 @@ public class BookmarksController : ControllerBase
             return NotFound();
         }
         return bookmark;
+    }
+    
+    [HttpGet(("{id:guid}/tags"))]
+    public ActionResult<TagDTO[]> GetTagsForBookmark(Guid id)
+    {
+        var bookmark = _bookmarksService.Get(id);
+        if (bookmark is null)
+        {
+            return NotFound();
+        }
+        return bookmark.Tags;
     }
 
     [HttpPost]

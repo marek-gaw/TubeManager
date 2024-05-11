@@ -1,3 +1,5 @@
+using System.IO.IsolatedStorage;
+
 namespace TubeManager.Core.DTO;
 
 public class BookmarkDTO
@@ -8,4 +10,5 @@ public class BookmarkDTO
     public string ThumbnailUrl { get; set; }
     public string Channel { get; set; }
     public string Description { get; set; }
+    public TagDTO[] Tags { get; set; }
 }

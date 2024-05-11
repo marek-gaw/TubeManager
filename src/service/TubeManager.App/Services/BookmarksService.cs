@@ -3,6 +3,7 @@ using TubeManager.App.Repositories;
 using TubeManager.App.Abstractions;
 using TubeManager.Core.DTO;
 using TubeManager.Core.Entities;
+using TubeManager.Core.Mappers;
 
 
 namespace TubeManager.App.Services;
@@ -20,7 +21,7 @@ public class BookmarksService : IBookmarksService
     
     public IEnumerable<BookmarkDTO> Get(int page, int pageSize)
     {
-        return _bookmarksRepository
+        var dto = _bookmarksRepository
             .GetAll()
             .Skip((page-1)*pageSize)
             .Take(pageSize)
@@ -31,8 +32,10 @@ public class BookmarksService : IBookmarksService
             VideoUrl = b.VideoUrl,
             ThumbnailUrl = b.ThumbnailUrl,
             Channel = b.Channel,
-            Description = b.Description
+            Description = b.Description,
+            Tags = Mappers.ToArray(b.Tags)
         });
+        return dto;
     }
 
     public IEnumerable<BookmarkDTO> Get()
@@ -46,7 +49,8 @@ public class BookmarksService : IBookmarksService
                 VideoUrl = b.VideoUrl,
                 ThumbnailUrl = b.ThumbnailUrl,
                 Channel = b.Channel,
-                Description = b.Description
+                Description = b.Description,
+                Tags = Mappers.ToArray(b.Tags)
             });
     }
 

@@ -15,10 +15,12 @@ internal sealed class SqliteBookmarkRepository : IBookmarkRepository
         _bookmarks = _dbContext.Bookmarks;
     }
 
-    public IEnumerable<Bookmark> GetAll() => _bookmarks.ToList();
+    public IEnumerable<Bookmark> GetAll() => _bookmarks.Include("Tags").ToList();
     public Bookmark Get(Guid id)
     {
-        return _bookmarks.Where(b => b.Id == id)
+        return _bookmarks
+            .Where(b => b.Id == id)
+            .Include("Tags")
             .SingleOrDefault();
     }
 

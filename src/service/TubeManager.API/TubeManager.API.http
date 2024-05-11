@@ -8,7 +8,7 @@ GET {{TubeManager.API}}/bookmarks
 GET {{TubeManager.API}}/bookmarks?page=1&pageSize=20
 
 ###
-GET {{TubeManager.API}}/bookmarks?page=1&pageSize=2
+GET {{TubeManager.API}}/bookmarks?page=1&pageSize=1
 
 ###
 GET {{TubeManager.API}}/bookmarks?page=2&pageSize=2
@@ -17,7 +17,7 @@ GET {{TubeManager.API}}/bookmarks?page=2&pageSize=2
 GET {{TubeManager.API}}/bookmarks?page=1&pageSize=4
 
 ###
-GET {{TubeManager.API}}/bookmarks/bb0e3a10-fe3b-4dea-a10c-efb5e007ab3f
+GET {{TubeManager.API}}/bookmarks/004d4e5a-1ddb-48b7-96cf-c71222655047
 
 ###
 POST {{TubeManager.API}}/bookmarks
@@ -86,9 +86,12 @@ Content-Type: application/json
 DELETE {{TubeManager.API}}/tags?id=dbc48dbb-5afd-4b13-b2bf-297e1aef832f
 
 ### Add single Tag to a Bookmark
-PUT {{TubeManager.API}}/bookmarks/004d4e5a-1ddb-48b7-96cf-c71222655047/tags
+PUT {{TubeManager.API}}/bookmarks/001d30c7-f80b-499c-834a-04d011ca42ae/tags
 Content-Type: application/json
 
 {
   "tags": ["4b392f52-2acb-4a77-a99f-4a184dbcd5a5"]
 }
+
+### Get all tags for a given bookmark
+GET {{TubeManager.API}}/bookmarks/004d4e5a-1ddb-48b7-96cf-c71222655047/tags

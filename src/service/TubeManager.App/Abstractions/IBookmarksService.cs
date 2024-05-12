@@ -1,4 +1,5 @@
 using TubeManager.App.Commands;
+using TubeManager.App.Commands.Bookmarks;
 using TubeManager.Core.DTO;
 
 namespace TubeManager.App.Abstractions;
@@ -13,4 +14,5 @@ public interface IBookmarksService
     bool Update(UpdateTagsForBookmark command);
     bool Delete(DeleteBookmark command);
     int GetElementsCount();
+    bool Update(DeleteTagFromBookmark command);
 }

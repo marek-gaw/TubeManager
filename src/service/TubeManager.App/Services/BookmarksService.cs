@@ -1,6 +1,7 @@
 using TubeManager.App.Commands;
 using TubeManager.App.Repositories;
 using TubeManager.App.Abstractions;
+using TubeManager.App.Commands.Bookmarks;
 using TubeManager.Core.DTO;
 using TubeManager.Core.Entities;
 using TubeManager.Core.Mappers;
@@ -127,5 +128,32 @@ public class BookmarksService : IBookmarksService
     public int GetElementsCount()
     {
         return _bookmarksRepository.Count();
+    }
+
+    public bool Update(DeleteTagFromBookmark command)
+    {
+        var existing = _bookmarksRepository.Get(command.BookmarkId);
+        if (existing is not null)
+        {
+            // var tagsId = existing.Tags.Select(t => t.Id); 
+            // var tagsToDelete = tagsId.Intersect(command.TagsId);
+            foreach (var tagId in command.TagsId)
+            {
+                var toDelete = existing.Tags.SingleOrDefault(t => t.Id == tagId );
+                existing.Tags.Remove(toDelete);
+            }
+            // List<Tag> updatedTags = [];
+            // foreach (var tagIdToDelete in command.TagsId)
+            // {
+            //     updatedTags.Add(existing.Tags.SingleOrDefault(t => t.Id == tagIdToDelete));
+            // }
+            //
+            // existing.Tags = updatedTags;
+
+                _bookmarksRepository.Update(existing);
+                return true;
+
+        }
+        return false;
     }
 }

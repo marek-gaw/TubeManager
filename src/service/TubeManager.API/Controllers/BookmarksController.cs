@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using TubeManager.App.Commands;
 using TubeManager.Core.DTO;
 using TubeManager.App.Abstractions;
+using TubeManager.App.Commands.Bookmarks;
 
 namespace TubeManager.API.Controllers;
 
@@ -10,19 +11,20 @@ namespace TubeManager.API.Controllers;
 public class BookmarksController : ControllerBase
 {
     private readonly IBookmarksService _bookmarksService;
+
     public BookmarksController(IBookmarksService bookmarksService)
     {
         _bookmarksService = bookmarksService;
     }
-    
+
     [HttpGet]
-    public ActionResult<PagedResponse<BookmarkDTO>> Get([FromQuery]int page, [FromQuery]int pageSize)
+    public ActionResult<PagedResponse<BookmarkDTO>> Get([FromQuery] int page, [FromQuery] int pageSize)
     {
         if (page == 0 && pageSize == 0)
         {
             return Ok(_bookmarksService.Get());
         }
-        else 
+        else
         {
             var response = new PagedResponse<BookmarkDTO>(_bookmarksService.Get(page, pageSize),
                 page,
@@ -31,7 +33,7 @@ public class BookmarksController : ControllerBase
             return response;
         }
     }
-    
+
     [HttpGet(("{id:guid}"))]
     public ActionResult<BookmarkDTO> Get(Guid id)
     {
@@ -40,9 +42,10 @@ public class BookmarksController : ControllerBase
         {
             return NotFound();
         }
+
         return bookmark;
     }
-    
+
     [HttpGet(("{id:guid}/tags"))]
     public ActionResult<TagDTO[]> GetTagsForBookmark(Guid id)
     {
@@ -51,22 +54,23 @@ public class BookmarksController : ControllerBase
         {
             return NotFound();
         }
+
         return bookmark.Tags;
     }
 
     [HttpPost]
     public ActionResult Post(CreateBookmark command)
     {
-        var id = _bookmarksService.Create(command with { BookmarkId = Guid.NewGuid()} );
+        var id = _bookmarksService.Create(command with { BookmarkId = Guid.NewGuid() });
 
         if (id is null)
         {
             return BadRequest();
         }
-        
+
         return CreatedAtAction(nameof(Post), new { id }, default);
     }
- 
+
     [HttpPut("{id:guid}")]
     public ActionResult Put(Guid id, UpdateBookmark command)
     {
@@ -87,6 +91,7 @@ public class BookmarksController : ControllerBase
         {
             var status = _bookmarksService.Update(command with { Id = id });
         }
+
         return Accepted();
     }
 
@@ -98,6 +103,20 @@ public class BookmarksController : ControllerBase
         {
             return BadRequest();
         }
+
         return Accepted();
+    }
+
+    [HttpDelete("{id:guid}/tags")]
+    public ActionResult DeleteTagForBookmark(Guid id, [FromBody] DeleteTagFromBookmark command)
+    {
+        var bookmark = _bookmarksService.Get(id);
+        if (bookmark is not null)
+        {
+            var status = _bookmarksService.Update(command with { BookmarkId = id });
+            bookmark = _bookmarksService.Get(id);
+            return Accepted(bookmark);
+        }
+        return BadRequest();
     }
 }

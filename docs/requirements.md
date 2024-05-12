@@ -21,7 +21,11 @@
    - [x] User can play a video in embedded player after clicking video thumbnail
 - [ ] Tags
   - [x] User can list all existing tags
-  - [ ] User can assign multiple tags to the bookmark
+  - [x] User can assign multiple tags to the bookmark
+  - [ ] User can see how many bookmarks uses given tag
+  - [x] User can remove selected tag from the bookmark
+- [ ] Search
+  - [ ] User can search for a video by Title
 
 ## Good to Have
 

@@ -17,7 +17,7 @@ GET {{TubeManager.API}}/bookmarks?page=2&pageSize=2
 GET {{TubeManager.API}}/bookmarks?page=1&pageSize=4
 
 ###
-GET {{TubeManager.API}}/bookmarks/004d4e5a-1ddb-48b7-96cf-c71222655047
+GET {{TubeManager.API}}/bookmarks/001D30C7-F80B-499C-834A-04D011CA42AE
 
 ###
 POST {{TubeManager.API}}/bookmarks
@@ -86,12 +86,44 @@ Content-Type: application/json
 DELETE {{TubeManager.API}}/tags?id=dbc48dbb-5afd-4b13-b2bf-297e1aef832f
 
 ### Add single Tag to a Bookmark
-PUT {{TubeManager.API}}/bookmarks/001d30c7-f80b-499c-834a-04d011ca42ae/tags
+PUT {{TubeManager.API}}/bookmarks/001D30C7-F80B-499C-834A-04D011CA42AE/tags
 Content-Type: application/json
 
 {
-  "tags": ["4b392f52-2acb-4a77-a99f-4a184dbcd5a5"]
+  "tags": ["E66BCE05-D777-478B-904F-4DF3D2F1699B"]
+}
+
+### Add another single Tag to a Bookmark
+PUT {{TubeManager.API}}/bookmarks/001D30C7-F80B-499C-834A-04D011CA42AE/tags
+Content-Type: application/json
+
+{
+  "tags": ["d44ec9a7-20c4-4eed-9041-3411d0a5f0b1"]
+}
+
+### Add multiple Tags to a Bookmark
+PUT {{TubeManager.API}}/bookmarks/001D30C7-F80B-499C-834A-04D011CA42AE/tags
+Content-Type: application/json
+
+{
+  "tags": ["d44ec9a7-20c4-4eed-9041-3411d0a5f0b1", "E66BCE05-D777-478B-904F-4DF3D2F1699B"]
 }
 
 ### Get all tags for a given bookmark
-GET {{TubeManager.API}}/bookmarks/004d4e5a-1ddb-48b7-96cf-c71222655047/tags
+GET {{TubeManager.API}}/bookmarks/001D30C7-F80B-499C-834A-04D011CA42AE/tags
+
+### Remove tag from bookmark
+DELETE {{TubeManager.API}}/bookmarks/001D30C7-F80B-499C-834A-04D011CA42AE/tags
+Content-Type: application/json
+
+{
+  "TagsId": ["E66BCE05-D777-478B-904F-4DF3D2F1699B"]
+}
+
+### Remove two tags from bookmark
+DELETE {{TubeManager.API}}/bookmarks/001D30C7-F80B-499C-834A-04D011CA42AE/tags
+Content-Type: application/json
+
+{
+  "TagsId": ["E66BCE05-D777-478B-904F-4DF3D2F1699B", "d44ec9a7-20c4-4eed-9041-3411d0a5f0b1"]
+}

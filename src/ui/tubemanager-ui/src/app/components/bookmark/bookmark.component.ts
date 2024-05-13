@@ -45,7 +45,11 @@ export class BookmarkComponent {
 
   onDetailsClick(b: Bookmark): void {
     console.log(`onDetailsClick: ${JSON.stringify(b)}`)
-    const modalRef = this.modalService.open(BookmarkDetailsModalComponent, { size: 'lg', centered: true });
+    const modalRef = this.modalService.open(BookmarkDetailsModalComponent, {
+      size: 'lg',
+      centered: true,
+      scrollable: true
+    });
     modalRef.componentInstance.bookmark = b;
   }
 

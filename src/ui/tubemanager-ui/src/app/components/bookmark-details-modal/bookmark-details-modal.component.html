@@ -12,10 +12,24 @@
           <img src="{{bookmark?.thumbnailUrl}}" class="rounded img-thumbnail">
         </div>
         <div class="col-md-6 float-md-end mb-3 ms-md-3">
-          <span class="badge rounded-pill bg-primary ms-2" *ngFor="let tag of bookmark?.tags">{{tag.title}}</span>
+          <div ngbDropdown class="d-inline-block">
+            <button type="button" class="btn btn-outline-primary" id="tagsDropdown" ngbDropdownToggle
+              (click)="onShowDropdown()">Tags</button>
+            <div ngbDropdownMenu aria-labelledby="tagsDropdown">
+              <input type="text" placeholder="Search.." id="myInput" (keyup)="onKeyUp($event)">
+              <button *ngFor="let tag of tags" ngbDropdownItem (click)="onDropdownPosClicked(tag)">{{tag.title}}</button>
+            </div>
+          </div>
         </div>
-        <!-- <div class="col-4 col-sm-6"> -->
-          <p [innerHtml]=bookmark?.description></p>
+        <div class="col-md-6 float-md-end mb-3 ms-md-3">
+          <h5>
+            <span class="badge rounded-pill bg-primary ms-2" *ngFor="let tag of bookmark?.tags">{{tag.title}}</span>
+          </h5>
+        </div>
+        <div class="col-md-6 float-md-end mb-3 ms-md-3">
+          
+        </div>
+        <p [innerHtml]=bookmark?.description></p>
         <!-- </div> -->
       </div>
     </div>

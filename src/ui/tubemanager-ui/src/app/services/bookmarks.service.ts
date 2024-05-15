@@ -30,7 +30,8 @@ export class BookmarksService {
     }
 
     update(id: any, data: any): Observable<any> {
-      return this.http.put(`${baseUrl}/${id}`, data);
+      console.log(`bookmarksService: update for bookmark: ${id}`);
+      return this.http.put(`${baseUrl}/${id}/tags`, data);
     }
     
     delete(id: any): Observable<any> {

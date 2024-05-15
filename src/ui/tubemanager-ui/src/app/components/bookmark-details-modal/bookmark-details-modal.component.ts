@@ -1,4 +1,4 @@
-import { Component, Input, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { NgbActiveModal, NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { Bookmark } from '../../interfaces/bookmark';
 import { NgFor } from '@angular/common';
@@ -19,6 +19,7 @@ export class BookmarkDetailsModalComponent {
   activeModal = inject(NgbActiveModal);
   @Input() bookmark?: Bookmark;
   tags: Tags[] = [];
+  @Output() updatedTags = new EventEmitter<Tags[]>();
 
   constructor(private tagsService: TagsService) { }
 
@@ -43,5 +44,13 @@ export class BookmarkDetailsModalComponent {
   onDropdownPosClicked(tag: Tags): void {
     console.log(`tag: ${tag.id} | ${tag.title}`);
     this.bookmark?.tags.push(tag);
+  }
+
+  onClose(): void {
+    // console.log(`onClose: ${JSON.stringify(this.bookmark)}`);
+    console.log(`onClose: tags to update: ${JSON.stringify(this.bookmark?.tags)}`)
+    // this.updatedTags.emit(this.bookmark?.tags);
+    this.activeModal.close(this.bookmark?.tags);
+    
   }
 }

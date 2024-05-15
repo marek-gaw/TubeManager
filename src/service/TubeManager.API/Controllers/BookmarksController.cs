@@ -84,7 +84,7 @@ public class BookmarksController : ControllerBase
     }
 
     [HttpPut("{id:guid}/tags")]
-    public ActionResult Put(Guid id, UpdateTagsForBookmark command)
+    public ActionResult Put(Guid id, [FromBody]UpdateTagsForBookmark command)
     {
         var bookmark = _bookmarksService.Get(id);
         if (bookmark is not null)

@@ -17,7 +17,7 @@ GET {{TubeManager.API}}/bookmarks?page=2&pageSize=2
 GET {{TubeManager.API}}/bookmarks?page=1&pageSize=4
 
 ###
-GET {{TubeManager.API}}/bookmarks/001D30C7-F80B-499C-834A-04D011CA42AE
+GET {{TubeManager.API}}/bookmarks/001d30c7-f80b-499c-834a-04d011ca42ae
 
 ###
 POST {{TubeManager.API}}/bookmarks
@@ -32,7 +32,7 @@ Content-Type: application/json
 }
 
 ###
-PUT {{TubeManager.API}}/bookmarks/bb0e3a10-fe3b-4dea-a10c-efb5e007ab3f
+PUT {{TubeManager.API}}/bookmarks/001d30c7-f80b-499c-834a-04d011ca42ae
 Content-Type: application/json
 
 {

@@ -5,6 +5,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { AlbumComponent } from './components/album/album.component';
 import { ImportComponent } from './components/import/import.component';
 import { CommonModule } from '@angular/common';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +15,8 @@ import { CommonModule } from '@angular/common';
     HeaderComponent,
     AlbumComponent,
     FooterComponent,
-    ImportComponent
+    ImportComponent,
+    SidebarComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

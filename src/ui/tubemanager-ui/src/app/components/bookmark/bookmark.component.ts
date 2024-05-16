@@ -55,21 +55,18 @@ export class BookmarkComponent {
       scrollable: true
     });
     modalRef.componentInstance.bookmark = b;
-    // modalRef.componentInstance.updatedTags.subscribe((result: any) => {
-    //   console.log(result);
-    // });
     modalRef.result.then((result: Tags[]) => {
       if (result) {
         console.log(`modalRef.result.then: ${JSON.stringify(result)}`);
         modalRef.componentInstance.bookmark.tags = result;
 
         var tags: string[] = [];
-        result.forEach( i => {
+        result.forEach(i => {
           console.log(`i.id: ${i.id}`);
           tags.push(i.id);
         });
 
-        const payload= {
+        const payload = {
           tags
         }
 
@@ -80,7 +77,6 @@ export class BookmarkComponent {
         });
       }
     });
-  } 
-
+  }
 }
 

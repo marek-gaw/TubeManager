@@ -35,10 +35,10 @@
    - [ ] Categories different than "Default" can be added/modified/deleted.
    - [ ] Category might be empty (no bookmarks assigned).
 - [ ] Tag management
-   - [ ] Single bookmark might be assinged with no tags at all
-   - [ ] Tag might be assigned to multiple bookmarks.
+   - [x] Single bookmark might be assinged with no tags at all
+   - [x] Tag might be assigned to multiple bookmarks.
    - [x] Tags can be added/modified/deleted.
-   - [ ] There is no default tag for each new bookmark.
+   - [x] There is no default tag for each new bookmark.
 - [ ] Channel management
    - [ ] Information about subscribed channels can be extracted from SkyTube archive. This information should be presented in a similiar way as bookmarks.
    - [ ] Bookmark can be assigned to a channel.

@@ -9,6 +9,7 @@ using Newtonsoft.Json.Linq;
 using TubeManager.Core.Entities;
 using TubeManager.Infrastructure.DataAccessLayer;
 using TubeManager.Infrastructure.Models;
+using Channel = TubeManager.Core.Entities.Channel;
 
 namespace TubeManager.Infrastructure.Services;
 
@@ -68,6 +69,11 @@ internal sealed class BackupImporter : BackgroundService
 
                 var ChannelTitle = ob["channel"]["title"];
 
+                Channel channel = new Channel(new Guid(),
+                    (string)ob["channel"]["id"],
+                    (string)ob["channel"]["title"],
+                    (string?)ob["channel"]?["description"]);
+
                 string description = "";
                 try
                 {
@@ -78,11 +84,6 @@ internal sealed class BackupImporter : BackgroundService
                     Console.WriteLine("There is no description for this video");
                     description = "No description";
                 }
-
-                //var channel = JsonConvert.DeserializeObject<Dictionary<string, Object>>(values["channel"]); 
-                //var channel = values["channel"];
-                //var title = channel.Parse
-                //Channel channel= new Channel()
 
                 //TODO: make this an option
                 //skip if this entry already exists.

@@ -8,17 +8,13 @@ public sealed class Channel
     
     public string Name { get; set; }
     
-    public string Description { get; set; }
-    
-    public string ThumbnailUrl { get; set; }
-
-    public Channel(Guid id, string channelId, string name, string description, string thumbnailUrl)
+    public string? Description { get; set; }
+    public Channel(Guid id, string channelId, string name, string? description)
     {
         Id = id;
         ChannelId = channelId;
         Name = name;
-        Description = description;
-        ThumbnailUrl = thumbnailUrl;
+        Description = description ?? "No description available";
     }
     
 }

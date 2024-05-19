@@ -1,4 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
+using TubeManager.App.Services;
+using TubeManager.Core.DTO;
 
 namespace TubeManager.API.Controllers;
 
@@ -6,10 +8,25 @@ namespace TubeManager.API.Controllers;
 [Route("channels")]
 public class ChannelsController: ControllerBase
 {
-    [HttpGet]
-    public ActionResult Get()
+    private ChannelsService _channelsService;
+
+    public ChannelsController(ChannelsService channelsService)
     {
-        return Ok();
+        _channelsService = channelsService;
+    }
+    
+    [HttpGet]
+    public ActionResult<ChannelDTO[]> Get()
+    {
+        var channels = _channelsService.Get();
+        return Ok(channels);
+    }
+
+    [HttpGet("{guid:id}")]
+    public ActionResult<ChannelDTO> Get(Guid id)
+    {
+        var channel = _channelsService.Get(id);
+        return Ok(channel);
     }
 
     [HttpPost]

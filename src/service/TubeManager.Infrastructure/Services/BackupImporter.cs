@@ -98,6 +98,7 @@ internal sealed class BackupImporter : BackgroundService
                     description ?? "No description for this video...");
 
                 dbContext.Bookmarks.Add(b);
+                dbContext.Channels.Add(channel);
 
                 //TODO: make this an option
                 //update fields

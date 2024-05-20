@@ -127,3 +127,52 @@ Content-Type: application/json
 {
   "TagsId": ["E66BCE05-D777-478B-904F-4DF3D2F1699B", "d44ec9a7-20c4-4eed-9041-3411d0a5f0b1"]
 }
+
+### Get all channels
+GET {{TubeManager.API}}/channels
+
+### Get single channel
+GET {{TubeManager.API}}/channels/{{id}}
+
+### Create channel v1 (id = id)
+POST {{TubeManager.API}}/channels
+Content-Type: application/json
+
+{
+  "ChannelId":"UCxHAlbZQNFU2LgEtiqd2Maw",
+  "Name":"C++ Weekly With Jason Turner",
+  "Description":"Making C++ Fun and Accessible."
+}
+
+### Create channel v2 (id = full address )
+POST {{TubeManager.API}}/channels
+Content-Type: application/json
+
+{
+  "ChannelId":"https://www.youtube.com/channel/UCxHAlbZQNFU2LgEtiqd2Maw",
+  "Name":"C++ Weekly With Jason Turner",
+  "Description":"Making C++ Fun and Accessible."
+}
+
+### Create channel v3 (id = new format, not present in imported bookmarks, used by YT )
+POST {{TubeManager.API}}/channels
+Content-Type: application/json
+
+{
+  "ChannelId":"@cppweekly",
+  "Name":"C++ Weekly With Jason Turner",
+  "Description":"Making C++ Fun and Accessible."
+}
+
+### Create channel v1 (id = new format, not present in imported bookmarks, used by YT )
+PUT {{TubeManager.API}}/channels/{{guid}}
+Content-Type: application/json
+
+{
+  "ChannelId":"@cppweekly",
+  "Name":"C++ Weekly With Jason Turner",
+  "Description":"Making C++ Fun and Accessible."
+}
+
+### Delete specific Channel
+DELETE {{TubeManager.API}}/channels/{{guid}}

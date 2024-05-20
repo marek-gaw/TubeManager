@@ -4,7 +4,7 @@ using TubeManager.Core.DTO;
 
 namespace TubeManager.App.Services;
 
-public sealed class ChannelsService: IChannelService
+public sealed class ChannelsService: IChannelsService
 {
     public IEnumerable<ChannelDTO> Get()
     {

@@ -3,7 +3,7 @@ using TubeManager.Core.DTO;
 
 namespace TubeManager.App.Abstractions;
 
-public interface IChannelService
+public interface IChannelsService
 {
     IEnumerable<ChannelDTO> Get();
     ChannelDTO Get(Guid id);

@@ -69,7 +69,7 @@ internal sealed class BackupImporter : BackgroundService
 
                 var ChannelTitle = ob["channel"]["title"];
 
-                Channel channel = new Channel(new Guid(),
+                Channel channel = new Channel(Guid.NewGuid(),
                     (string)ob["channel"]["id"],
                     (string)ob["channel"]["title"],
                     (string?)ob["channel"]?["description"]);

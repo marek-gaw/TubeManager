@@ -1,0 +1,89 @@
+<div class="container mt-5 col-lg-8">
+  <div class="row row-cols-4">
+    <div class="col"></div>
+    <div class="col"></div>
+    <div class="col"></div>
+    <div class="col"><button type="button" class="btn btn-primary" data-bs-toggle="modal"
+        data-bs-target="#channelCreateModal">Add channel</button></div>
+  </div>
+  <table class="table table-hover table-striped">
+    <thead>
+      <tr class="text-center">
+        <th class="col-sm-3" scope="col">Channel</th>
+        <th class="col-sm-3" scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let _channel of channels" class="text-center">
+        <td class="align-middle">{{_channel.name}}</td>
+        <td class="align-middle">
+          <h4><i class="bi bi-pen mx-1" data-bs-toggle="modal" data-bs-target="#channelEditModal" data-bs-input-title="@mdo"
+              (click)="onEditChannel(_channel)"></i>
+            <i class="bi bi-trash mx-1" (click)="onDeleteChannel(_channel)"></i>
+          </h4>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Modal for create channel -->
+<div class="modal fade" id="channelCreateModal" tabindex="-1" aria-labelledby="channelCreateModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="channelCreateModalLabel">Add new channel</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-sm-6">
+            <label for="channelNameInput" class="col-form-label">Name</label>
+          </div>
+          <div class="col-sm-6">
+            <input type="text" class="col-form-label" name="channelNameInput" placeholder="channel name..." #channelName>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <label for="channelIdInput" class="col-form-label">Channel Id</label>
+          </div>
+          <div class="col-sm-6">
+            <input type="text" class="col-form-label" name="channelIdInput" placeholder="channel id..." #channelId>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="onAddChannel(channelName.value, channelId.value)"
+          data-bs-dismiss="modal">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal for create channel -->
+<div class="modal fade" id="channelEditModal" tabindex="-1" aria-labelledby="channelEditModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="channelEditModalLabel">Edit channel</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-sm-6">
+            <label for="channelNameInput" class="col-form-label">Name</label>
+          </div>
+          <div class="col-sm-6">
+            <input type="text" class="col-form-label" name="channelNameInput" placeholder="{{editedChannel.name}}"
+              #channelEditName>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="onSaveEditedChannel(editedChannel.id, channelEditName.value, editedChannel.channelId, editedChannel.description)"
+          data-bs-dismiss="modal">Save</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -40,7 +40,7 @@ public class CategoriesController: ControllerBase
             return BadRequest();
         }
         
-        return CreatedAtAction(nameof(Post),new {id}, new { id, command.Name});
+        return CreatedAtAction(nameof(Post),new {id}, new { id, command.Name, command.Description});
     }
 
     [HttpPut("{id:guid}")]

@@ -13,6 +13,8 @@ internal static class Extensions
         services.AddDbContext<BookmarksDbContext>(x => x.UseSqlite(connString));
         services.AddScoped<IBookmarkRepository, SqliteBookmarkRepository>();
         services.AddScoped<ITagsRepository, SqliteTagsRepository>();
+        services.AddScoped<IChannelsRepository, SqliteChannelsRepository>();
+        services.AddScoped<ICategoryRepository, SqliteCategoryRepository>();
         return services;
     }
 }

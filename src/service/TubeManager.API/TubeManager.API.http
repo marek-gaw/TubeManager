@@ -176,3 +176,34 @@ Content-Type: application/json
 
 ### Delete specific Channel
 DELETE {{TubeManager.API}}/channels/{{guid}}
+
+
+### Get all Categories
+GET {{TubeManager.API}}/category
+
+### Get specific Category
+GET {{TubeManager.API}}/category/33dac281-ea37-413f-a6b6-21fbe2fe34d5
+
+### Create Category
+POST {{TubeManager.API}}/category
+Content-Type: application/json
+
+{
+  "name": "dotnet",
+  "description": "Programowanie w .NET"
+}
+
+### Change Category
+PUT {{TubeManager.API}}/category/33dac281-ea37-413f-a6b6-21fbe2fe34d5
+Content-Type: application/json
+
+{
+  "name": ".NET",
+  "description": "Programowanie w .NET"
+}
+
+### Delete Category
+DELETE {{TubeManager.API}}/category/dbc48dbb-5afd-4b13-b2bf-297e1aef832f
+
+### Add Bookmark to the Category
+PUT {{TubeManager.API}}/bookmarks/001D30C7-F80B-499C-834A-04D011CA42AE/category/dbc48dbb-5afd-4b13-b2bf-297e1aef832f

@@ -16,6 +16,7 @@ public static class Extensions
         services.AddSingleton<ChannelWriter<string>>(svc => svc.GetRequiredService<Channel<string>>().Writer);
         services.AddScoped<ITagsService, TagsService>();
         services.AddScoped<IChannelsService, ChannelsService>();
+        services.AddScoped<ICategoryService, CategoryService>();
         return services;
     }
 }

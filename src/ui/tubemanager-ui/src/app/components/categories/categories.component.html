@@ -1,1 +1,102 @@
-<p>categories works!</p>
+<div class="container mt-5 col-lg-8">
+  <div class="row row-cols-4">
+    <div class="col"></div>
+    <div class="col"></div>
+    <div class="col"></div>
+    <div class="col"><button type="button" class="btn btn-primary" data-bs-toggle="modal"
+        data-bs-target="#categoryCreateModal">New category</button></div>
+  </div>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">No.</th>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let category of categories; index as i" class="text-center">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ category.name }}</td>
+        <td>{{ category.description }}</td>
+        <td>
+          <h4><i class="bi bi-pen mx-1" data-bs-toggle="modal" data-bs-target="#categoryEditModal" data-bs-input-title="@mdo"
+              (click)="onEditCategory(category)"></i>
+            <i class="bi bi-trash mx-1" (click)="onDeleteCategory(category)"></i>
+          </h4>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Modal for create  -->
+<div class="modal fade" id="categoryCreateModal" tabindex="-1" aria-labelledby="categoryCreateModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="categoryCreateModalLabel">Add new category</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row my-2">
+          <div class="col-sm-6 text-end">
+            <label for="categoryNameInput" class="col-form-label">Name</label>
+          </div>
+          <div class="col-sm-6">
+            <input type="text" class="col-form-label" name="categoryNameInput" placeholder="category name..." #categoryName>
+          </div>
+        </div>
+        <div class="row my-2">
+          <div class="col-sm-6 text-end">
+            <label for="categoryDescriptionInput" class="col-form-label">Description</label>
+          </div>
+          <div class="col-sm-6">
+            <input type="text" class="col-form-label" name="categoryDescriptionInput" placeholder="category description..." #categoryDescription>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="onAddCategory(categoryName.value, categoryDescription.value)"
+          data-bs-dismiss="modal">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal for edit -->
+<div class="modal fade" id="categoryEditModal" tabindex="-1" aria-labelledby="categoryEditModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="categoryEditModalLabel">Edit category</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row my-2">
+          <div class="col-sm-6 text-end">
+            <label for="categoryNameInput" class="col-form-label">Name</label>
+          </div>
+          <div class="col-sm-6">
+            <input type="text" class="col-form-label" name="categoryNameInput" placeholder="{{editedCategory.name}}"
+              #categoryEditName>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6 text-end">
+            <label for="categoryDescriptionInput" class="col-form-label">Description</label>
+          </div>
+          <div class="col-sm-6">
+            <input type="text" class="col-form-label" name="categoryDescriptionInput" placeholder="category description..." #categoryDescription>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="onSaveEditedCqtegory(editedCategory.id, categoryEditName.value, editedCategory.description)"
+          data-bs-dismiss="modal">Save</button>
+      </div>
+    </div>
+  </div>
+</div>

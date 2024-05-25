@@ -12,6 +12,8 @@ public sealed class Bookmark
     public string Description { get; set; }
     public List<Tag> Tags { get; } = [];
     public List<BookmarkTag> BookmarkTags { get; set; } = [];
+    
+    public Category? Category { get; set; }
 
     public Bookmark(Guid id, string title, Url videoUrl, Url thumbnailUrl, string channel, string description)
     {

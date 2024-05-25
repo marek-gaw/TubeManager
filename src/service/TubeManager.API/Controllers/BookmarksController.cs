@@ -3,6 +3,7 @@ using TubeManager.App.Commands;
 using TubeManager.Core.DTO;
 using TubeManager.App.Abstractions;
 using TubeManager.App.Commands.Bookmarks;
+using TubeManager.App.Repositories;
 
 namespace TubeManager.API.Controllers;
 
@@ -116,6 +117,22 @@ public class BookmarksController : ControllerBase
             var status = _bookmarksService.Update(command with { BookmarkId = id });
             bookmark = _bookmarksService.Get(id);
             return Accepted(bookmark);
+        }
+        return BadRequest();
+    }
+
+    [HttpPost("{bookmarkId:guid}/category/{categoryId:guid}")]
+    public ActionResult<BookmarkDTO> Post(Guid bookmarkId, Guid categoryId)
+    {
+        var bookmark = _bookmarksService.Get(bookmarkId);
+        if (bookmark is not null)
+        {
+            AddCategory command = new AddCategory(
+                bookmarkId: bookmarkId,
+                categoryId: categoryId
+            );
+            _bookmarksService.Update(command);
+            return Ok();
         }
         return BadRequest();
     }

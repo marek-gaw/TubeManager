@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TubeManager.Infrastructure.DataAccessLayer;
 
@@ -10,9 +11,11 @@ using TubeManager.Infrastructure.DataAccessLayer;
 namespace TubeManager.Infrastructure.DataAccessLayer.Migrations
 {
     [DbContext(typeof(BookmarksDbContext))]
-    partial class BookmarksDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240525113535_AddCategoyToBookmark")]
+    partial class AddCategoyToBookmark
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.3");

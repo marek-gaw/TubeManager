@@ -6,18 +6,19 @@ using TubeManager.Core.DTO;
 using TubeManager.Core.Entities;
 using TubeManager.Core.Mappers;
 
-
 namespace TubeManager.App.Services;
 
 public class BookmarksService : IBookmarksService
 {
     private readonly IBookmarkRepository _bookmarksRepository;
     private readonly ITagsRepository _tagsRepository;
+    private readonly ICategoryRepository _categoryRepository;
 
-    public BookmarksService(IBookmarkRepository bookmarkRepository, ITagsRepository tagsRepository)
+    public BookmarksService(IBookmarkRepository bookmarkRepository, ITagsRepository tagsRepository, ICategoryRepository categoryRepository)
     {
         _bookmarksRepository = bookmarkRepository;
         _tagsRepository = tagsRepository;
+        _categoryRepository = categoryRepository;
     }
     
     public IEnumerable<BookmarkDTO> Get(int page, int pageSize)
@@ -155,5 +156,20 @@ public class BookmarksService : IBookmarksService
 
         }
         return false;
+    }
+
+    public bool Update(AddCategory command)
+    {
+        var bookmark = _bookmarksRepository.Get(command.bookmarkId);
+        var category = _categoryRepository.Get(command.categoryId);
+
+        if ((bookmark is null) || (category is null))
+        {
+            return false;
+        }
+        
+        bookmark.Category = category;
+        _bookmarksRepository.Update(bookmark);
+        return true;
     }
 }

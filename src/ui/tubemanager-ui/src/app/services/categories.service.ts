@@ -23,6 +23,10 @@ export class CategoriesService {
     return this.http.get<Category[]>(baseUrl);
   }
 
+  get(id: string): Observable<Category> {
+    return this.http.get<Category>(`baseUrl/${id}`);
+  }
+
   create(name: string, description: string): Observable<Category> {
     const category: Category = { 
       id: uuidv4(),

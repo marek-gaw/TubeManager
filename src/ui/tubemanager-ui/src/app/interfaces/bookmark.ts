@@ -8,4 +8,5 @@ export interface Bookmark {
     description: string;
     thumbnailUrl: string;
     tags: Tags[];
+    category: string;
   }

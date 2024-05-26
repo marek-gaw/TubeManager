@@ -4,6 +4,8 @@ import { Bookmark } from '../../interfaces/bookmark';
 import { NgFor } from '@angular/common';
 import { Tags } from '../../interfaces/tags';
 import { TagsService } from '../../services/tags.service';
+import { CategoriesService } from '../../services/categories.service';
+import { Category } from '../../interfaces/category';
 
 @Component({
   selector: 'app-bookmark-details-modal',
@@ -17,15 +19,23 @@ import { TagsService } from '../../services/tags.service';
 })
 export class BookmarkDetailsModalComponent {
   activeModal = inject(NgbActiveModal);
-  @Input() bookmark?: Bookmark;
+  @Input() bookmark?: Bookmark | undefined = {
+    id: '',
+    title: '',
+    channel: '',
+    videoUrl: '',
+    description: '',
+    thumbnailUrl: '',
+    tags: [],
+    category: ''
+  };
   tags: Tags[] = [];
+  categories: Category[] = [];
   @Output() updatedTags = new EventEmitter<Tags[]>();
 
-  constructor(private tagsService: TagsService) { }
+  constructor(private tagsService: TagsService, private categoriesService: CategoriesService) { }
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void { }
 
   onShowDropdown(): void {
     console.log(`Dropdown opened`)
@@ -38,7 +48,6 @@ export class BookmarkDetailsModalComponent {
   onKeyUp(ev: KeyboardEvent): void {
     console.log(`event:${ev}`);
     var value = ev.key;
-
   }
 
   onDropdownPosClicked(tag: Tags): void {
@@ -48,9 +57,33 @@ export class BookmarkDetailsModalComponent {
 
   onClose(): void {
     // console.log(`onClose: ${JSON.stringify(this.bookmark)}`);
-    console.log(`onClose: tags to update: ${JSON.stringify(this.bookmark?.tags)}`)
+    console.log(`onClose: tags to update: ${JSON.stringify(this.bookmark?.tags)}, category to set: ${this.bookmark?.category}`)
     // this.updatedTags.emit(this.bookmark?.tags);
-    this.activeModal.close(this.bookmark?.tags);
-    
+    this.activeModal.close(this.bookmark);
+  }
+
+  // categories
+  onShowDropdownCategory(): void {
+    console.log(`Category Dropdown opened`)
+    this.categoriesService.getAll().subscribe(data => {
+      this.categories = data;
+      console.log(data);
+    })
+  }
+
+  onCategoryDropdownPosClicked(category: Category): void {
+    console.log(`tag: ${category.id} | ${category.name}`);
+    (this.bookmark as Bookmark).category = category.id;
+  }
+
+  categoryIdToName(categoryId?: string): string {
+    let catName: string = '';
+    if (categoryId == undefined) {
+      return '';
+    }
+    // this.categoriesService.get(categoryId).subscribe(data => {
+    //   catName = data.name;
+    // });
+    return catName;
   }
 }

@@ -27,7 +27,19 @@
           </h5>
         </div>
         <div class="col-md-6 float-md-end mb-3 ms-md-3">
-          
+          <div ngbDropdown class="d-inline-block">
+            <button type="button" class="btn btn-outline-primary" id="categoryDropdown" ngbDropdownToggle
+              (click)="onShowDropdownCategory()">Categories</button>
+            <div ngbDropdownMenu aria-labelledby="categoryDropdown">
+              <input type="text" placeholder="Search.." id="myInput" (keyup)="onKeyUp($event)">
+              <button *ngFor="let category of categories" ngbDropdownItem (click)="onCategoryDropdownPosClicked(category)">{{category.name}}</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 float-md-end mb-3 ms-md-3">
+          <h5>
+            <span class="badge rounded-pill bg-primary ms-2">{{ categoryIdToName(bookmark?.category) }}</span>
+          </h5>
         </div>
         <p [innerHtml]=bookmark?.description></p>
         <!-- </div> -->

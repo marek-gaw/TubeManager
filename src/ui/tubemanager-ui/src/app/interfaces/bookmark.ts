@@ -1,3 +1,4 @@
+import { Category } from "./category";
 import { Tags } from "./tags";
 
 export interface Bookmark {
@@ -8,5 +9,5 @@ export interface Bookmark {
     description: string;
     thumbnailUrl: string;
     tags: Tags[];
-    category: string;
+    category: Category;
   }

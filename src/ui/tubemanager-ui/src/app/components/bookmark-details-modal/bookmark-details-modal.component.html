@@ -17,7 +17,8 @@
               (click)="onShowDropdown()">Tags</button>
             <div ngbDropdownMenu aria-labelledby="tagsDropdown">
               <input type="text" placeholder="Search.." id="myInput" (keyup)="onKeyUp($event)">
-              <button *ngFor="let tag of tags" ngbDropdownItem (click)="onDropdownPosClicked(tag)">{{tag.title}}</button>
+              <button *ngFor="let tag of tags" ngbDropdownItem
+                (click)="onDropdownPosClicked(tag)">{{tag.title}}</button>
             </div>
           </div>
         </div>
@@ -32,13 +33,14 @@
               (click)="onShowDropdownCategory()">Categories</button>
             <div ngbDropdownMenu aria-labelledby="categoryDropdown">
               <input type="text" placeholder="Search.." id="myInput" (keyup)="onKeyUp($event)">
-              <button *ngFor="let category of categories" ngbDropdownItem (click)="onCategoryDropdownPosClicked(category)">{{category.name}}</button>
+              <button *ngFor="let category of categories" ngbDropdownItem
+                (click)="onCategoryDropdownPosClicked(category)">{{category.name}}</button>
             </div>
           </div>
         </div>
         <div class="col-md-6 float-md-end mb-3 ms-md-3">
           <h5>
-            <span class="badge rounded-pill bg-primary ms-2">{{ categoryIdToName(bookmark?.category) }}</span>
+            <span class="badge rounded-pill bg-primary ms-2">{{ bookmark?.category?.name }}</span>
           </h5>
         </div>
         <p [innerHtml]=bookmark?.description></p>

@@ -27,7 +27,7 @@ export class BookmarkDetailsModalComponent {
     description: '',
     thumbnailUrl: '',
     tags: [],
-    category: ''
+    category: { id: '', name: '', description: '' }
   };
   tags: Tags[] = [];
   categories: Category[] = [];
@@ -73,17 +73,6 @@ export class BookmarkDetailsModalComponent {
 
   onCategoryDropdownPosClicked(category: Category): void {
     console.log(`tag: ${category.id} | ${category.name}`);
-    (this.bookmark as Bookmark).category = category.id;
-  }
-
-  categoryIdToName(categoryId?: string): string {
-    let catName: string = '';
-    if (categoryId == undefined) {
-      return '';
-    }
-    // this.categoriesService.get(categoryId).subscribe(data => {
-    //   catName = data.name;
-    // });
-    return catName;
+    (this.bookmark as Bookmark).category = category;
   }
 }

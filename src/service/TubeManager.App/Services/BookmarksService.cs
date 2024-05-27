@@ -35,7 +35,8 @@ public class BookmarksService : IBookmarksService
             ThumbnailUrl = b.ThumbnailUrl,
             Channel = b.Channel,
             Description = b.Description,
-            Tags = Mappers.ToArray(b.Tags)
+            Tags = Mappers.ToArray(b.Tags),
+            Category = new CategoryDTO(b.Category.Id, b.Category.Name, b.Category.Description)
         });
         return dto;
     }
@@ -44,15 +45,37 @@ public class BookmarksService : IBookmarksService
     {
         return _bookmarksRepository
             .GetAll()
-            .Select(b => new BookmarkDTO
+            .Select(b =>
             {
-                Id = b.Id,
-                Title = b.Title,
-                VideoUrl = b.VideoUrl,
-                ThumbnailUrl = b.ThumbnailUrl,
-                Channel = b.Channel,
-                Description = b.Description,
-                Tags = Mappers.ToArray(b.Tags)
+                if (b.Category is null)
+                {
+                    return new BookmarkDTO
+                    {
+                        Id = b.Id,
+                        Title = b.Title,
+                        VideoUrl = b.VideoUrl,
+                        ThumbnailUrl = b.ThumbnailUrl,
+                        Channel = b.Channel,
+                        Description = b.Description,
+                        Tags = Mappers.ToArray(b.Tags),
+                        Category = null
+                    };
+                }
+                else
+                {
+                    return new BookmarkDTO
+                    {
+                        Id = b.Id,
+                        Title = b.Title,
+                        VideoUrl = b.VideoUrl,
+                        ThumbnailUrl = b.ThumbnailUrl,
+                        Channel = b.Channel,
+                        Description = b.Description,
+                        Tags = Mappers.ToArray(b.Tags),
+                        Category = new CategoryDTO(b.Category.Id, b.Category.Name, b.Category.Description)
+                    };
+                }
+
             });
     }
 

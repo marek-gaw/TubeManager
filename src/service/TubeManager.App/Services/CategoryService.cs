@@ -19,12 +19,7 @@ public class CategoryService: ICategoryService
     {
         return _categoryRepository
             .GetAll()
-            .Select(c => new CategoryDTO
-            {
-                Id = c.Id,
-                Name = c.Name,
-                Description = c.Description
-            });
+            .Select(c => new CategoryDTO(c.Id, c.Name, c.Description));
     }
 
     public CategoryDTO? Get(Guid id)

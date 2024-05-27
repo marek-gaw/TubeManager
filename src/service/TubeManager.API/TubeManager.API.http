@@ -182,7 +182,7 @@ DELETE {{TubeManager.API}}/channels/{{guid}}
 GET {{TubeManager.API}}/category
 
 ### Get specific Category
-GET {{TubeManager.API}}/category/33dac281-ea37-413f-a6b6-21fbe2fe34d5
+GET {{TubeManager.API}}/category/ef69b659-a6a6-4c31-9660-571299f356ea
 
 ### Create Category
 POST {{TubeManager.API}}/category
@@ -206,4 +206,4 @@ Content-Type: application/json
 DELETE {{TubeManager.API}}/category/dbc48dbb-5afd-4b13-b2bf-297e1aef832f
 
 ### Add Category to Bookmark
-POST {{TubeManager.API}}/bookmarks/001d30c7-f80b-499c-834a-04d011ca42ae/category/ec2d62df-903e-4100-a5c6-091c4071e635
+POST {{TubeManager.API}}/bookmarks/001d30c7-f80b-499c-834a-04d011ca42ae/category/5b0ae895-c0e8-4ea7-9344-5bb11597ef97

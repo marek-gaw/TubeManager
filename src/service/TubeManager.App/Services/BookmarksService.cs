@@ -25,19 +25,39 @@ public class BookmarksService : IBookmarksService
     {
         var dto = _bookmarksRepository
             .GetAll()
-            .Skip((page-1)*pageSize)
+            .Skip((page - 1) * pageSize)
             .Take(pageSize)
-            .Select(b => new BookmarkDTO
-        {
-            Id = b.Id,
-            Title = b.Title,
-            VideoUrl = b.VideoUrl,
-            ThumbnailUrl = b.ThumbnailUrl,
-            Channel = b.Channel,
-            Description = b.Description,
-            Tags = Mappers.ToArray(b.Tags),
-            Category = new CategoryDTO(b.Category.Id, b.Category.Name, b.Category.Description)
-        });
+            .Select(b =>
+            {
+                if (b.Category is null)
+                {
+                    return new BookmarkDTO
+                    {
+                        Id = b.Id,
+                        Title = b.Title,
+                        VideoUrl = b.VideoUrl,
+                        ThumbnailUrl = b.ThumbnailUrl,
+                        Channel = b.Channel,
+                        Description = b.Description,
+                        Tags = Mappers.ToArray(b.Tags),
+                        Category = null
+                    };
+                }
+                else
+                {
+                    return new BookmarkDTO
+                    {
+                        Id = b.Id,
+                        Title = b.Title,
+                        VideoUrl = b.VideoUrl,
+                        ThumbnailUrl = b.ThumbnailUrl,
+                        Channel = b.Channel,
+                        Description = b.Description,
+                        Tags = Mappers.ToArray(b.Tags),
+                        Category = new CategoryDTO(b.Category.Id, b.Category.Name, b.Category.Description)
+                    };
+                }
+            });
         return dto;
     }
 

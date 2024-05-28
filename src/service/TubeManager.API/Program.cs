@@ -8,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(name: specificOrgins,
-        policy  =>
+        policy =>
         {
             policy.WithOrigins("http://localhost:4200")
                 .AllowAnyMethod()
@@ -21,9 +21,17 @@ builder.Services
     .AddApp()
     .AddControllers();
 
+builder.Services.AddOpenApiDocument();
+
 var app = builder.Build();
 app.UseRouting();
 app.UseCors(specificOrgins);
 app.MapControllers();
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseOpenApi();
+    app.UseSwaggerUi();
+}
 
 app.Run();

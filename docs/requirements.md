@@ -8,11 +8,11 @@
    - [ ] User can see a summary of the import process: how many bookmarks were present, how many of them have been imported etc.
 - [ ] Archive import
    - [x] User can import bookmarks
-   - [ ] User can import channels
+   - [x] User can import channels
 - [ ] Manage data
-   - [ ] Each bookmark might be assigned to single category.
-   - [ ] User can assign many tags to single bookmark.
-   - [ ] The same tag might be assigned to many bookmarks.
+   - [x] Each bookmark might be assigned to single category.
+   - [x] User can assign many tags to single bookmark.
+   - [x] The same tag might be assigned to many bookmarks.
    - [ ] User can add single bookmark manually
 - [ ] Display
    - [x] Bookmarks are displayed as cards with: thumbnail, title and part of the description

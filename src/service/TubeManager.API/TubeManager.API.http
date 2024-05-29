@@ -75,7 +75,7 @@ Content-Type: application/json
 @tag-id={{tag.response.body.id}}
 
 ### Change Tag
-PUT {{TubeManager.API}}/tags?id=e7e2193e-a6a3-4442-84ee-2781f327010b
+PUT {{TubeManager.API}}/tags?e7e2193e-a6a3-4442-84ee-2781f327010b
 Content-Type: application/json
 
 {
@@ -83,7 +83,7 @@ Content-Type: application/json
 }
 
 ### Delete Tag
-DELETE {{TubeManager.API}}/tags?id=dbc48dbb-5afd-4b13-b2bf-297e1aef832f
+DELETE {{TubeManager.API}}/tags/dbc48dbb-5afd-4b13-b2bf-297e1aef832f
 
 ### Add single Tag to a Bookmark
 PUT {{TubeManager.API}}/bookmarks/001D30C7-F80B-499C-834A-04D011CA42AE/tags

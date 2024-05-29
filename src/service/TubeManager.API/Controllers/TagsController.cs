@@ -37,8 +37,8 @@ public class TagsController: ControllerBase
         return CreatedAtAction(nameof(Post),new {id}, new { id, command.Title});
     }
 
-    [HttpPut]
-    public ActionResult Put([FromQuery]Guid id, [FromBody]UpdateTag command)
+    [HttpPut("{id:guid}")]
+    public ActionResult Put(Guid id, [FromBody]UpdateTag command)
     {
         var status = _tagsService.Update(command with { Id = id });
         if (!status)
@@ -49,8 +49,8 @@ public class TagsController: ControllerBase
         return CreatedAtAction(nameof(Put),new {id}, new { id, command.Title});
     }
 
-    [HttpDelete]
-    public ActionResult Delete([FromQuery] Guid id)
+    [HttpDelete("{id:guid}")]
+    public ActionResult Delete(Guid id)
     {
         var existing = _tagsService.Delete(new DeleteTag(id));
         if (!existing)

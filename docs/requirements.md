@@ -13,6 +13,7 @@
    - [x] Each bookmark might be assigned to single category.
    - [x] User can assign many tags to single bookmark.
    - [x] The same tag might be assigned to many bookmarks.
+   - [ ] User might remove tags from a bookmark
    - [ ] User can add single bookmark manually
 - [ ] Display
    - [x] Bookmarks are displayed as cards with: thumbnail, title and part of the description

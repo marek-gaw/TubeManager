@@ -31,11 +31,11 @@ export class TagsService {
   edit(tag: Tags): Observable<Tags> {
     const options = { params: new HttpParams().set('id', tag.id) };
     const body = { title: tag.title };
-    return this.http.put<Tags>(baseUrl, body, options)
+    return this.http.put<Tags>(`baseUrl/${tag.id}`, body, options)
   }
 
   delete(tag: Tags): Observable<Tags> {
     const options = { params: new HttpParams().set('id', tag.id) };
-    return this.http.delete<Tags>(baseUrl, options);
+    return this.http.delete<Tags>(`baseUrl/${tag.id}`, options);
   }
 }

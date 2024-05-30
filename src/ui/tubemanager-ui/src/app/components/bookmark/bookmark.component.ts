@@ -55,13 +55,13 @@ export class BookmarkComponent {
       scrollable: true
     });
     modalRef.componentInstance.bookmark = b;
-    modalRef.result.then((result: Tags[]) => {
+    modalRef.result.then((result: Bookmark) => {
       if (result) {
         console.log(`modalRef.result.then: ${JSON.stringify(result)}`);
-        modalRef.componentInstance.bookmark.tags = result;
+        modalRef.componentInstance.bookmark.tags = result.tags;
 
         var tags: string[] = [];
-        result.forEach(i => {
+        result.tags.forEach(i => {
           console.log(`i.id: ${i.id}`);
           tags.push(i.id);
         });
@@ -70,7 +70,7 @@ export class BookmarkComponent {
           tags
         }
 
-        console.log(`data: ${JSON.stringify(payload)}`);
+        console.log(`data: ${payload}`);
 
         this.bookmarksService.update(modalRef.componentInstance.bookmark.id, payload).subscribe(data => {
           console.log(data);

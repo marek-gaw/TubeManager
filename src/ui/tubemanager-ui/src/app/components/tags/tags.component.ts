@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { TagsService } from '../../services/tags.service';
 import { Tags } from '../../interfaces/tags';
 import { NgFor } from '@angular/common';
-import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-tags',

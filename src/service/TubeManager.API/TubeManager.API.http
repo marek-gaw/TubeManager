@@ -206,4 +206,25 @@ Content-Type: application/json
 DELETE {{TubeManager.API}}/category/dbc48dbb-5afd-4b13-b2bf-297e1aef832f
 
 ### Add Category to Bookmark
-POST {{TubeManager.API}}/bookmarks/001d30c7-f80b-499c-834a-04d011ca42ae/category/5b0ae895-c0e8-4ea7-9344-5bb11597ef97
+PUT {{TubeManager.API}}/bookmarks/001d30c7-f80b-499c-834a-04d011ca42ae/category
+Content-Type: application/json
+
+{
+  "category": "5b0ae895-c0e8-4ea7-9344-5bb11597ef97"
+}
+
+### Change category in Bookmark
+PUT {{TubeManager.API}}/bookmarks/001d30c7-f80b-499c-834a-04d011ca42ae/category
+Content-Type: application/json
+
+{
+  "category": "EF69B659-A6A6-4C31-9660-571299F356EA"
+}
+
+### Add Remove from Bookmark
+PUT {{TubeManager.API}}/bookmarks/001d30c7-f80b-499c-834a-04d011ca42ae/category
+Content-Type: application/json
+
+{
+  "category": ""
+}

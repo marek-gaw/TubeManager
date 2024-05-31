@@ -15,6 +15,7 @@ public interface IBookmarksService
     bool Delete(DeleteBookmark command);
     int GetElementsCount();
     bool Update(DeleteTagFromBookmark command);
-    bool Update(AddCategory command);
+    bool Update(UpdateCategoryForBookmark command);
+    bool Update(ResetCategoryForBookmark command);
 }
 

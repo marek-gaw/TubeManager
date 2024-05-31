@@ -1,4 +1,6 @@
+using System.Security.Cryptography.X509Certificates;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using TubeManager.App.Commands;
 using TubeManager.Core.DTO;
 using TubeManager.App.Abstractions;
@@ -85,7 +87,7 @@ public class BookmarksController : ControllerBase
     }
 
     [HttpPut("{id:guid}/tags")]
-    public ActionResult Put(Guid id, [FromBody]UpdateTagsForBookmark command)
+    public ActionResult Put(Guid id, [FromBody] UpdateTagsForBookmark command)
     {
         var bookmark = _bookmarksService.Get(id);
         if (bookmark is not null)
@@ -118,22 +120,30 @@ public class BookmarksController : ControllerBase
             bookmark = _bookmarksService.Get(id);
             return Accepted(bookmark);
         }
+
         return BadRequest();
     }
 
-    [HttpPost("{bookmarkId:guid}/category/{categoryId:guid}")]
-    public ActionResult<BookmarkDTO> Post(Guid bookmarkId, Guid categoryId)
+    [HttpPut("{bookmarkId:guid}/category")]
+    public ActionResult<BookmarkDTO> Put(Guid bookmarkId, string? categoryId)
     {
         var bookmark = _bookmarksService.Get(bookmarkId);
         if (bookmark is not null)
         {
-            AddCategory command = new AddCategory(
-                bookmarkId: bookmarkId,
-                categoryId: categoryId
-            );
-            _bookmarksService.Update(command);
-            return Ok();
+            if (categoryId is not null)
+            {
+                var command = new UpdateCategoryForBookmark(bookmarkId, new Guid(categoryId));
+                _bookmarksService.Update(command);
+                return Ok();
+            }
+            else
+            {
+                var command = new ResetCategoryForBookmark(bookmarkId);
+                _bookmarksService.Update(command);
+                return Ok();
+            }
         }
+
         return BadRequest();
     }
 }

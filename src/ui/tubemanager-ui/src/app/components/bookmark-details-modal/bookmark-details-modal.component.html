@@ -24,7 +24,10 @@
         </div>
         <div class="col-md-6 float-md-end mb-3 ms-md-3">
           <h5>
-            <span class="badge rounded-pill bg-primary ms-2" *ngFor="let tag of bookmark?.tags">{{tag.title}}</span>
+            <button type="button" class="btn btn-primary btn-sm position-relative" *ngFor="let tag of bookmark?.tags"
+              (click)="onTagBadgeClick(tag)">
+              {{tag.title}}
+            </button>
           </h5>
         </div>
         <div class="col-md-6 float-md-end mb-3 ms-md-3">

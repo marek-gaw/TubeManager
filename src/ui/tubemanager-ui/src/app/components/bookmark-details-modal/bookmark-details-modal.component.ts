@@ -55,6 +55,13 @@ export class BookmarkDetailsModalComponent {
     this.bookmark?.tags.push(tag);
   }
 
+  onTagBadgeClick(tag: Tags): void {
+    console.log(`onTagBadgeClick: ${JSON.stringify(tag)}`);
+    const idx = this.tags.indexOf(tag);
+    this.tags.splice(idx, 1);
+    // this.bookmark?
+  }
+
   onClose(): void {
     // console.log(`onClose: ${JSON.stringify(this.bookmark)}`);
     console.log(`onClose: tags to update: ${JSON.stringify(this.bookmark?.tags)}, category to set: ${this.bookmark?.category}`)

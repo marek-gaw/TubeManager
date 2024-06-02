@@ -1,5 +1,6 @@
 using TubeManager.App;
 using TubeManager.Infrastructure;
+using Serilog;
 
 var specificOrgins = "_myAllowSpecificOrigins";
 
@@ -22,6 +23,12 @@ builder.Services
     .AddControllers();
 
 builder.Services.AddOpenApiDocument();
+
+builder.Host.UseSerilog((context, loggerConfiguration) =>
+{
+    loggerConfiguration.WriteTo
+        .Console();
+});
 
 var app = builder.Build();
 app.UseRouting();

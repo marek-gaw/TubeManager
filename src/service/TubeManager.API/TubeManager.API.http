@@ -17,7 +17,7 @@ GET {{TubeManager.API}}/bookmarks?page=2&pageSize=2
 GET {{TubeManager.API}}/bookmarks?page=1&pageSize=4
 
 ###
-GET {{TubeManager.API}}/bookmarks/001d30c7-f80b-499c-834a-04d011ca42ae
+GET {{TubeManager.API}}/bookmarks/0008e54a-2bc4-441d-b9c7-61ac66ae7f0b
 
 ###
 POST {{TubeManager.API}}/bookmarks
@@ -86,7 +86,7 @@ Content-Type: application/json
 DELETE {{TubeManager.API}}/tags/dbc48dbb-5afd-4b13-b2bf-297e1aef832f
 
 ### Add single Tag to a Bookmark
-PUT {{TubeManager.API}}/bookmarks/001D30C7-F80B-499C-834A-04D011CA42AE/tags
+PUT {{TubeManager.API}}/bookmarks/0008e54a-2bc4-441d-b9c7-61ac66ae7f0b/tags
 Content-Type: application/json
 
 {
@@ -94,7 +94,7 @@ Content-Type: application/json
 }
 
 ### Add another single Tag to a Bookmark
-PUT {{TubeManager.API}}/bookmarks/001D30C7-F80B-499C-834A-04D011CA42AE/tags
+PUT {{TubeManager.API}}/bookmarks/0008e54a-2bc4-441d-b9c7-61ac66ae7f0b/tags
 Content-Type: application/json
 
 {
@@ -102,7 +102,7 @@ Content-Type: application/json
 }
 
 ### Add multiple Tags to a Bookmark
-PUT {{TubeManager.API}}/bookmarks/001D30C7-F80B-499C-834A-04D011CA42AE/tags
+PUT {{TubeManager.API}}/bookmarks/0008e54a-2bc4-441d-b9c7-61ac66ae7f0b/tags
 Content-Type: application/json
 
 {
@@ -110,18 +110,18 @@ Content-Type: application/json
 }
 
 ### Get all tags for a given bookmark
-GET {{TubeManager.API}}/bookmarks/001D30C7-F80B-499C-834A-04D011CA42AE/tags
+GET {{TubeManager.API}}/bookmarks/0008e54a-2bc4-441d-b9c7-61ac66ae7f0b/tags
 
-### Remove tag from bookmark
-DELETE {{TubeManager.API}}/bookmarks/001D30C7-F80B-499C-834A-04D011CA42AE/tags
+### Remove tag from bookmark (Azure)
+DELETE {{TubeManager.API}}/bookmarks/0008e54a-2bc4-441d-b9c7-61ac66ae7f0b/tags
 Content-Type: application/json
 
 {
-  "TagsId": ["E66BCE05-D777-478B-904F-4DF3D2F1699B"]
+  "TagsId": ["de9ebd05-98f2-4dc6-b05a-ac72c2b0d31b"] 
 }
 
 ### Remove two tags from bookmark
-DELETE {{TubeManager.API}}/bookmarks/001D30C7-F80B-499C-834A-04D011CA42AE/tags
+DELETE {{TubeManager.API}}/bookmarks/0008e54a-2bc4-441d-b9c7-61ac66ae7f0b/tags
 Content-Type: application/json
 
 {
@@ -221,7 +221,7 @@ Content-Type: application/json
   "category": "EF69B659-A6A6-4C31-9660-571299F356EA"
 }
 
-### Add Remove from Bookmark
+### Remove from Bookmark
 PUT {{TubeManager.API}}/bookmarks/001d30c7-f80b-499c-834a-04d011ca42ae/category
 Content-Type: application/json
 

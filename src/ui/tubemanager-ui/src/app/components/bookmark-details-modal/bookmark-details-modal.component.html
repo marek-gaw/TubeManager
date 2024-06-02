@@ -24,7 +24,7 @@
         </div>
         <div class="col-md-6 float-md-end mb-3 ms-md-3">
           <h5>
-            <button type="button" class="btn btn-primary btn-sm position-relative" *ngFor="let tag of bookmark?.tags"
+            <button type="button" class="btn btn-primary btn-sm position-relative mx-1" *ngFor="let tag of bookmark?.tags"
               (click)="onTagBadgeClick(tag)">
               {{tag.title}}
             </button>

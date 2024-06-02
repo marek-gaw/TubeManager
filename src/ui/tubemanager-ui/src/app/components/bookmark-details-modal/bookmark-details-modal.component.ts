@@ -6,6 +6,7 @@ import { Tags } from '../../interfaces/tags';
 import { TagsService } from '../../services/tags.service';
 import { CategoriesService } from '../../services/categories.service';
 import { Category } from '../../interfaces/category';
+import { BookmarksService } from '../../services/bookmarks.service';
 
 @Component({
   selector: 'app-bookmark-details-modal',
@@ -33,7 +34,9 @@ export class BookmarkDetailsModalComponent {
   categories: Category[] = [];
   @Output() updatedTags = new EventEmitter<Tags[]>();
 
-  constructor(private tagsService: TagsService, private categoriesService: CategoriesService) { }
+  constructor(private tagsService: TagsService, 
+    private categoriesService: CategoriesService,
+    private bookmarksService: BookmarksService) { }
 
   ngOnInit(): void { }
 
@@ -56,10 +59,17 @@ export class BookmarkDetailsModalComponent {
   }
 
   onTagBadgeClick(tag: Tags): void {
-    console.log(`onTagBadgeClick: ${JSON.stringify(tag)}`);
+    console.log(`onTagBadgeClick - tag to delete: ${JSON.stringify(tag)}`);
     const idx = this.tags.indexOf(tag);
     this.tags.splice(idx, 1);
-    // this.bookmark?
+    const id = this.bookmark?.tags.indexOf(tag);
+    if (id != undefined) {
+      this.bookmark?.tags.splice(id, 1);
+    }
+    
+    this.bookmarksService.removeTagFromBookmark(this.bookmark?.id, tag.id).subscribe(data => {
+      console.log(`DELETE tag from bookmark: ${data}`);
+    })    
   }
 
   onClose(): void {

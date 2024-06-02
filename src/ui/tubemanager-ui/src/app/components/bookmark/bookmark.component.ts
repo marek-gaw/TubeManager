@@ -59,22 +59,32 @@ export class BookmarkComponent {
       if (result) {
         console.log(`modalRef.result.then: ${JSON.stringify(result)}`);
         modalRef.componentInstance.bookmark.tags = result.tags;
+        modalRef.componentInstance.bookmark.category = result.category;
 
         var tags: string[] = [];
         result.tags.forEach(i => {
-          console.log(`i.id: ${i.id}`);
+          console.log(`tag.id: ${i.id}`);
           tags.push(i.id);
         });
+
+        // console.log(`category.id: ${result.category.id}`);
 
         const payload = {
           tags
         }
 
-        console.log(`data: ${payload}`);
+        // console.log(`data: ${JSON.stringify(payload)}`);
 
-        this.bookmarksService.update(modalRef.componentInstance.bookmark.id, payload).subscribe(data => {
+        //update tags
+        this.bookmarksService.updateTag(modalRef.componentInstance.bookmark.id, payload).subscribe(data => {
           console.log(data);
         });
+
+        if (modalRef.componentInstance.bookmark.category != null) {
+          //update category
+          this.bookmarksService.updateCategory(modalRef.componentInstance.bookmark.id, modalRef.componentInstance.bookmark.category.id)
+            .subscribe(data => { console.log(data) });
+        }
       }
     });
   }

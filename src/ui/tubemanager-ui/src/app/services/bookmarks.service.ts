@@ -1,10 +1,16 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Bookmark } from '../interfaces/bookmark';
 import { Observable } from 'rxjs';
 import { BookmarkResponse } from '../interfaces/bookmarkresponse';
 
 const baseUrl = 'http://localhost:5126/bookmarks'
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json',
+  })
+};
 
 @Injectable({
   providedIn: 'root'
@@ -29,9 +35,25 @@ export class BookmarksService {
       return this.http.post(baseUrl, data);
     }
 
-    update(id: any, data: any): Observable<any> {
-      console.log(`bookmarksService: update for bookmark: ${id}`);
+    updateTag(id: any, data: any): Observable<any> {
+      console.log(`bookmarksService: update tag for bookmark: ${id}`);
       return this.http.put(`${baseUrl}/${id}/tags`, data);
+    }
+
+    updateCategory(bookmarkId: any, categoryId: any): Observable<any> {
+      console.log(`bookmarksService: update category ${categoryId} for bookmark: ${bookmarkId}`);
+        return this.http.post(`${baseUrl}/${bookmarkId}/category/${categoryId}`, {});
+    }
+
+    removeTagFromBookmark(bookmarkId: any, tagId: any): Observable<any> {
+      console.log(`bookmarksService: remove tag ${tagId} from bookmark: ${bookmarkId}`);
+      const body = { 
+        TagsId: [tagId]
+      };
+      return this.http.request('delete',`${baseUrl}/${bookmarkId}/tags`, { 
+        body: body, 
+        headers: {'Content-Type': 'application/json'}
+      });
     }
     
     delete(id: any): Observable<any> {

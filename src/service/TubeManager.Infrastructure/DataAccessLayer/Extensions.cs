@@ -9,7 +9,7 @@ internal static class Extensions
 {
     public static IServiceCollection AddSqlite(this IServiceCollection services)
     {
-        const string connString = "Data Source=../../../../../../tubemanager.db;";
+        const string connString = "Data Source=../../../infrastructure/tubemanager.db;";
         services.AddDbContext<BookmarksDbContext>(x => x.UseSqlite(connString));
         services.AddScoped<IBookmarkRepository, SqliteBookmarkRepository>();
         services.AddScoped<ITagsRepository, SqliteTagsRepository>();

@@ -89,7 +89,10 @@ export class BookmarkDetailsModalComponent {
   }
 
   onCategoryDropdownPosClicked(category: Category): void {
-    console.log(`tag: ${category.id} | ${category.name}`);
+    console.log(`category: ${category.id} | ${category.name}`);
     (this.bookmark as Bookmark).category = category;
+    this.bookmarksService.updateCategory(this.bookmark?.id, category.id).subscribe(data => {
+      console.log(data);
+    })
   }
 }

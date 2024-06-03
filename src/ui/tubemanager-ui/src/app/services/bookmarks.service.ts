@@ -17,47 +17,50 @@ const httpOptions = {
 })
 export class BookmarksService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-    getAll(): Observable<Bookmark[]> {
-      return this.http.get<Bookmark[]>(`${baseUrl}`);
-    }
+  getAll(): Observable<Bookmark[]> {
+    return this.http.get<Bookmark[]>(`${baseUrl}`);
+  }
 
-    getPage(page: number, pageSize: number): Observable<BookmarkResponse> {
-      return this.http.get<BookmarkResponse>(`${baseUrl}?page=${page}&pageSize=${pageSize}`);
-    }
+  getPage(page: number, pageSize: number): Observable<BookmarkResponse> {
+    return this.http.get<BookmarkResponse>(`${baseUrl}?page=${page}&pageSize=${pageSize}`);
+  }
 
-    get(id: any): Observable<Bookmark> {
-      return this.http.get<Bookmark>(`${baseUrl}/${id}`);
-    }
+  get(id: any): Observable<Bookmark> {
+    return this.http.get<Bookmark>(`${baseUrl}/${id}`);
+  }
 
-    create(data: any): Observable<any> {
-      return this.http.post(baseUrl, data);
-    }
+  create(data: any): Observable<any> {
+    return this.http.post(baseUrl, data);
+  }
 
-    updateTag(id: any, data: any): Observable<any> {
-      console.log(`bookmarksService: update tag for bookmark: ${id}`);
-      return this.http.put(`${baseUrl}/${id}/tags`, data);
-    }
+  updateTag(id: any, data: any): Observable<any> {
+    console.log(`bookmarksService: update tag for bookmark: ${id}`);
+    return this.http.put(`${baseUrl}/${id}/tags`, data);
+  }
 
-    updateCategory(bookmarkId: any, categoryId: any): Observable<any> {
-      console.log(`bookmarksService: update category ${categoryId} for bookmark: ${bookmarkId}`);
-        return this.http.post(`${baseUrl}/${bookmarkId}/category/${categoryId}`, {});
+  updateCategory(bookmarkId: any, categoryId: any): Observable<any> {
+    console.log(`bookmarksService: update category ${categoryId} for bookmark: ${bookmarkId}`);
+    const body = {
+      categoryId: categoryId
     }
+    return this.http.put(`${baseUrl}/${bookmarkId}/category`, body, httpOptions);
+  }
 
-    removeTagFromBookmark(bookmarkId: any, tagId: any): Observable<any> {
-      console.log(`bookmarksService: remove tag ${tagId} from bookmark: ${bookmarkId}`);
-      const body = { 
-        TagsId: [tagId]
-      };
-      return this.http.request('delete',`${baseUrl}/${bookmarkId}/tags`, { 
-        body: body, 
-        headers: {'Content-Type': 'application/json'}
-      });
-    }
-    
-    delete(id: any): Observable<any> {
-      return this.http.delete(`${baseUrl}/${id}`);
-    }
+  removeTagFromBookmark(bookmarkId: any, tagId: any): Observable<any> {
+    console.log(`bookmarksService: remove tag ${tagId} from bookmark: ${bookmarkId}`);
+    const body = {
+      TagsId: [tagId]
+    };
+    return this.http.request('delete', `${baseUrl}/${bookmarkId}/tags`, {
+      body: body,
+      headers: { 'Content-Type': 'application/json' }
+    });
+  }
+
+  delete(id: any): Observable<any> {
+    return this.http.delete(`${baseUrl}/${id}`);
+  }
 
 }

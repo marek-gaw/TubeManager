@@ -125,23 +125,24 @@ public class BookmarksController : ControllerBase
     }
 
     [HttpPut("{bookmarkId:guid}/category")]
-    public ActionResult<BookmarkDTO> Put(Guid bookmarkId, string? categoryId)
+    public ActionResult<BookmarkDTO> Put(Guid bookmarkId, [FromBody]CategoryCommand requestCommand)
     {
         var bookmark = _bookmarksService.Get(bookmarkId);
         if (bookmark is not null)
         {
-            if (categoryId is not null)
-            {
-                var command = new UpdateCategoryForBookmark(bookmarkId, new Guid(categoryId));
-                _bookmarksService.Update(command);
-                return Ok();
-            }
-            else
+            if (String.IsNullOrEmpty(requestCommand.categoryId))
             {
                 var command = new ResetCategoryForBookmark(bookmarkId);
                 _bookmarksService.Update(command);
-                return Ok();
             }
+            else
+            {
+                Guid guid = new Guid(requestCommand.categoryId);
+                var command = new UpdateCategoryForBookmark(bookmarkId, guid);
+                _bookmarksService.Update(command);
+                
+            }
+            return Ok();
         }
 
         return BadRequest();

@@ -9,5 +9,5 @@ export interface Bookmark {
     description: string;
     thumbnailUrl: string;
     tags: Tags[];
-    category: Category;
+    category?: Category;
   }

@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { NgbActiveModal, NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { Bookmark } from '../../interfaces/bookmark';
-import { NgFor } from '@angular/common';
+import { NgClass, NgFor } from '@angular/common';
 import { Tags } from '../../interfaces/tags';
 import { TagsService } from '../../services/tags.service';
 import { CategoriesService } from '../../services/categories.service';
@@ -13,6 +13,7 @@ import { BookmarksService } from '../../services/bookmarks.service';
   standalone: true,
   imports: [
     NgFor,
+    NgClass,
     NgbDropdownModule
   ],
   templateUrl: './bookmark-details-modal.component.html',
@@ -69,6 +70,20 @@ export class BookmarkDetailsModalComponent {
     
     this.bookmarksService.removeTagFromBookmark(this.bookmark?.id, tag.id).subscribe(data => {
       console.log(`DELETE tag from bookmark: ${data}`);
+    })    
+  }
+
+  onCategoryBadgeClick(): void {
+    console.log(`onCategoryBadgeClick - removing category`);
+    
+    if (this.bookmark != null) {
+      if (this.bookmark.category != null) {
+        this.bookmark.category = undefined;
+      }
+    }
+
+    this.bookmarksService.updateCategory(this.bookmark?.id, undefined).subscribe(data => {
+      console.log(`Update category from bookmark: ${data}`);
     })    
   }
 

@@ -24,8 +24,8 @@
         </div>
         <div class="col-md-6 float-md-end mb-3 ms-md-3">
           <h5>
-            <button type="button" class="btn btn-primary btn-sm position-relative mx-1" *ngFor="let tag of bookmark?.tags"
-              (click)="onTagBadgeClick(tag)">
+            <button type="button" class="btn btn-primary btn-sm position-relative mx-1"
+              *ngFor="let tag of bookmark?.tags" (click)="onTagBadgeClick(tag)">
               {{tag.title}}
             </button>
           </h5>
@@ -43,7 +43,10 @@
         </div>
         <div class="col-md-6 float-md-end mb-3 ms-md-3">
           <h5>
-            <span class="badge rounded-pill bg-primary ms-2">{{ bookmark?.category?.name }}</span>
+            <button type="button" class="btn btn-primary btn-sm position-relative mx-1"
+              [ngClass]="{'d-none': bookmark?.category==undefined}" (click)="onCategoryBadgeClick()">
+              {{ bookmark?.category?.name }}
+            </button>
           </h5>
         </div>
         <p [innerHtml]=bookmark?.description></p>

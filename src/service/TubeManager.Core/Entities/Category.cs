@@ -7,7 +7,7 @@ public class Category
     public string Description { get; set; }
 
     public List<Bookmark> Bookmarks { get; } = [];
-
+    
     public Category(Guid id, string name, string description)
     {
         Id = id;

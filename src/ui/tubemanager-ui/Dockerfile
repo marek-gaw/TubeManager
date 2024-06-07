@@ -1,11 +1,12 @@
-FROM node:18.17.1-alpine as build
+FROM node:18-alpine AS build
 WORKDIR /app
 COPY . .
-COPY package.json ./
 RUN npm install
-RUN npm run ng build
+RUN npm run ng build --prod
 
-RUN npm run build
-FROM nginx:stable
-COPY --from=build /app/dist/tubemanager-ui /usr/share/ngnix/html
-EXPOSE 4200
+FROM nginx:alpine
+COPY nginx.conf /etc/nginx/nginx.conf
+COPY --from=build /app/dist/tubemanager-ui/browser /usr/share/nginx/html
+
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]

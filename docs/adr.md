@@ -13,3 +13,7 @@ Bootstrap is well-established in Angular world, it is easy to find many tutorial
 Card component might be very useful as a base for "movie tile".
 
 Alternatives: Material, PrimeNG
+
+## 003: Sqlite to Postgres
+
+Sqlite plays well for PoC stage, however I want to dockerize whole solution and separate database deployment. Since Postgres SQL is MIT-licensed and well established in the industry, it is a natural alternative.

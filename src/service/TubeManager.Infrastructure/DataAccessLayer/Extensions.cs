@@ -17,4 +17,15 @@ internal static class Extensions
         services.AddScoped<ICategoryRepository, SqliteCategoryRepository>();
         return services;
     }
+
+    public static IServiceCollection AddPostgres(this IServiceCollection services)
+    {
+        const string connString = "Host=localhost;Database=tubemanager;Username=;Password=";
+        services.AddDbContext<BookmarksDbContext>(x => x.UseNpgsql(connString));
+        services.AddScoped<IBookmarkRepository, SqliteBookmarkRepository>();
+        services.AddScoped<ITagsRepository, SqliteTagsRepository>();
+        services.AddScoped<IChannelsRepository, SqliteChannelsRepository>();
+        services.AddScoped<ICategoryRepository, SqliteCategoryRepository>();
+        return services;
+    }
 }

@@ -11,7 +11,7 @@ public static class Extensions
 {
     public static IServiceCollection AddInfrastructure(this IServiceCollection services)
     {
-        services.AddSqlite(); //internal database
+        services.AddPostgres();
         services.AddSingleton<ChannelReader<string>>(svc => svc.GetRequiredService<Channel<string>>().Reader);
         services.AddHostedService<BackupImporter>(); // TODO: create instance on API call
         

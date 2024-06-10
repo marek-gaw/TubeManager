@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using TubeManager.Infrastructure.DataAccessLayer;
@@ -11,9 +12,11 @@ using TubeManager.Infrastructure.DataAccessLayer;
 namespace TubeManager.Infrastructure.DataAccessLayer.Migrations
 {
     [DbContext(typeof(BookmarksDbContext))]
-    partial class BookmarksDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240610191212_UpdateGuidsType")]
+    partial class UpdateGuidsType
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

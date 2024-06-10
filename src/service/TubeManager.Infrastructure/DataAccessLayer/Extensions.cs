@@ -20,7 +20,7 @@ internal static class Extensions
 
     public static IServiceCollection AddPostgres(this IServiceCollection services)
     {
-        const string connString = "Host=localhost;Database=tubemanager;Username=;Password=";
+        const string connString = "Host=localhost;Database=tubemanager;Username=docker;Password=docker";
         services.AddDbContext<BookmarksDbContext>(x => x.UseNpgsql(connString));
         services.AddScoped<IBookmarkRepository, SqliteBookmarkRepository>();
         services.AddScoped<ITagsRepository, SqliteTagsRepository>();

@@ -14,6 +14,10 @@ See [docs](./docs/index.md) for details.
 
 > Icon generated with [Perchance.org](https://perchance.org/ai-icon-generator)
 
+## How to run?
+
+Just follow [those steps](./infrastructure/README.md)
+
 ## Notice
 
 > [!NOTE]  

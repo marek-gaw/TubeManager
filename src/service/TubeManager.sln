@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TubeManager.Core", "TubeMan
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TubeManager.App", "TubeManager.App\TubeManager.App.csproj", "{883DFC0F-7509-4BAD-AE9B-1108D7795E4E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TubeManager.Infrastructure.Migrations", "TubeManager.Infrastructure.Migrations\TubeManager.Infrastructure.Migrations.csproj", "{0D34DF29-386C-4A7E-87A3-4C8E0B540743}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,5 +44,9 @@ Global
 		{883DFC0F-7509-4BAD-AE9B-1108D7795E4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{883DFC0F-7509-4BAD-AE9B-1108D7795E4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{883DFC0F-7509-4BAD-AE9B-1108D7795E4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D34DF29-386C-4A7E-87A3-4C8E0B540743}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D34DF29-386C-4A7E-87A3-4C8E0B540743}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D34DF29-386C-4A7E-87A3-4C8E0B540743}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D34DF29-386C-4A7E-87A3-4C8E0B540743}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

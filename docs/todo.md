@@ -7,3 +7,10 @@
 - [ ] migrate Docker to Portainer
 - [ ] Refactoring to Modular Monolith
 - [ ] Implement migration project
+- [ ] Search for bookmark with word in the tilte
+- [ ] Show all bookmarks with specific tag
+- [ ] Add new bookmark manually
+- [ ] Fetch data for the bookmark with yt-dlp
+  - [ ] for new
+  - [ ] for existing
+

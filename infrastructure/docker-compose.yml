@@ -15,14 +15,30 @@ services:
     volumes:
       - postgres:/var/lib/postgresql/data
 
+  cache:
+    image: redis:7.2-alpine
+    restart: always
+    container_name: redis
+    ports:
+      - 6379:6379
+    command: redis-server --save 20 1 --loglevel warning --requirepass eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81
+    volumes: 
+      - cache:/data
+
   api:
     image: tubemanager-api
+    depends_on:
+      - postgres
+      - cache
     restart: unless-stopped
     container_name: tubemanager-api
     environment:
       - ASPNETCORE_URLS=http://localhost:5126
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_HTTP_PORTS=5126
+      - REDIS_HOST=cache
+      - REDIS_PORT=6379
+      - REDIS_PASSWORD=eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81
     ports:
       - 5126:5126
     network_mode: host
@@ -37,4 +53,5 @@ services:
 volumes:
   postgres:
     driver: local
-
+  cache:
+    driver: local

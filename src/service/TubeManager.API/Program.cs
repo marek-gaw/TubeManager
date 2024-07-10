@@ -23,6 +23,7 @@ builder.Services
     .AddControllers();
 
 builder.Services.AddOpenApiDocument();
+builder.Services.AddHttpClient();
 
 builder.Host.UseSerilog((context, loggerConfiguration) =>
 {

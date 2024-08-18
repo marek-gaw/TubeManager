@@ -14,7 +14,13 @@ public static class Extensions
         services.AddSingleton<ChannelReader<string>>(svc => svc.GetRequiredService<Channel<string>>().Reader);
         services.AddHostedService<BackupImporter>(); // TODO: create instance on API call
 
-        services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect("http://localhost:6379"));
+        try {
+            services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect("http://localhost:6379"));
+
+        } catch (Exception e) {
+            Console.WriteLine($"Processing failed: {e.Message}");
+        }
+        
         
         return services;
     }

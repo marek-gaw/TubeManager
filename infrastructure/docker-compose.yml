@@ -14,6 +14,9 @@ services:
       - 5432:5432
     volumes:
       - postgres:/var/lib/postgresql/data
+    profiles:
+      - devel
+      - full
 
   cache:
     image: redis:7.2-alpine
@@ -24,9 +27,13 @@ services:
     command: redis-server --save 20 1 --loglevel warning --requirepass eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81
     volumes: 
       - cache:/data
+    profiles:
+      - devel
+      - full
 
   api:
     image: tubemanager-api
+    build: ../src/service/
     depends_on:
       - postgres
       - cache
@@ -42,16 +49,37 @@ services:
     ports:
       - 5126:5126
     network_mode: host
+    profiles:
+      - full
 
   ui:
     image: tubemanager-ui
+    build: ../src/ui/tubemanager-ui
     restart: unless-stopped
     container_name: tubemanager-ui
     ports:
       - 4200:4200
+    profiles:
+      - full
+
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4
+    ports:
+      - 8888:80
+    environment:
+      PGADMIN_DEFAULT_EMAIL: user-name@domain-name.com
+      PGADMIN_DEFAULT_PASSWORD: strong-password
+    volumes:
+      - pgadmin:/var/lib/pgadmin
+    profiles:
+      - devel
+      - full
 
 volumes:
   postgres:
     driver: local
   cache:
+    driver: local
+  pgadmin:
     driver: local

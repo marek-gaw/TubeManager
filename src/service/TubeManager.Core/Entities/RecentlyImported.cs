@@ -1,3 +1,3 @@
-namespace TubeManager.Infrastructure.Models;
+namespace TubeManager.Core.Entities;
 
-public record RecentlyImported(Guid Id, DateTime AddeDateTime, string FileName);
+public record RecentlyImported(Guid Id, DateTime ImportedDateTime, string FileName);

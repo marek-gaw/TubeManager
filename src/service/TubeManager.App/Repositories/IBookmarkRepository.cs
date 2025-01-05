@@ -7,6 +7,7 @@ public interface  IBookmarkRepository
     IEnumerable<Bookmark> GetAll();
     
     Bookmark Get(Guid id);
+    IEnumerable<Bookmark> GetByQuery(string query);
     Bookmark Get(string videoUrl);
     void Add(Bookmark bookmark);
     void Update(Bookmark bookmark);

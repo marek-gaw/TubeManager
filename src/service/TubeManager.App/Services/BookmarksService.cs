@@ -40,7 +40,7 @@ public class BookmarksService : IBookmarksService
                         ThumbnailUrl = b.ThumbnailUrl,
                         Channel = b.Channel,
                         Description = b.Description,
-                        Tags = Mappers.ToArray(b.Tags),
+                        Tags = b.Tags.ToDtoArray(),
                         Category = null
                     };
                 }
@@ -54,7 +54,7 @@ public class BookmarksService : IBookmarksService
                         ThumbnailUrl = b.ThumbnailUrl,
                         Channel = b.Channel,
                         Description = b.Description,
-                        Tags = Mappers.ToArray(b.Tags),
+                        Tags = b.Tags.ToDtoArray(),
                         Category = new CategoryDTO(b.Category.Id, b.Category.Name, b.Category.Description)
                     };
                 }
@@ -62,6 +62,13 @@ public class BookmarksService : IBookmarksService
         return dto;
     }
 
+    public IEnumerable<BookmarkDTO> Get(string query)
+    {
+        var ret =  _bookmarksRepository
+            .GetByQuery(query)
+            .ToDtoList();
+        return ret;
+    }
     public IEnumerable<BookmarkDTO> Get()
     {
         return _bookmarksRepository
@@ -78,7 +85,7 @@ public class BookmarksService : IBookmarksService
                         ThumbnailUrl = b.ThumbnailUrl,
                         Channel = b.Channel,
                         Description = b.Description,
-                        Tags = Mappers.ToArray(b.Tags),
+                        Tags = b.Tags.ToDtoArray(),
                         Category = null
                     };
                 }
@@ -92,8 +99,8 @@ public class BookmarksService : IBookmarksService
                         ThumbnailUrl = b.ThumbnailUrl,
                         Channel = b.Channel,
                         Description = b.Description,
-                        Tags = Mappers.ToArray(b.Tags),
-                        Category = new CategoryDTO(b.Category.Id, b.Category.Name, b.Category.Description)
+                        Tags = b.Tags.ToDtoArray(),
+                        Category = b.Category.ToCategoryDTO(),
                     };
                 }
             });

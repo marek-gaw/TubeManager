@@ -1,3 +1,4 @@
+using TubeManager.Core.DTO;
 using TubeManager.Core.ValueObjects;
 
 namespace TubeManager.Core.Entities;

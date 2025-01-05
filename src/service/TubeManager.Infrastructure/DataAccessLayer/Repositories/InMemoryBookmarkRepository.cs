@@ -32,6 +32,11 @@ public class InMemoryBookmarkRepository : IBookmarkRepository
         return _bookmarks.SingleOrDefault(x => x.Id == id);
     }
 
+    public IEnumerable<Bookmark> GetByQuery(string query)
+    {
+        throw new NotImplementedException();
+    }
+
     public Bookmark Get(string videoUrl)
     {
         return _bookmarks.SingleOrDefault(x => x.VideoUrl == videoUrl);

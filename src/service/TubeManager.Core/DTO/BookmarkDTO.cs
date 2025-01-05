@@ -11,7 +11,7 @@ public class BookmarkDTO
     public string ThumbnailUrl { get; set; }
     public string Channel { get; set; }
     public string Description { get; set; }
-    public TagDTO[] Tags { get; set; }
+    public TagDTO[]? Tags { get; set; }
 
     public CategoryDTO? Category { get; set; }
 }

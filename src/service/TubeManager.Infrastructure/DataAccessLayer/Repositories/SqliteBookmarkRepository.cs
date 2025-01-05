@@ -28,6 +28,14 @@ internal sealed class SqliteBookmarkRepository : IBookmarkRepository
             .SingleOrDefault();
     }
 
+    public IEnumerable<Bookmark> GetByQuery(string query)
+    {
+        var ret =  _bookmarks
+            .Where(b => EF.Functions.Like(b.Title, $"%{query}%"))
+            .ToList();
+        return ret;
+    }
+
     public Bookmark Get(string videoUrl) => _bookmarks
         .Where(b => b.VideoUrl == videoUrl)
         .SingleOrDefault();

@@ -23,13 +23,6 @@ public class BookmarksController : ControllerBase
     [HttpGet]
     public ActionResult<PagedResponse<BookmarkDTO>> Get([FromQuery] int page, [FromQuery] int pageSize, [FromQuery] string? query)
     {
-        //TODO: move this validation to filter, and set parameters as nullable
-        //TODO: deprecate and remove. It should not be possible to query everything!
-        if (page == 0 && pageSize == 0 && string.IsNullOrWhiteSpace(query))
-        {
-            return Ok(_bookmarksService.Get());
-        }
-        
         if (string.IsNullOrWhiteSpace(query))
         {
             var response = new PagedResponse<BookmarkDTO>(_bookmarksService.Get(page, pageSize),
@@ -40,7 +33,11 @@ public class BookmarksController : ControllerBase
         }
         else
         {
-            return Ok(_bookmarksService.Get(query));
+            var response = new PagedResponse<BookmarkDTO>(_bookmarksService.Get(query, page, pageSize),
+                page,
+                pageSize,
+                _bookmarksService.GetElementsCount());
+            return response;
         }        
         
     }

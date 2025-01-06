@@ -8,7 +8,7 @@ public interface IBookmarksService
 {
     IEnumerable<BookmarkDTO> Get();
     IEnumerable<BookmarkDTO> Get(int page, int pageSize);
-    IEnumerable<BookmarkDTO> Get(string search);
+    IEnumerable<BookmarkDTO> Get(string search, int page, int pageSize);
     BookmarkDTO? Get(Guid id);
     Guid? Create(CreateBookmark command);
     bool Update(UpdateBookmark command);

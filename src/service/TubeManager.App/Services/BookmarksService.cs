@@ -61,11 +61,13 @@ public class BookmarksService : IBookmarksService
             });
         return dto;
     }
-
-    public IEnumerable<BookmarkDTO> Get(string query)
+    
+    public IEnumerable<BookmarkDTO> Get(string query, int page, int pageSize)
     {
         var ret =  _bookmarksRepository
             .GetByQuery(query)
+            .Skip((page - 1) * pageSize)
+            .Take(pageSize)
             .ToDtoList();
         return ret;
     }

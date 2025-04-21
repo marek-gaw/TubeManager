@@ -50,13 +50,12 @@ internal sealed class BackupImporter : BackgroundService
         {
             var bookmarks = context.Bookmarks.ToList();
             var ImportTimestamp = DateTime.UtcNow;
+            var ImportId = Guid.NewGuid();
 
             foreach (var bookmark in bookmarks)
             {
                 string decodedBytes = System.Text.Encoding.UTF8.GetString(bookmark.YouTubeVideo);
-
                 var values = JsonConvert.DeserializeObject<Dictionary<string, Object>>(decodedBytes);
-
                 JObject ob = JObject.Parse(decodedBytes);
 
                 ScaffoldedVideo video = new ScaffoldedVideo((string)values["duration"],
@@ -99,7 +98,7 @@ internal sealed class BackupImporter : BackgroundService
                     (string)ChannelTitle,
                     description ?? "No description for this video...");
                 
-                ImportInfo i = new ImportInfo(Guid.NewGuid(), DateTime.Now, bookmarkId);
+                ImportInfo i = new ImportInfo(Guid.NewGuid(), ImportTimestamp, bookmarkId, ImportId);
 
                 dbContext.Bookmarks.Add(b);
                 dbContext.Channels.Add(channel);

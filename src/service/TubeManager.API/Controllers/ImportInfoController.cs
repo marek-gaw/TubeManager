@@ -20,8 +20,8 @@ public class ImportInfoController : ControllerBase
     public ActionResult<ImportInfoDto[]> GetAll()
     {
         return new [] {
-            new ImportInfoDto(Guid.NewGuid(), DateTime.UtcNow, 42),
-            new ImportInfoDto(Guid.NewGuid(), DateTime.UtcNow, 43),
+            new ImportInfoDto(Guid.NewGuid(), DateTime.UtcNow, [new Guid("0012a34d-1d55-41eb-8e7f-8c0cabe2bea1")], 42),
+            new ImportInfoDto(Guid.NewGuid(), DateTime.UtcNow, [new Guid("006e814f-eb9a-49ce-b6c7-2a5af0abad8a")], 43),
         };
     }
 }

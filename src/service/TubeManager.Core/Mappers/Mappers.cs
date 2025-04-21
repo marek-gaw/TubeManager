@@ -43,6 +43,9 @@ public static class Mappers
 
     public static ImportInfoDto toDto(this ImportInfo importInfo)
     {
-        return new ImportInfoDto(importInfo.Id, importInfo.ImportTimestamp, 42);
+        return new ImportInfoDto(importInfo.Id, 
+            importInfo.ImportTimestamp, 
+            [new Guid("0012a34d-1d55-41eb-8e7f-8c0cabe2bea1")],
+            42);
     }
 }

@@ -33,10 +33,11 @@ public class BookmarksController : ControllerBase
         }
         else
         {
-            var response = new PagedResponse<BookmarkDTO>(_bookmarksService.Get(query, page, pageSize),
+            var elements = _bookmarksService.Get(query, page, pageSize);
+            var response = new PagedResponse<BookmarkDTO>(elements,
                 page,
                 pageSize,
-                _bookmarksService.GetElementsCount());
+                elements.Count());
             return response;
         }        
         

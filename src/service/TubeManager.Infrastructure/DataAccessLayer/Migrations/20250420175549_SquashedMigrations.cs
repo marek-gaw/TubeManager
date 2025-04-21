@@ -39,6 +39,19 @@ namespace TubeManager.Infrastructure.DataAccessLayer.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "ImportInfos",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    BookmarkId = table.Column<Guid>(type: "uuid", nullable: false),
+                    ImportTimestamp = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ImportInfos", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Tags",
                 columns: table => new
                 {
@@ -115,6 +128,9 @@ namespace TubeManager.Infrastructure.DataAccessLayer.Migrations
 
             migrationBuilder.DropTable(
                 name: "Channels");
+
+            migrationBuilder.DropTable(
+                name: "ImportInfos");
 
             migrationBuilder.DropTable(
                 name: "Bookmarks");

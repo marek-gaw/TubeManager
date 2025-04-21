@@ -27,6 +27,10 @@ export class BookmarksService {
     return this.http.get<BookmarkResponse>(`${baseUrl}?page=${page}&pageSize=${pageSize}`);
   }
 
+  getQueryPaged(page: number, pageSize: number, query: string): Observable<BookmarkResponse> {
+    return this.http.get<BookmarkResponse>(`${baseUrl}?page=${page}&pageSize=${pageSize}&query=${query}`);
+  }
+
   get(id: any): Observable<Bookmark> {
     return this.http.get<Bookmark>(`${baseUrl}/${id}`);
   }

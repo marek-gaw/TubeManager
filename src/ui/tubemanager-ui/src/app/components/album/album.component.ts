@@ -6,6 +6,8 @@ import { BookmarksService } from '../../services/bookmarks.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { YouTubePlayer } from '@angular/youtube-player';
+import { SearchBarComponent } from "../search-bar/search-bar.component";
+import { BookmarkResponse } from '../../interfaces/bookmarkresponse';
 
 @Component({
   selector: 'app-album',
@@ -15,8 +17,9 @@ import { YouTubePlayer } from '@angular/youtube-player';
     NgFor,
     HttpClientModule,
     CommonModule,
-    YouTubePlayer
-  ],
+    YouTubePlayer,
+    SearchBarComponent
+],
   templateUrl: './album.component.html',
   styleUrl: './album.component.css'
 })
@@ -38,10 +41,14 @@ export class AlbumComponent {
 
   fetchPage(page: number, pageSize: number): void {
     this.bookmarksService.getPage(page, pageSize).subscribe(data => {
-      this.totalPages = data.totalPages;
-      this.bookmarks = data.data;
+      this.setBookmarks(data);
       console.log(data);
     });
+  }
+
+  setBookmarks(resp: BookmarkResponse) {
+    this.totalPages = resp.totalPages;
+    this.bookmarks = resp.data;
   }
 
   onPageChange(page: number): void {

@@ -1,4 +1,4 @@
-using TubeManager.API.DTO;
+using TubeManager.Core.DTO;
 using TubeManager.API.Entities;
 
 namespace TubeManager.API.Services;
@@ -7,20 +7,7 @@ public class BookmarksService
 {
     private static List<Bookmark> _bookmarks = new List<Bookmark>();
 
-    public BookmarksService()
-    {
-        _bookmarks.Add(
-            new Bookmark(
-                "100 COMMITÓW | KONKURS DLA KAŻDEGO PROGRAMISTY/STKI!",
-                "https://www.youtube.com/watch?v=GADbUCHBnN8",
-                "",
-                "DevMentors",
-                "Lorem ipsum dolor met"
-            )
-        );
-    }
-
-   
+    public BookmarksService() { }
     
     public IEnumerable<Bookmark> Get()
     {

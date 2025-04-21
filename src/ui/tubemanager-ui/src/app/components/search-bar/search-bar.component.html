@@ -1,0 +1,28 @@
+<div class="bg-light">
+  <div class="container py-5">
+    <div class="search-container">
+      <div class="search-wrapper">
+        <div class="search-header">
+          <div class="search-input-group">
+            <input type="text" class="search-input form-control" placeholder="Search in titles..." #query (keyup.enter)="onQuery(query.value)">
+            <i class="fas fa-search search-icon" (click)="onSearchIconClick(query.value)"></i>
+          </div>
+
+          <div class="quick-filters">
+            <span class="quick-filter">dotnet</span>
+            <span class="quick-filter">dev</span>
+          </div>
+        </div>
+
+        <div class="category-filters">
+          <div class="filter-chip active">
+            <i class="fas fa-globe"></i> live
+          </div>
+          <div class="filter-chip">
+            <i class="fas fa-music"></i> music
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -17,6 +17,7 @@ public static class Extensions
         services.AddScoped<ITagsService, TagsService>();
         services.AddScoped<IChannelsService, ChannelsService>();
         services.AddScoped<ICategoryService, CategoryService>();
+        services.AddScoped<ImportInfoService, ImportInfoService>();
         return services;
     }
 }

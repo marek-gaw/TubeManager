@@ -40,4 +40,9 @@ public static class Mappers
     {
         return new CategoryDTO(category.Id, category.Name, category.Description);
     }
+
+    public static ImportInfoDto toDto(this ImportInfo importInfo)
+    {
+        return new ImportInfoDto(importInfo.Id, importInfo.ImportTimestamp, 42);
+    }
 }

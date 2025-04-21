@@ -49,6 +49,7 @@ internal sealed class BackupImporter : BackgroundService
         using (var context = new ImportedDbContext(contextOptions))
         {
             var bookmarks = context.Bookmarks.ToList();
+            var ImportTimestamp = DateTime.UtcNow;
 
             foreach (var bookmark in bookmarks)
             {
@@ -88,18 +89,22 @@ internal sealed class BackupImporter : BackgroundService
                 //TODO: make this an option
                 //skip if this entry already exists.
                 if ((dbContext.Bookmarks.FirstOrDefault(b => b.VideoUrl == video.Id)) is not null) continue;
-
+                
+                var bookmarkId = Guid.NewGuid();
                 // TODO: add new
-                Bookmark b = new Bookmark(Guid.NewGuid(),
+                Bookmark b = new Bookmark(bookmarkId,
                     video.Title,
                     bookmark.YouTubeVideoId,
                     video.ThumbnailUrl,
                     (string)ChannelTitle,
                     description ?? "No description for this video...");
+                
+                ImportInfo i = new ImportInfo(Guid.NewGuid(), DateTime.Now, bookmarkId);
 
                 dbContext.Bookmarks.Add(b);
                 dbContext.Channels.Add(channel);
-
+                dbContext.ImportInfos.Add(i);
+                
                 //TODO: make this an option
                 //update fields
                 //var bookmarkToUpdate = dbContext.Bookmarks.SingleOrDefault(ba => ba.VideoUrl == bookmark.YouTubeVideoId);

@@ -1,0 +1,117 @@
+.search-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .search-wrapper {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+  }
+
+  .search-header {
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+  }
+
+  .search-input-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .search-input {
+    border: 2px solid #eee;
+    border-radius: 30px;
+    padding: 15px 25px;
+    padding-right: 50px;
+    width: 100%;
+    transition: all 0.3s ease;
+  }
+
+  .search-input:focus {
+    border-color: #007bff;
+    box-shadow: none;
+  }
+
+  .search-icon {
+    position: absolute;
+    right: 20px;
+    color: #666;
+  }
+
+  .category-filters {
+    padding: 15px 20px;
+    background: #f8f9fa;
+    border-radius: 0 0 15px 15px;
+  }
+
+  .filter-chip {
+    display: inline-block;
+    padding: 8px 15px;
+    margin: 5px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .filter-chip:hover {
+    background: #007bff;
+    color: white;
+    border-color: #007bff;
+  }
+
+  .filter-chip.active {
+    background: #007bff;
+    color: white;
+    border-color: #007bff;
+  }
+
+  .filter-chip i {
+    margin-right: 5px;
+    font-size: 0.9em;
+  }
+
+  .quick-filters {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+  }
+
+  .quick-filter {
+    padding: 5px 12px;
+    background: #e9ecef;
+    border-radius: 15px;
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .quick-filter:hover {
+    background: #dee2e6;
+  }
+
+  .suggestions {
+    margin-top: 10px;
+    padding: 10px 0;
+    border-top: 1px solid #eee;
+  }
+
+  .suggestion-item {
+    padding: 8px 20px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .suggestion-item:hover {
+    background: #f8f9fa;
+  }
+
+  .suggestion-category {
+    font-size: 0.8em;
+    color: #666;
+    margin-left: 5px;
+  }

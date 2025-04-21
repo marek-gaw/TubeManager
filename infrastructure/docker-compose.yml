@@ -70,6 +70,8 @@ services:
     environment:
       PGADMIN_DEFAULT_EMAIL: user-name@domain-name.com
       PGADMIN_DEFAULT_PASSWORD: strong-password
+      PGADMIN_CONFIG_WTF_CSRF_CHECK_DEFAULT: 'False'
+      PGADMIN_CONFIG_WTF_CSRF_ENABLED: 'False'
     volumes:
       - pgadmin:/var/lib/pgadmin
     profiles:

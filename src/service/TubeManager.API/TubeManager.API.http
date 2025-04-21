@@ -1,26 +1,24 @@
-@TubeManager.API = http://localhost:5126
-
 ###
-GET {{TubeManager.API}}/bookmarks
+GET {{host}}/bookmarks
 
 //pagination
 ###
-GET {{TubeManager.API}}/bookmarks?page=1&pageSize=20
+GET {{host}}/bookmarks?page=1&pageSize=20
 
 ###
-GET {{TubeManager.API}}/bookmarks?page=1&pageSize=1
+GET {{host}}/bookmarks?page=1&pageSize=1
 
 ###
-GET {{TubeManager.API}}/bookmarks?page=2&pageSize=2
+GET {{host}}/bookmarks?page=2&pageSize=2
 
 ###
-GET {{TubeManager.API}}/bookmarks?page=1&pageSize=4
+GET {{host}}/bookmarks?page=1&pageSize=4
 
 ###
-GET {{TubeManager.API}}/bookmarks/000a804d-5f5b-4cfe-80f6-d19e1eedd49c
+GET {{host}}/bookmarks/000a804d-5f5b-4cfe-80f6-d19e1eedd49c
 
 ###
-POST {{TubeManager.API}}/bookmarks
+POST {{host}}/bookmarks
 Content-Type: application/json
 
 {
@@ -32,7 +30,7 @@ Content-Type: application/json
 }
 
 ###
-PUT {{TubeManager.API}}/bookmarks/001d30c7-f80b-499c-834a-04d011ca42ae
+PUT {{host}}/bookmarks/001d30c7-f80b-499c-834a-04d011ca42ae
 Content-Type: application/json
 
 {
@@ -43,13 +41,13 @@ Content-Type: application/json
 }
 
 ###
-DELETE {{TubeManager.API}}/bookmarks/dd732e7a-c7c3-42b2-8894-bae9168d8b0e
+DELETE {{host}}/bookmarks/dd732e7a-c7c3-42b2-8894-bae9168d8b0e
 
 ###
-POST {{TubeManager.API}}/import
+POST {{host}}/import
 
 ###
-POST {{TubeManager.API}}/import
+POST {{host}}/import
 X-Custom-header1: abc1234
 Content-Type: multipart/form-data; boundary=WebAppBoundary
 
@@ -60,11 +58,11 @@ Content-Disposition: form-data; name="file"; filename="skytube-2024-03-05-075634
 --WebAppBoundary--
 
 ### Get all Tags
-GET {{TubeManager.API}}/tags
+GET {{host}}/tags
 
 ### Create Tag
 # @name tag
-POST {{TubeManager.API}}/tags
+POST {{host}}/tags
 Content-Type: application/json
 
 {
@@ -75,7 +73,7 @@ Content-Type: application/json
 @tag-id={{tag.response.body.id}}
 
 ### Change Tag
-PUT {{TubeManager.API}}/tags?e7e2193e-a6a3-4442-84ee-2781f327010b
+PUT {{host}}/tags?e7e2193e-a6a3-4442-84ee-2781f327010b
 Content-Type: application/json
 
 {
@@ -83,10 +81,10 @@ Content-Type: application/json
 }
 
 ### Delete Tag
-DELETE {{TubeManager.API}}/tags/dbc48dbb-5afd-4b13-b2bf-297e1aef832f
+DELETE {{host}}/tags/dbc48dbb-5afd-4b13-b2bf-297e1aef832f
 
 ### Add single Tag to a Bookmark
-PUT {{TubeManager.API}}/bookmarks/0008e54a-2bc4-441d-b9c7-61ac66ae7f0b/tags
+PUT {{host}}/bookmarks/0008e54a-2bc4-441d-b9c7-61ac66ae7f0b/tags
 Content-Type: application/json
 
 {
@@ -94,7 +92,7 @@ Content-Type: application/json
 }
 
 ### Add another single Tag to a Bookmark
-PUT {{TubeManager.API}}/bookmarks/0008e54a-2bc4-441d-b9c7-61ac66ae7f0b/tags
+PUT {{host}}/bookmarks/0008e54a-2bc4-441d-b9c7-61ac66ae7f0b/tags
 Content-Type: application/json
 
 {
@@ -102,7 +100,7 @@ Content-Type: application/json
 }
 
 ### Add multiple Tags to a Bookmark
-PUT {{TubeManager.API}}/bookmarks/0008e54a-2bc4-441d-b9c7-61ac66ae7f0b/tags
+PUT {{host}}/bookmarks/0008e54a-2bc4-441d-b9c7-61ac66ae7f0b/tags
 Content-Type: application/json
 
 {
@@ -110,10 +108,10 @@ Content-Type: application/json
 }
 
 ### Get all tags for a given bookmark
-GET {{TubeManager.API}}/bookmarks/0008e54a-2bc4-441d-b9c7-61ac66ae7f0b/tags
+GET {{host}}/bookmarks/0008e54a-2bc4-441d-b9c7-61ac66ae7f0b/tags
 
 ### Remove tag from bookmark (Azure)
-DELETE {{TubeManager.API}}/bookmarks/0008e54a-2bc4-441d-b9c7-61ac66ae7f0b/tags
+DELETE {{host}}/bookmarks/0008e54a-2bc4-441d-b9c7-61ac66ae7f0b/tags
 Content-Type: application/json
 
 {
@@ -121,7 +119,7 @@ Content-Type: application/json
 }
 
 ### Remove two tags from bookmark
-DELETE {{TubeManager.API}}/bookmarks/0008e54a-2bc4-441d-b9c7-61ac66ae7f0b/tags
+DELETE {{host}}/bookmarks/0008e54a-2bc4-441d-b9c7-61ac66ae7f0b/tags
 Content-Type: application/json
 
 {
@@ -129,13 +127,13 @@ Content-Type: application/json
 }
 
 ### Get all channels
-GET {{TubeManager.API}}/channels
+GET {{host}}/channels
 
 ### Get single channel
-GET {{TubeManager.API}}/channels/{{id}}
+GET {{host}}/channels/{{id}}
 
 ### Create channel v1 (id = id)
-POST {{TubeManager.API}}/channels
+POST {{host}}/channels
 Content-Type: application/json
 
 {
@@ -145,7 +143,7 @@ Content-Type: application/json
 }
 
 ### Create channel v2 (id = full address )
-POST {{TubeManager.API}}/channels
+POST {{host}}/channels
 Content-Type: application/json
 
 {
@@ -155,7 +153,7 @@ Content-Type: application/json
 }
 
 ### Create channel v3 (id = new format, not present in imported bookmarks, used by YT )
-POST {{TubeManager.API}}/channels
+POST {{host}}/channels
 Content-Type: application/json
 
 {
@@ -165,7 +163,7 @@ Content-Type: application/json
 }
 
 ### Create channel v1 (id = new format, not present in imported bookmarks, used by YT )
-PUT {{TubeManager.API}}/channels/{{guid}}
+PUT {{host}}/channels/{{guid}}
 Content-Type: application/json
 
 {
@@ -175,17 +173,17 @@ Content-Type: application/json
 }
 
 ### Delete specific Channel
-DELETE {{TubeManager.API}}/channels/{{guid}}
+DELETE {{host}}/channels/{{guid}}
 
 
 ### Get all Categories
-GET {{TubeManager.API}}/category
+GET {{host}}/category
 
 ### Get specific Category
-GET {{TubeManager.API}}/category/ef69b659-a6a6-4c31-9660-571299f356ea
+GET {{host}}/category/ef69b659-a6a6-4c31-9660-571299f356ea
 
 ### Create Category
-POST {{TubeManager.API}}/category
+POST {{host}}/category
 Content-Type: application/json
 
 {
@@ -194,7 +192,7 @@ Content-Type: application/json
 }
 
 ### Change Category
-PUT {{TubeManager.API}}/category/33dac281-ea37-413f-a6b6-21fbe2fe34d5
+PUT {{host}}/category/33dac281-ea37-413f-a6b6-21fbe2fe34d5
 Content-Type: application/json
 
 {
@@ -203,10 +201,10 @@ Content-Type: application/json
 }
 
 ### Delete Category
-DELETE {{TubeManager.API}}/category/dbc48dbb-5afd-4b13-b2bf-297e1aef832f
+DELETE {{host}}/category/dbc48dbb-5afd-4b13-b2bf-297e1aef832f
 
 ### Add Category to Bookmark
-PUT {{TubeManager.API}}/bookmarks/000a804d-5f5b-4cfe-80f6-d19e1eedd49c/category
+PUT {{host}}/bookmarks/000a804d-5f5b-4cfe-80f6-d19e1eedd49c/category
 Content-Type: application/json
 
 {
@@ -214,7 +212,7 @@ Content-Type: application/json
 }
 
 ### Change category in Bookmark
-PUT {{TubeManager.API}}/bookmarks/000a804d-5f5b-4cfe-80f6-d19e1eedd49c/category
+PUT {{host}}/bookmarks/000a804d-5f5b-4cfe-80f6-d19e1eedd49c/category
 Content-Type: application/json
 
 {
@@ -222,9 +220,12 @@ Content-Type: application/json
 }
 
 ### Remove from Bookmark
-PUT {{TubeManager.API}}/bookmarks/000a804d-5f5b-4cfe-80f6-d19e1eedd49c/category
+PUT {{host}}/bookmarks/000a804d-5f5b-4cfe-80f6-d19e1eedd49c/category
 Content-Type: application/json
 
 {
   "categoryId": ""
 }
+
+### Get Import Info
+GET {{host}}/import-info

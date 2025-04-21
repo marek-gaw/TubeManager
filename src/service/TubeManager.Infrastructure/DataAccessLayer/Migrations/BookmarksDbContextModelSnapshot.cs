@@ -55,7 +55,7 @@ namespace TubeManager.Infrastructure.DataAccessLayer.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Bookmarks");
+                    b.ToTable("Bookmarks", (string)null);
                 });
 
             modelBuilder.Entity("TubeManager.Core.Entities.BookmarkTag", b =>
@@ -70,7 +70,7 @@ namespace TubeManager.Infrastructure.DataAccessLayer.Migrations
 
                     b.HasIndex("TagId");
 
-                    b.ToTable("BookmarkTag");
+                    b.ToTable("BookmarkTag", (string)null);
                 });
 
             modelBuilder.Entity("TubeManager.Core.Entities.Category", b =>
@@ -89,7 +89,7 @@ namespace TubeManager.Infrastructure.DataAccessLayer.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Categories", (string)null);
                 });
 
             modelBuilder.Entity("TubeManager.Core.Entities.Channel", b =>
@@ -111,7 +111,24 @@ namespace TubeManager.Infrastructure.DataAccessLayer.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Channels");
+                    b.ToTable("Channels", (string)null);
+                });
+
+            modelBuilder.Entity("TubeManager.Core.Entities.ImportInfo", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("BookmarkId")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("ImportTimestamp")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ImportInfos", (string)null);
                 });
 
             modelBuilder.Entity("TubeManager.Core.Entities.Tag", b =>
@@ -126,7 +143,7 @@ namespace TubeManager.Infrastructure.DataAccessLayer.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Tags");
+                    b.ToTable("Tags", (string)null);
                 });
 
             modelBuilder.Entity("TubeManager.Core.Entities.Bookmark", b =>

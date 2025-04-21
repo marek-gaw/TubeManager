@@ -1,0 +1,16 @@
+<div class="container mt-5 col-lg-8">
+  <table class="table table-hover table-striped">
+    <thead>
+      <tr class="text-center">
+        <th class="col-sm-3" scope="col">Import date</th>
+        <th class="col-sm-3" scope="col">Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let _importInfo of importInfo" class="text-center">
+        <td class="align-middle">{{ _importInfo.timestamp | date:"dd-MM-YYYY hh:mm" }}</td>
+        <td class="align-middle">{{ _importInfo.bookmarkCount }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
